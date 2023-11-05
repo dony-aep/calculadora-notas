@@ -1,0 +1,119 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    background-color: #15202B;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    overflow: auto;
+}
+
+.boton-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.boton {
+    padding: 12px 24px;
+    font-size: 24px;
+    background-color: #1DA1F2;
+    color: #ffffff;
+    border: 2px solid #1DA1F2;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.boton:hover {
+    background-color: transparent;
+    color: #1DA1F2;
+}
+
+.boton:active {
+    transform: scale(0.95);
+}
+
+.container {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    background-color: #192734;
+    padding: 45px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    position: relative;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.input-container {
+    flex: 1 1 45%;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    margin: 5px 0;
+    border: 1px solid #38444d;
+    border-radius: 5px;
+    background-color: #283442;
+    color: #ffffff;
+}
+
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #8899a6;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pass-fail-message {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+.reset-button {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #ffffff;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.reset-button:hover {
+    color: #1DA1F2;
+    transform: scale(1.1);
+}

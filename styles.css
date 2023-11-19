@@ -71,6 +71,7 @@ body {
 
     .help-content {
         width: 90%;
+        top: 5%;
     }
 }
 
@@ -176,19 +177,19 @@ h1 {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 998;
-    overflow-y: auto;
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
 }
 
 
 .help-content {
     position: absolute;
-    top: 50%;
+    top: 10%; /* Adjust top position for better visibility on smaller screens */
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
+    transform: translateX(-50%);
+    width: 90%; /* Adjust the width to make it responsive */
+    max-width: 600px; /* Set a maximum width to avoid overly wide content */
     padding: 20px;
-    background-color: #192734; 
+    background-color: #192734; /* Color del fondo de la calculadora */
     border-radius: 10px;
     text-align: left;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);

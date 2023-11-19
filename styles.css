@@ -21,12 +21,12 @@ body {
 }
 
 .boton {
-    padding: 12px 24px;
-    font-size: 24px;
+    padding: 18px 36px; /* Aumenta el padding para hacer el botón más grande */
+    font-size: 28px; /* Aumenta el tamaño de la fuente */
     background-color: #1DA1F2;
     color: #ffffff;
     border: 2px solid #1DA1F2;
-    border-radius: 5px;
+    border-radius: 8px; /* Aumenta el radio de borde para hacer esquinas más redondeadas */
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Roboto', sans-serif;
@@ -41,6 +41,16 @@ body {
 .boton:active {
     transform: scale(0.95);
 }
+
+/* Estilos para pantallas pequeñas (dispositivos móviles) */
+@media only screen and (max-width: 720px) {
+    .boton {
+        padding: 24px 48px; /* Ajusta el padding para dispositivos móviles */
+        font-size: 36px;   /* Ajusta el tamaño de la fuente para dispositivos móviles */
+        border-radius: 10px; /* Ajusta el radio de borde para dispositivos móviles */
+    }
+}
+
 
 .container {
     display: none;

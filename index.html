@@ -87,6 +87,29 @@
             <div class="reset-button" onclick="reiniciarCampos()">Restablecer</div>
     </div>
 
+    <div class="help-button" onclick="mostrarAyuda()">?</div>
+    <div class="help-overlay" id="helpOverlay" onclick="ocultarAyuda()">
+        <div class="help-content">
+            <p><strong>¿Cómo utilizar la Calculadora de Notas?</strong></p>
+            <ul>
+                <li>Ingrese las notas en los campos correspondientes. Por ejemplo, puede ingresar 4.5 o 3.0.</li>
+                <li><strong>Nota Formativa:</strong> Representa la evaluación continua y tiene un peso del 9% (Corte 1 y Corte 2) y 12% (Corte 3).</li>
+                <li><strong>Nota Cognitiva:</strong> Representa la evaluación del conocimiento y tiene un peso del 21% (Corte 1 y Corte 2) y 28% (Corte 3).</li>
+                <li>Después de ingresar las notas, automaticamente obtendra los resultados en tiempo real.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <ul>
+                <li>Para una Nota Formativa de 4.5 y una Nota Cognitiva de 3.0:</li>
+                <li>Nota Definitiva 1 (Corte 1): (4.5 * 0.09) + (3.0 * 0.21) = 0.405 + 0.63 = 1.035</li>
+                <li>Nota Definitiva 2 (Corte 2): (4.5 * 0.09) + (3.0 * 0.21) = 0.405 + 0.63 = 1.035</li>
+                <li>Nota Definitiva 3 (Corte 3): (4.5 * 0.12) + (3.0 * 0.28) = 0.54 + 0.84 = 1.38</li>
+                <li>Nota Definitiva Total: 1.035 + 1.035 + 1.38 = 3.45</li>
+            </ul>
+            <p>¡Recuerda que la nota final total debe ser mayor o igual a 3.0 para aprobar!</p>
+        </div>
+    </div>
+
+
     <script src="script.js"></script>
     
 </body>

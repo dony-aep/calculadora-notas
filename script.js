@@ -29,7 +29,14 @@ function calcularPromedio(notaNumero, valor) {
         default:
             percentage = 0;
     }
+
     let promedio = parseFloat(valor) * percentage;
+
+    // Verificar si el resultado es NaN y establecerlo como 0.00 en ese caso
+    if (isNaN(promedio)) {
+        promedio = 0.00;
+    }
+
     let resultElement = document.getElementById(`result${notaNumero}`);
     resultElement.innerHTML = promedio.toFixed(2);
 
@@ -49,10 +56,10 @@ function calcularPromedio(notaNumero, valor) {
 
     const passFailMessage = document.getElementById('passFailMessage');
     if (parseFloat(notaDefinitivaTotal) >= 3.0) {
-        passFailMessage.innerText = '¡Felicidades! Has aprobado la asignatura.';
+        passFailMessage.innerText = '¡Felicidades! Has aprobado la asignatura :).';
         passFailMessage.style.color = 'green';
     } else {
-        passFailMessage.innerText = 'Lo siento, no has aprobado la asignatura.';
+        passFailMessage.innerText = 'Lo siento, no has aprobado la asignatura :(.';
         passFailMessage.style.color = 'red';
     }
 }
@@ -78,4 +85,14 @@ function reiniciarCampos() {
 
     const passFailMessage = document.getElementById('passFailMessage');
     passFailMessage.innerText = '';
+}
+
+function mostrarAyuda() {
+    const helpOverlay = document.getElementById('helpOverlay');
+    helpOverlay.style.display = 'block';
+}
+
+function ocultarAyuda() {
+    const helpOverlay = document.getElementById('helpOverlay');
+    helpOverlay.style.display = 'none';
 }

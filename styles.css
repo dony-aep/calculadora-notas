@@ -177,21 +177,36 @@ h1 {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 998;
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    overflow-y: auto;
 }
 
 
 .help-content {
     position: absolute;
-    top: 10%; /* Adjust top position for better visibility on smaller screens */
+    top: 10%; /* Ajusta este valor para agregar más espacio en la parte superior */
     left: 50%;
     transform: translateX(-50%);
-    width: 90%; /* Adjust the width to make it responsive */
-    max-width: 600px; /* Set a maximum width to avoid overly wide content */
+    width: 85%;
+    max-width: 600px;
     padding: 20px;
-    background-color: #192734; /* Color del fondo de la calculadora */
+    background-color: #192734;
     border-radius: 10px;
     text-align: left;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    color: #ffffff; /* Color del texto */
+    color: #ffffff;
+}
+
+/* Añadir espacio en la parte inferior */
+.help-content::before,
+.help-content::after {
+    content: "";
+    display: block;
+    height: 20px; /* Ajusta este valor para cambiar la altura del espacio */
+}
+
+/* Estilo para pantallas más pequeñas */
+@media only screen and (max-width: 600px) {
+    .help-content {
+        top: 0%; /* Ajusta este valor para pantallas más pequeñas */
+    }
 }

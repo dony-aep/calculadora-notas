@@ -170,7 +170,7 @@ h1 {
     align-items: center;
     cursor: pointer;
     z-index: 999;
-    transition: transform 0.3s;
+    transition: transform 0.75s;
 }
 
 .help-button.active {
@@ -227,5 +227,5 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     color: #8899a6;
-    font-size: 16px;
+    font-size: 20px;
 }

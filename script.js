@@ -1,6 +1,10 @@
 function mostrarCalculadora() {
     const botonContainer = document.getElementById('botonContainer');
     const calculatorContainer = document.getElementById('calculatorContainer');
+    const marca = document.getElementById('marca');
+
+    marca.style.display = 'none'; // Oculta la marca al mostrar la calculadora
+
     botonContainer.style.display = 'none';
     calculatorContainer.style.display = 'block';
 }
@@ -87,12 +91,38 @@ function reiniciarCampos() {
     passFailMessage.innerText = '';
 }
 
-function mostrarAyuda() {
+function toggleAyuda() {
     const helpOverlay = document.getElementById('helpOverlay');
-    helpOverlay.style.display = 'block';
+    const helpButton = document.querySelector('.help-button');
+
+    // Si la ventana de ayuda está visible, cámbiala a "none" para ocultarla
+    if (helpOverlay.style.display === 'block') {
+        helpOverlay.style.display = 'none';
+        helpButton.innerText = '?';
+        helpButton.classList.remove('active');
+    } else {
+        // Si la ventana de ayuda está cerrada, ábrela y cambia el botón a "X"
+        helpOverlay.style.display = 'block';
+        helpButton.innerText = 'X';
+        helpButton.classList.add('active');
+    }
 }
 
-function ocultarAyuda() {
-    const helpOverlay = document.getElementById('helpOverlay');
-    helpOverlay.style.display = 'none';
-}
+// Agrega un evento al botón de ayuda para abrir/cerrar la ventana flotante
+const helpButton = document.querySelector('.help-button');
+helpButton.addEventListener('click', toggleAyuda);
+
+// Agrega un evento al overlay (fuera de la ventana) para cerrarla al hacer clic
+const helpOverlay = document.getElementById('helpOverlay');
+helpOverlay.addEventListener('click', function (event) {
+    if (event.target === helpOverlay) {
+        // Si el clic ocurre fuera de cualquier elemento hijo de la ventana, ciérrala
+        toggleAyuda();
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const marca = document.getElementById('marca');
+    marca.style.display = 'block'; // Muestra la marca al inicio
+});
+

@@ -10,6 +10,16 @@ body {
     overflow: auto;
 }
 
+.titulo-enlace {
+    text-decoration: none; /* Quitar subrayado */
+    color: #ffffff; /* Cambiar a color blanco */
+}
+
+.titulo-enlace:hover {
+    text-decoration: none; /* Mantener sin subrayado en el hover */
+    color: #ffffff; /* Mantener color blanco en el hover */
+}
+
 .boton-container {
     display: flex;
     justify-content: center;
@@ -135,6 +145,7 @@ h1 {
     text-align: center;
     font-weight: bold;
     margin-top: 20px;
+    height: 50px;
     color: #ffffff;
 }
 
@@ -144,8 +155,8 @@ h1 {
     background-color: transparent;
     cursor: pointer;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    left: 40px; /* Cambiado a la izquierda */
     color: #ffffff;
     transition: color 0.3s, transform 0.3s;
 }
@@ -161,7 +172,7 @@ h1 {
     right: 20px;
     width: 50px;
     height: 50px;
-    background-color: #1DA1F2;
+    background-color: transparent;
     color: #ffffff;
     border-radius: 50%;
     font-size: 24px;
@@ -170,11 +181,19 @@ h1 {
     align-items: center;
     cursor: pointer;
     z-index: 999;
-    transition: transform 0.75s;
+    transition: transform 0.3s cubic-bezier(0, 0.75, 0.25, 1);
+    outline: none;
+}
+
+.help-button:hover {
+    transform: scale(1.25);
+    transition: transform 0.3s cubic-bezier(0, 0.75, 0.25, 1);
 }
 
 .help-button.active {
     transform: rotate(180deg);
+    transition: transform 0.3s cubic-bezier(0, 0.75, 0.25, 1);
+    outline: none;
 }
 
 .help-overlay {

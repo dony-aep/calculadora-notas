@@ -14,16 +14,20 @@
     <meta property="og:site_name" content="Calculadora">
     <meta property="og:title" content="Calculadora de Notas">
     <meta property="og:description" content="Pagina Web para calcular las notas de una asignatura">
-    <meta property="og:url" content="https://calculadora-notas-asignatura.vercel.app/">
+    <meta property="og:url" content="https://calnotas.vercel.app/">
 </head>
 
 <body>
+
     <div class="boton-container" id="botonContainer">
         <button class="boton" onclick="mostrarCalculadora()">Calculadora de Notas</button>
     </div>
 
     <div class="container" id="calculatorContainer">
-        <h1 class="title">Calculadora de Notas</h1>
+        <a href="javascript:location.reload(true)" class="titulo-enlace">
+            <h1>Calculadora de Notas</h1>
+        </a>
+
         <div class="row">
             <div class="input-container">
                 <label for="nota1">Nota 1 [Formativa]</label>
@@ -111,7 +115,6 @@
 
     </div>
     <div class="marca" id="marca" style="display: none;">Made by dony.</div>
-
     <script src="script.js"></script>
     
 </body>

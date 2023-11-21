@@ -9,7 +9,19 @@ function mostrarCalculadora() {
     calculatorContainer.style.display = 'block';
 }
 
+function validarEntrada(valor) {
+    // Verificar si el valor es un número positivo
+    const esNumeroPositivo = !isNaN(parseFloat(valor)) && isFinite(valor) && parseFloat(valor) >= 0;
+
+    return esNumeroPositivo;
+}
+
 function calcularPromedio(notaNumero, valor) {
+
+    if (valor !== '' && !validarEntrada(valor)) {
+            return;
+    }
+
     let percentage;
     switch (notaNumero) {
         case 1:
@@ -36,7 +48,7 @@ function calcularPromedio(notaNumero, valor) {
 
     let promedio = parseFloat(valor) * percentage;
 
-    // Verificar si el resultado es NaN y establecerlo como 0.00 en ese caso
+    // Reemplazar NaN por 0.00 
     if (isNaN(promedio)) {
         promedio = 0.00;
     }
@@ -60,13 +72,24 @@ function calcularPromedio(notaNumero, valor) {
 
     const passFailMessage = document.getElementById('passFailMessage');
     if (parseFloat(notaDefinitivaTotal) >= 3.0) {
-        passFailMessage.innerText = '¡Felicidades! Has aprobado la asignatura :).';
+        passFailMessage.innerText = '¡Felicidades! Has aprobado la asignatura :)';
         passFailMessage.style.color = 'green';
     } else {
-        passFailMessage.innerText = 'Lo siento, no has aprobado la asignatura :(.';
+        passFailMessage.innerText = 'Lo siento, no has aprobado la asignatura :(';
         passFailMessage.style.color = 'red';
     }
 }
+
+// Asegurar que solo se ingresen números positivos en los campos de texto
+const inputFields = document.querySelectorAll('input[type="text"]');
+inputFields.forEach(input => {
+    input.addEventListener('input', function () {
+        if (this.value !== '' && !validarEntrada(this.value)) {
+            this.value = ''; // Limpiar el campo si no es un número positivo
+            alert('Por favor, ingrese un número positivo válido en el campo de nota.');
+        }
+    });
+});
 
 function reiniciarCampos() {
     const inputFields = document.querySelectorAll('input[type="text"]');
@@ -125,4 +148,3 @@ document.addEventListener("DOMContentLoaded", function () {
     const marca = document.getElementById('marca');
     marca.style.display = 'block'; // Muestra la marca al inicio
 });
-

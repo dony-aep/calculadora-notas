@@ -3,16 +3,15 @@ function mostrarCalculadora() {
     const calculatorContainer = document.getElementById('calculatorContainer');
     const marca = document.getElementById('marca');
 
-    marca.style.display = 'none'; // Oculta la marca al mostrar la calculadora
+    marca.style.display = 'none';
 
     botonContainer.style.display = 'none';
     calculatorContainer.style.display = 'block';
 }
 
 function validarEntrada(valor) {
-    // Verificar si el valor es un número positivo
-    const esNumeroPositivo = !isNaN(parseFloat(valor)) && isFinite(valor) && parseFloat(valor) >= 0;
 
+    const esNumeroPositivo = !isNaN(parseFloat(valor)) && isFinite(valor) && parseFloat(valor) >= 0;
     return esNumeroPositivo;
 }
 
@@ -80,12 +79,11 @@ function calcularPromedio(notaNumero, valor) {
     }
 }
 
-// Asegurar que solo se ingresen números positivos en los campos de texto
 const inputFields = document.querySelectorAll('input[type="text"]');
 inputFields.forEach(input => {
     input.addEventListener('input', function () {
         if (this.value !== '' && !validarEntrada(this.value)) {
-            this.value = ''; // Limpiar el campo si no es un número positivo
+            this.value = '';
             alert('Por favor, ingrese un número positivo válido en el campo de nota.');
         }
     });
@@ -118,33 +116,32 @@ function toggleAyuda() {
     const helpOverlay = document.getElementById('helpOverlay');
     const helpButton = document.querySelector('.help-button');
 
-    // Si la ventana de ayuda está visible, cámbiala a "none" para ocultarla
     if (helpOverlay.style.display === 'block') {
+
         helpOverlay.style.display = 'none';
         helpButton.innerText = '?';
         helpButton.classList.remove('active');
+
     } else {
-        // Si la ventana de ayuda está cerrada, ábrela y cambia el botón a "X"
+
         helpOverlay.style.display = 'block';
         helpButton.innerText = 'X';
         helpButton.classList.add('active');
     }
 }
 
-// Agrega un evento al botón de ayuda para abrir/cerrar la ventana flotante
+
 const helpButton = document.querySelector('.help-button');
 helpButton.addEventListener('click', toggleAyuda);
 
-// Agrega un evento al overlay (fuera de la ventana) para cerrarla al hacer clic
 const helpOverlay = document.getElementById('helpOverlay');
 helpOverlay.addEventListener('click', function (event) {
     if (event.target === helpOverlay) {
-        // Si el clic ocurre fuera de cualquier elemento hijo de la ventana, ciérrala
         toggleAyuda();
     }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
     const marca = document.getElementById('marca');
-    marca.style.display = 'block'; // Muestra la marca al inicio
+    marca.style.display = 'block';
 });

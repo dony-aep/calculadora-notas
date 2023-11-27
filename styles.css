@@ -5,7 +5,7 @@ body {
     height: 100%;
     margin: 0;
     background-color: #15202B;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #ffffff;
     overflow: auto;
 }
@@ -39,7 +39,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
 
@@ -88,6 +88,68 @@ body {
     }
 }
 
+/* Agrega la animación de entrada para la calculadora de notas */
+#calculatorContainer {
+    animation: slideIn 1s cubic-bezier(0, 0.75, 0.25, 1);
+    /*animation: slideIn 0.5s cubic-bezier(0, 0.75, 0.25, 1);*/
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Estilos para la Nota Definitiva 1 */
+#notaDefinitiva1 {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Estilos para la Nota Definitiva 2 */
+#notaDefinitiva2 {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Estilos para la Nota Definitiva 3 */
+#notaDefinitiva3 {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Estilos para la Nota Definitiva Total */
+#notaDefinitivaTotal {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
 .container {
     display: none;
     width: 100%;
@@ -108,26 +170,43 @@ body {
 }
 
 .input-container {
-    flex: 1 1 45%;
+    flex: 1 1 calc(45% - 10px);
     margin-bottom: 20px;
 }
 
+/* Estilos para los inputs de notas */
 input[type="text"] {
-    width: 90%;
+    width: calc(100% - 40px);
     padding: 12px;
     margin: 5px 0;
-    border: 1px solid #38444d;
+    border: 1px solid #1DA1F2;
     border-radius: 5px;
-    background-color: #283442;
+    background-color: #192734;
     color: #ffffff;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* Estilo al enfocar el input */
+input[type="text"]:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 8px rgba(29, 161, 242, 0.7);
+    outline: none;
+}
+
+/* Estilo para mostrar mensajes de error en los inputs */
+input[type="text"].error {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.7);
+}
+
+/* Estilo para los resultados */
 .result {
     margin-top: 10px;
     font-weight: bold;
     color: #ffffff;
 }
 
+/* Etiqueta de los inputs */
 label {
     font-weight: bold;
     display: block;
@@ -237,4 +316,8 @@ h1 {
     transform: translateX(-50%);
     color: #8899a6;
     font-size: 20px;
+}
+
+#notaDefinitivaTotal::placeholder {
+    color: white;
 }

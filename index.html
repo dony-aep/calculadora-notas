@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Calculadora de Notas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="icon/calculadora_white.png" type="image/png">
 
@@ -31,12 +32,12 @@
         <div class="row">
             <div class="input-container">
                 <label for="nota1">Nota 1 [Formativa]</label>
-                <input type="text" id="nota1" oninput="calcularPromedio(1, this.value)" placeholder="Ingrese la nota">
+                <input type="text" id="nota1" oninput="calcularPromedio(1, this.value)" placeholder="Ingrese la nota. Ejemplo: 4.5">
                 <div id="result1" class="result"></div>
             </div>
             <div class="input-container">
                 <label for="nota2">Nota 2 [Cognitiva]</label>
-                <input type="text" id="nota2" oninput="calcularPromedio(2, this.value)" placeholder="Ingrese la nota">
+                <input type="text" id="nota2" oninput="calcularPromedio(2, this.value)" placeholder="Ingrese la nota. Ejemplo: 3.0">
                 <div id="result2" class="result"></div>
             </div>
             <div class="input-container">
@@ -85,9 +86,10 @@
         <div class="row">
             <div class="input-container">
                 <label for="notaDefinitivaTotal">Nota Definitiva Total</label>
-                <input type="text" id="notaDefinitivaTotal" readonly>
+                <input type="text" id="notaDefinitivaTotal" readonly placeholder="Resultado Nota Final">
             </div>
         </div>
+
         <div class="pass-fail-message" id="passFailMessage"></div>
             <div class="reset-button" onclick="reiniciarCampos()">Restablecer</div>
     </div>

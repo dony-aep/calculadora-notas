@@ -35,57 +35,69 @@
         <div class="row">
             <div class="input-container">
                 <label for="nota1">Nota 1 [Formativa]</label>
-                <input type="text" id="nota1" oninput="calcularPromedio(1, this.value)" placeholder="Ingrese la nota. Ejemplo: 4.5">
+                <input type="text" id="nota1" oninput="calcularPromedio(1, this.value)" placeholder="Ingrese la nota formativa">
                 <div id="result1" class="result"></div>
             </div>
             <div class="input-container">
                 <label for="nota2">Nota 2 [Cognitiva]</label>
-                <input type="text" id="nota2" oninput="calcularPromedio(2, this.value)" placeholder="Ingrese la nota. Ejemplo: 3.0">
+                <input type="text" id="nota2" oninput="calcularPromedio(2, this.value)" placeholder="Ingrese la nota cognitiva">
                 <div id="result2" class="result"></div>
             </div>
-            <div class="input-container">
-                <div style="display: flex; align-items: center;">
-                    <label for="notaDefinitiva1" style="margin-right: 10px;">Nota Definitiva 1 [Corte 1]</label>
+        </div>
+
+        <div class="nota-definitiva-1">
+            <div class="row">
+                <div class="input-container">
+                    <label for="notaDefinitiva1">Nota Definitiva 1 [Corte 1]</label>
                     <input type="text" id="notaDefinitiva1" readonly>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="input-container">
                 <label for="nota3">Nota 3 [Formativa]</label>
-                <input type="text" id="nota3" oninput="calcularPromedio(3, this.value)" placeholder="Ingrese la nota">
+                <input type="text" id="nota3" oninput="calcularPromedio(3, this.value)" placeholder="Ingrese la nota formativa">
                 <div id="result3" class="result"></div>
             </div>
             <div class="input-container">
                 <label for="nota4">Nota 4 [Cognitiva]</label>
-                <input type="text" id="nota4" oninput="calcularPromedio(4, this.value)" placeholder="Ingrese la nota">
+                <input type="text" id="nota4" oninput="calcularPromedio(4, this.value)" placeholder="Ingrese la nota cognitiva">
                 <div id="result4" class="result"></div>
             </div>
-            <div class="input-container">
-                <div style="display: flex; align-items: center;">
-                    <label for="notaDefinitiva2" style="margin-right: 10px;">Nota Definitiva 2 [Corte 2]</label>
+        </div>
+
+        <div class="nota-definitiva-2">
+            <div class="row">
+                <div class="input-container">
+                    <label for="notaDefinitiva2">Nota Definitiva 2 [Corte 2]</label>
                     <input type="text" id="notaDefinitiva2" readonly>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="input-container">
                 <label for="nota5">Nota 5 [Formativa]</label>
-                <input type="text" id="nota5" oninput="calcularPromedio(5, this.value)" placeholder="Ingrese la nota">
+                <input type="text" id="nota5" oninput="calcularPromedio(5, this.value)" placeholder="Ingrese la nota formativa">
                 <div id="result5" class="result"></div>
             </div>
             <div class="input-container">
                 <label for="nota6">Nota 6 [Cognitiva]</label>
-                <input type="text" id="nota6" oninput="calcularPromedio(6, this.value)" placeholder="Ingrese la nota">
+                <input type="text" id="nota6" oninput="calcularPromedio(6, this.value)" placeholder="Ingrese la nota cognitiva">
                 <div id="result6" class="result"></div>
             </div>
-            <div class="input-container">
-                <div style="display: flex; align-items: center;">
-                    <label for="notaDefinitiva3" style="margin-right: 10px;">Nota Definitiva 3 [Corte 3]</label>
+        </div>
+
+        <div class="nota-definitiva-3">
+            <div class="row">
+                <div class="input-container">
+                    <label for="notaDefinitiva3">Nota Definitiva 3 [Corte 3]</label>
                     <input type="text" id="notaDefinitiva3" readonly>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="input-container">
                 <label for="notaDefinitivaTotal">Nota Definitiva Total</label>
@@ -100,27 +112,28 @@
     <div class="help-button" onclick="mostrarAyuda()">?</div>
     <div class="help-overlay" id="helpOverlay" onclick="ocultarAyuda()">
         <div class="help-content">
-            <p><strong>¿Cómo utilizar la Calculadora de Notas?</strong></p>
+            <p><strong>¿Cómo usar la Calculadora de Notas?</strong></p>
             <ul>
-                <li>Ingrese las notas en los campos correspondientes. Por ejemplo, puede ingresar 4.5 o 3.0.</li>
-                <li><strong>Nota Formativa:</strong> Representa la evaluación continua y tiene un peso del 9% (Corte 1 y Corte 2) y 12% (Corte 3).</li>
-                <li><strong>Nota Cognitiva:</strong> Representa la evaluación del conocimiento y tiene un peso del 21% (Corte 1 y Corte 2) y 28% (Corte 3).</li>
-                <li>Después de ingresar las notas, automaticamente obtendra los resultados en tiempo real.</li>
+                <li>Introduce las notas en los campos correspondientes, por ejemplo: 4.5 o 3.0.</li>
+                <li><strong>Nota Formativa:</strong> Evalúa la participación continua y tiene un peso del 9% (Corte 1 y Corte 2) y 12% (Corte 3).</li>
+                <li><strong>Nota Cognitiva:</strong> Evalúa el conocimiento adquirido y tiene un peso del 21% (Corte 1 y Corte 2) y 28% (Corte 3).</li>
+                <li>Después de ingresar las notas, los resultados se calcularán automáticamente en tiempo real.</li>
             </ul>
-            <p><strong>Ejemplo:</strong></p>
+            <p><strong>Ejemplo:</strong> Para una Nota Formativa de 4.5 y una Nota Cognitiva de 3.0:</p>
             <ul>
-                <li>Para una Nota Formativa de 4.5 y una Nota Cognitiva de 3.0:</li>
                 <li>Nota Definitiva 1 (Corte 1): (4.5 * 0.09) + (3.0 * 0.21) = 0.405 + 0.63 = 1.035</li>
                 <li>Nota Definitiva 2 (Corte 2): (4.5 * 0.09) + (3.0 * 0.21) = 0.405 + 0.63 = 1.035</li>
                 <li>Nota Definitiva 3 (Corte 3): (4.5 * 0.12) + (3.0 * 0.28) = 0.54 + 0.84 = 1.38</li>
                 <li>Nota Definitiva Total: 1.035 + 1.035 + 1.38 = 3.45</li>
             </ul>
             <p><strong>¡Recuerda que la nota final total debe ser mayor o igual a 3.0 para aprobar!</strong></p>
-            <p><strong>Nota: </strong>Los porcentajes predefinidos se basan en el sistema de evaluación de la Universidad Americana - Colombia.</p>
+            <p><strong>Nota:</strong> Los porcentajes predefinidos se basan en el sistema de evaluación de la Universidad Americana - Colombia.</p>
         </div>
-
     </div>
-    <div class="marca" id="marca" style="display: none;">Made by dony.</div>
+
+    <!-- Marca -->
+    <div class="marca-agua" id="marcaAgua">Made by <strong>dony.<strong/></div>
+
     <script src="script.js"></script>
 
     <script>

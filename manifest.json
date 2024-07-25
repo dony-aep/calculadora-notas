@@ -1,21 +1,21 @@
 {
-  "name": "Calculadora de Notas",
-  "short_name": "CalcNotas",
-  "description": "Calculadora de Notas en línea para estudiantes de la Universidad Americana, Colombia.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1DA1F2",
-  "icons": [
-    {
-      "src": "/icon/calculadora_white.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon/calculadora_white.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+    "name": "Calculadora de Notas",
+    "short_name": "CalcNotas",
+    "description": "Aplicación para calcular notas de estudiantes en la Universidad Americana",
+    "icons": [
+        {
+            "src": "icon/calculadora_white.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/calculadora_white.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1DA1F2"
 }

@@ -2,9 +2,9 @@
   "name": "Calculadora de Notas",
   "short_name": "CalcNotas",
   "description": "Calculadora de Notas en línea para estudiantes de la Universidad Americana, Colombia.",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
+  "background_color": "#ffffff",
   "theme_color": "#1DA1F2",
   "icons": [
     {

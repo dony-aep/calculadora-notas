@@ -1,5 +1,3 @@
----
-
 # Calculadora de Notas
 
 Bienvenido al proyecto **Calculadora de Notas**. Esta aplicación web está diseñada para ayudar a los estudiantes de la Universidad Americana en Colombia a calcular sus notas de manera rápida y eficiente. La calculadora permite ingresar notas formativas y cognitivas para obtener una nota definitiva y una nota definitiva total.
@@ -17,17 +15,9 @@ La Calculadora de Notas permite a los estudiantes ingresar sus notas formativas 
 - **Restablecer:** Opción para restablecer todos los campos y resultados.
 - **Icono y Manifest:** Configuración para usar como Progressive Web App (PWA).
 
-## Estructura del Proyecto
+## Acceso a la Aplicación
 
-- **`index.html`**: Archivo principal HTML que contiene la estructura de la página.
-- **`styles.css`**: Hoja de estilos CSS para la apariencia de la página.
-- **`script.js`**: Archivo JavaScript que maneja la lógica de la calculadora y las interacciones.
-- **`manifest.json`**: Archivo de configuración para la PWA.
-- **`service-worker.js`**: Archivo de servicio para la funcionalidad offline de la PWA (no incluido en este README, pero mencionado en el código).
-
-## Instalación
-
-No se requiere instalación especial para el uso básico. Simplemente abre el archivo `index.html` en tu navegador para acceder a la calculadora.
+Para usar la Calculadora de Notas, simplemente accede al siguiente enlace: [https://calnotas.vercel.app/](https://calnotas.vercel.app/).
 
 ## Uso
 
@@ -64,18 +54,10 @@ Nota Definitiva 1 + Nota Definitiva 2 + Nota Definitiva 3
 
 **Nota Final:** Asegúrate de que la nota final total sea mayor o igual a 3.0 para aprobar.
 
-## Metadatos
-
-- **Descripción:** Calculadora de Notas en línea para estudiantes de la Universidad Americana, Colombia.
-- **Open Graph:** Configuración para compartir en redes sociales.
-- **Twitter Card:** Configuración para compartir en Twitter.
-
 ## Créditos
 
-Desarrollado por [dony](https://calnotas.vercel.app/). 
+Desarrollado por [dony.](https://github.com/dony-aep)
 
 ## Licencia
 
 Este proyecto está licenciado bajo los términos de la [Licencia MIT](https://opensource.org/licenses/MIT).
-
----

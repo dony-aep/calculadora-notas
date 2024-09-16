@@ -11,9 +11,9 @@ La Calculadora de Notas permite a los estudiantes ingresar sus notas formativas 
 - **Ingreso de Notas:** Introduce tus notas formativas y cognitivas en los campos correspondientes.
 - **Cálculo Automático:** Los resultados se calcularán automáticamente en tiempo real.
 - **Ayuda en Línea:** Un botón de ayuda proporciona instrucciones sobre cómo usar la calculadora y un ejemplo de cálculo.
-- **Modo Oscuro:** Cambia entre el modo claro y oscuro.
+- **Cambio de tema:** Cambia entre el modo claro y oscuro.
 - **Restablecer:** Opción para restablecer todos los campos y resultados.
-- **Icono y Manifest:** Configuración para usar como Progressive Web App (PWA).
+- **Manifest:** Aplicación para usar como Progressive Web App (PWA).
 
 ## Acceso a la Aplicación
 
@@ -35,7 +35,7 @@ Para usar la Calculadora de Notas, simplemente accede al siguiente enlace: [http
    - Haga clic en el botón de ayuda (`?`) para ver instrucciones sobre cómo usar la calculadora.
 
 5. **Cambiar Modo:**
-   - Haga clic en el botón de modo oscuro para alternar entre el modo claro y oscuro.
+   - Haga clic en el botón para alternar entre el modo claro y oscuro.
 
 ## Ejemplo de Cálculo
 

@@ -1,6 +1,6 @@
 {
     "name": "Calculadora de Notas",
-    "short_name": "CalcNotas",
+    "short_name": "CalNotas",
     "description": "Aplicación para calcular notas de estudiantes en la Universidad Americana",
     "icons": [
         {

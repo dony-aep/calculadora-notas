@@ -16,6 +16,11 @@
     ],
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#1DA1F2"
+    "background_color": "#121212",
+    "theme_color": "#121212",
+    "orientation": "portrait",
+    "categories": ["education", "utilities"],
+    "lang": "es",
+    "dir": "ltr",
+    "prefer_related_applications": false
 }

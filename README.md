@@ -8,12 +8,24 @@ La Calculadora de Notas permite a los estudiantes ingresar sus notas formativas 
 
 ## Funcionalidades
 
+### Calculadora Predeterminada
 - **Ingreso de Notas:** Introduce tus notas formativas y cognitivas en los campos correspondientes.
 - **Cálculo Automático:** Los resultados se calcularán automáticamente en tiempo real.
 - **Ayuda en Línea:** Un botón de ayuda proporciona instrucciones sobre cómo usar la calculadora y un ejemplo de cálculo.
-- **Cambio de tema:** Cambia entre el modo claro y oscuro.
 - **Restablecer:** Opción para restablecer todos los campos y resultados.
-- **Manifest:** Aplicación para usar como Progressive Web App (PWA).
+
+### Calculadora Personalizada
+- **Campos Personalizables:** Añade tantos campos como necesites con nombres y porcentajes personalizados.
+- **Porcentajes Flexibles:** Define tus propios porcentajes para cada campo.
+- **Guardado Local:** Guarda tu configuración personalizada para uso futuro.
+- **Validación de Porcentajes:** Asegura que los porcentajes sumen 100%.
+
+### Características Generales
+- **Cambio de Tema:** Alterna entre modo claro y oscuro según tu preferencia.
+- **Idiomas:** Soporte para español e inglés con traducción en tiempo real.
+- **Diseño Responsivo:** Adaptable a cualquier dispositivo (móvil, tablet, escritorio).
+- **PWA:** Instalable como aplicación progresiva web.
+- **Modo Offline:** Funciona sin conexión a internet.
 
 ## Acceso a la Aplicación
 
@@ -21,21 +33,22 @@ Para usar la Calculadora de Notas, simplemente accede al siguiente enlace: [http
 
 ## Uso
 
-1. **Introducir Notas:**
-   - Ingrese las notas formativas y cognitivas en los campos proporcionados.
-   - La calculadora automáticamente calculará las notas definitivas para cada corte y la nota definitiva total.
+1. **Elegir Calculadora:**
+   - Selecciona entre la calculadora predeterminada o personalizada según tus necesidades.
 
-2. **Ver Resultados:**
-   - Los resultados se mostrarán en los campos correspondientes debajo de cada grupo de notas.
+2. **Calculadora Predeterminada:**
+   - Ingresa las notas formativas y cognitivas.
+   - Visualiza los resultados en tiempo real.
 
-3. **Restablecer Datos:**
-   - Haga clic en el botón "Restablecer" para limpiar todos los campos y resultados.
+3. **Calculadora Personalizada:**
+   - Crea campos personalizados con nombres y porcentajes.
+   - Guarda tu configuración para uso futuro.
+   - Calcula notas según tus porcentajes personalizados.
 
-4. **Obtener Ayuda:**
-   - Haga clic en el botón de ayuda (`?`) para ver instrucciones sobre cómo usar la calculadora.
-
-5. **Cambiar Modo:**
-   - Haga clic en el botón para alternar entre el modo claro y oscuro.
+4. **Personalización:**
+   - Cambia entre modo claro y oscuro.
+   - Selecciona tu idioma preferido (español/inglés).
+   - Accede a la ayuda para instrucciones detalladas.
 
 ## Ejemplo de Cálculo
 

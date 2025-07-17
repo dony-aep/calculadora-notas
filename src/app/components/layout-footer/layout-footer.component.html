@@ -1,0 +1,45 @@
+<div class="controls-wrapper">
+    <!-- Controles Izquierda -->
+    <div class="controls-container-left">
+        <button id="toggle-mode" class="control-btn" (click)="toggleTheme()" [title]="'FOOTER.CHANGE_THEME' | translate">
+            <span *ngIf="currentTheme === 'light'" class="material-symbols-outlined notranslate">dark_mode</span>
+            <span *ngIf="currentTheme === 'dark'" class="material-symbols-outlined notranslate">light_mode</span>
+        </button>
+        <div class="language-selector">
+            <button id="toggle-language" class="control-btn lang-btn" (click)="toggleLanguageDropdown()" [title]="'FOOTER.CHANGE_LANGUAGE' | translate">
+                <span class="material-symbols-outlined notranslate">translate</span>
+                <span class="selected-language">{{ selectedLanguage$ | async }}</span>
+                <span class="material-symbols-outlined notranslate dropdown-arrow">
+                    {{ isLanguageDropdownVisible ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+                </span>
+            </button>
+            <div class="language-dropdown" *ngIf="isLanguageDropdownVisible">
+                <div class="language-option" (click)="selectLanguage('es')">
+                    <span>{{ 'LANGUAGES.SPANISH' | translate }}</span>
+                    <span class="material-symbols-outlined notranslate check-icon" *ngIf="currentLang === 'es'">check</span>
+                </div>
+                <div class="language-option" (click)="selectLanguage('en')">
+                    <span>{{ 'LANGUAGES.ENGLISH' | translate }}</span>
+                    <span class="material-symbols-outlined notranslate check-icon" *ngIf="currentLang === 'en'">check</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles Derecha -->
+    <div class="controls-container-right">
+        <button id="app-download-btn" class="control-btn" routerLink="/app-download" [title]="'FOOTER.DOWNLOAD_APP' | translate">
+            <span class="material-symbols-outlined notranslate">android</span>
+        </button>
+        <button id="ayuda-btn" class="control-btn" (click)="openHelpModal()" [title]="'FOOTER.HELP' | translate">
+            <span class="material-symbols-outlined notranslate">help</span>
+        </button>
+    </div>
+</div>
+
+
+<footer>
+    <p *ngIf="madeByVisible$ | async">{{ 'FOOTER.MADE_BY' | translate }} <a href="https://donyaep.vercel.app/" target="_blank" class="dony">dony.</a></p>
+</footer>
+
+<app-help-modal [isVisible]="isHelpModalVisible" (close)="closeHelpModal()"></app-help-modal> 

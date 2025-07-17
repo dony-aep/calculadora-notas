@@ -1,0 +1,73 @@
+<div class="calculadora-notas">
+    <h2><a class="titulo-enlace" routerLink="/home">{{ 'DEFAULT_CALCULATOR.TITLE' | translate }}</a></h2>
+
+    <!-- Corte 1 -->
+    <div class="nota-container">
+        <div class="nota-left">
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_1_FORMATIVE' | translate }}</h3>
+            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa1" (ngModelChange)="onNotaChange($event, 'notaFormativa1')">
+        </div>
+        <div class="nota-right">
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_2_COGNITIVE' | translate }}</h3>
+            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva1" (ngModelChange)="onNotaChange($event, 'notaCognitiva1')">
+        </div>
+    </div>
+    <div class="nota-definitiva">
+        <h3>{{ 'DEFAULT_CALCULATOR.FINAL_GRADE_CUT' | translate }} 1 [{{ 'DEFAULT_CALCULATOR.CUT_1' | translate }}]</h3>
+        <p *ngIf="notaFormativa1 !== null || notaCognitiva1 !== null">{{ definitiva1.toFixed(2) }}</p>
+    </div>
+
+    <!-- Corte 2 -->
+    <div class="nota-container">
+        <div class="nota-left">
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_3_FORMATIVE' | translate }}</h3>
+            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa2" (ngModelChange)="onNotaChange($event, 'notaFormativa2')">
+        </div>
+        <div class="nota-right">
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_4_COGNITIVE' | translate }}</h3>
+            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva2" (ngModelChange)="onNotaChange($event, 'notaCognitiva2')">
+        </div>
+    </div>
+    <div class="nota-definitiva">
+        <h3>{{ 'DEFAULT_CALCULATOR.FINAL_GRADE_CUT' | translate }} 2 [{{ 'DEFAULT_CALCULATOR.CUT_2' | translate }}]</h3>
+        <p *ngIf="notaFormativa2 !== null || notaCognitiva2 !== null">{{ definitiva2.toFixed(2) }}</p>
+    </div>
+
+    <!-- Corte 3 -->
+    <div class="nota-container">
+        <div class="nota-left">
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_5_FORMATIVE' | translate }}</h3>
+            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa3" (ngModelChange)="onNotaChange($event, 'notaFormativa3')">
+        </div>
+        <div class="nota-right">
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_6_COGNITIVE' | translate }}</h3>
+            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva3" (ngModelChange)="onNotaChange($event, 'notaCognitiva3')">
+        </div>
+    </div>
+    <div class="nota-definitiva">
+        <h3>{{ 'DEFAULT_CALCULATOR.FINAL_GRADE_CUT' | translate }} 3 [{{ 'DEFAULT_CALCULATOR.CUT_3' | translate }}]</h3>
+        <p *ngIf="notaFormativa3 !== null || notaCognitiva3 !== null">{{ definitiva3.toFixed(2) }}</p>
+    </div>
+
+    <!-- Total -->
+    <div *ngIf="hasInputs">
+        <div class="nota-definitiva-total">
+            <p class="nota-definitiva-total-text">{{ 'DEFAULT_CALCULATOR.TOTAL_FINAL_GRADE' | translate }}</p>
+            <p>{{ definitivaTotal.toFixed(2) }}</p>
+        </div>
+        <div class="mensaje-aprobacion" [style.color]="mensajeColor">
+            {{ mensajeAprobacion | translate }}
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <button id="volver-btn" routerLink="/home" [title]="'DEFAULT_CALCULATOR.BACK_BTN_TOOLTIP' | translate">
+            <span class="material-symbols-outlined notranslate">arrow_back</span>
+        </button>
+        <button id="restablecer-btn" (click)="restablecer()" [disabled]="!hasInputs" [title]="'DEFAULT_CALCULATOR.RESET_BTN_TOOLTIP' | translate">
+            <span *ngIf="!showResetFeedback" class="material-symbols-outlined notranslate">refresh</span>
+            <span *ngIf="showResetFeedback" class="material-symbols-outlined notranslate">check</span>
+        </button>
+    </div>
+</div> 

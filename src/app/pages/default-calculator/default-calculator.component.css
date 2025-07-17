@@ -1,0 +1,162 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: calc(100vh - 80px); /* Account for footer */
+    padding: 80px 20px; /* Padding top/bottom 80px, left/right 20px */
+    box-sizing: border-box;
+}
+
+.calculadora-notas {
+    padding: 20px 50px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+    color: var(--color-text);
+}
+
+.calculadora-notas h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.titulo-enlace {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.titulo-enlace:hover {
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.nota-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.nota-container h3 {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.nota-container .nota-left,
+.nota-container .nota-right {
+    width: calc(50% - 10px);
+}
+
+.nota-container input {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid var(--color-input-border);
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    border-radius: 10px;
+    background-color: var(--color-input-bg);
+    color: var(--color-text);
+}
+
+.nota-container input::placeholder {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-text-muted);
+    opacity: 0.8;
+}
+
+.nota-container input:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--color-primary);
+    background-color: var(--color-input-focus-bg);
+}
+
+.nota-definitiva, .nota-definitiva-total {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.nota-definitiva p, .nota-definitiva-total p {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.nota-definitiva-total-text {
+    font-weight: bold;
+}
+
+.mensaje-aprobacion {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+    height: 24px; /* Reserve space to avoid layout shifts */
+}
+
+.buttons {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+#volver-btn, #restablecer-btn {
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    font-size: 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid var(--color-control-btn-border);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    background-color: var(--color-control-btn-bg);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+}
+
+#restablecer-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#volver-btn:hover, #restablecer-btn:not(:disabled):hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+@media screen and (max-width: 768px) {
+    :host {
+        /* top=50px, sides=0, bottom=100px */
+        padding: 50px 0 100px;
+    }
+    .calculadora-notas {
+        padding: 20px;
+    }
+    .nota-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .nota-container .nota-left,
+    .nota-container .nota-right {
+        width: 100%;
+        margin: 0;
+    }
+    .buttons {
+        top: auto;
+        bottom: 20px;
+        flex-direction: row;
+    }
+}

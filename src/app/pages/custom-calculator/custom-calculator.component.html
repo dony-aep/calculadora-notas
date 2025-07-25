@@ -39,7 +39,7 @@
         </div>
     </div>
     
-    <div class="nota-definitiva-total">
+    <div class="nota-definitiva-total" *ngIf="showNotaDefinitiva">
         <span>{{ 'CUSTOM_CALCULATOR.TOTAL_FINAL_GRADE' | translate }} </span> 
         <span id="nota-definitiva-total-personalizada">{{ notaDefinitivaTotal.toFixed(2) }}</span>
     </div>

@@ -26,6 +26,7 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
   mensajeParams: object = {}; // Para los parámetros de traducción
   mensajeColor = '';
   showResetFeedback = false;
+  showNotaDefinitiva = false;
 
   constructor(
     private footerService: FooterService,
@@ -68,10 +69,13 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.notaDefinitivaTotal = notaTotal;
     const minima = this.minimaAprobatoria ?? 3.0;
 
-    // Validation and feedback messages
+    this.notaDefinitivaTotal = 0;
+    this.showNotaDefinitiva = false;
+    this.mensajeAprobacion = '';
+    this.mensajeParams = {};
+
     if (porcentajeTotal > 100) {
         this.mensajeAprobacion = 'CUSTOM_CALCULATOR.ERROR_EXCEEDS_MSG';
         this.mensajeParams = { value: porcentajeTotal.toFixed(1) };
@@ -81,6 +85,8 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
         this.mensajeParams = { value: porcentajeTotal.toFixed(1) };
         this.mensajeColor = 'orange';
     } else if (porcentajeTotal === 100) {
+        this.notaDefinitivaTotal = notaTotal;
+        this.showNotaDefinitiva = true;
         if (this.notaDefinitivaTotal < minima) {
             this.mensajeAprobacion = 'CUSTOM_CALCULATOR.FAIL_MESSAGE';
             this.mensajeParams = {};

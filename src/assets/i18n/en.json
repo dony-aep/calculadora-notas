@@ -52,6 +52,7 @@
         "ADD_FIELD_BTN": "Add Field",
         "SAVE_CALC_BTN": "Save Calculator",
         "SAVE_SUCCESS_ALERT": "Custom calculator saved successfully.",
+        "ADD_FIELD_ALERT": "You must add at least one field to save the calculator.",
         "ERROR_EXCEEDS_MSG": "Error: The sum of percentages is {{value}}%. It cannot exceed 100%.",
         "WARN_INCOMPLETE_MSG": "The sum of percentages is {{value}}%. It must be 100% to calculate approval.",
         "PASS_MESSAGE": "Congratulations! You've passed the subject :)",

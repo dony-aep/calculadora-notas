@@ -79,13 +79,25 @@
     text-decoration: none;
 }
 
+#campos-personalizados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
 .campo-personalizado {
     display: block;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     background-color: var(--color-changelog-bg);
     border: 1px solid var(--color-changelog-border);
     border-radius: 15px;
     padding: 20px;
+    width: calc(50% - 7.5px);
+    box-sizing: border-box;
+}
+
+.campo-personalizado:last-child:nth-child(odd) {
+    width: 100%;
 }
 
 .input-row {
@@ -277,6 +289,7 @@
 
     .campo-personalizado {
         padding: 15px;
+        width: 100%;
     }
 
     .input-row {

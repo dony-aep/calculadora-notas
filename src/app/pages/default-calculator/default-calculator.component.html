@@ -4,11 +4,11 @@
     <!-- Corte 1 -->
     <div class="nota-container">
         <div class="nota-left">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_1_FORMATIVE' | translate }}</h3>
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_1_FORMATIVE' | translate }} ({{porcentajeFormativa1}}%)</h3>
             <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa1" (ngModelChange)="onNotaChange($event, 'notaFormativa1')">
         </div>
         <div class="nota-right">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_2_COGNITIVE' | translate }}</h3>
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_2_COGNITIVE' | translate }} ({{porcentajeCognitiva1}}%)</h3>
             <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva1" (ngModelChange)="onNotaChange($event, 'notaCognitiva1')">
         </div>
     </div>
@@ -20,11 +20,11 @@
     <!-- Corte 2 -->
     <div class="nota-container">
         <div class="nota-left">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_3_FORMATIVE' | translate }}</h3>
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_3_FORMATIVE' | translate }} ({{porcentajeFormativa2}}%)</h3>
             <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa2" (ngModelChange)="onNotaChange($event, 'notaFormativa2')">
         </div>
         <div class="nota-right">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_4_COGNITIVE' | translate }}</h3>
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_4_COGNITIVE' | translate }} ({{porcentajeCognitiva2}}%)</h3>
             <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva2" (ngModelChange)="onNotaChange($event, 'notaCognitiva2')">
         </div>
     </div>
@@ -36,11 +36,11 @@
     <!-- Corte 3 -->
     <div class="nota-container">
         <div class="nota-left">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_5_FORMATIVE' | translate }}</h3>
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_5_FORMATIVE' | translate }} ({{porcentajeFormativa3}}%)</h3>
             <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa3" (ngModelChange)="onNotaChange($event, 'notaFormativa3')">
         </div>
         <div class="nota-right">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_6_COGNITIVE' | translate }}</h3>
+            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_6_COGNITIVE' | translate }} ({{porcentajeCognitiva3}}%)</h3>
             <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva3" (ngModelChange)="onNotaChange($event, 'notaCognitiva3')">
         </div>
     </div>

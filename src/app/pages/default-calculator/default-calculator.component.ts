@@ -21,6 +21,14 @@ export class DefaultCalculatorComponent implements OnInit, OnDestroy {
   notaFormativa3: number | null = null;
   notaCognitiva3: number | null = null;
 
+  // Propiedades para los porcentajes
+  porcentajeFormativa1 = 15;
+  porcentajeCognitiva1 = 15;
+  porcentajeFormativa2 = 15;
+  porcentajeCognitiva2 = 15;
+  porcentajeFormativa3 = 20;
+  porcentajeCognitiva3 = 20;
+
   // Propiedades para los resultados calculados
   definitiva1 = 0;
   definitiva2 = 0;
@@ -76,9 +84,9 @@ export class DefaultCalculatorComponent implements OnInit, OnDestroy {
     const nf3 = getGrade(this.notaFormativa3);
     const nc3 = getGrade(this.notaCognitiva3);
 
-    this.definitiva1 = parseFloat(((nf1 * 0.15) + (nc1 * 0.15)).toFixed(2));
-    this.definitiva2 = parseFloat(((nf2 * 0.15) + (nc2 * 0.15)).toFixed(2));
-    this.definitiva3 = parseFloat(((nf3 * 0.20) + (nc3 * 0.20)).toFixed(2));
+    this.definitiva1 = parseFloat(((nf1 * (this.porcentajeFormativa1 / 100)) + (nc1 * (this.porcentajeCognitiva1 / 100))).toFixed(2));
+    this.definitiva2 = parseFloat(((nf2 * (this.porcentajeFormativa2 / 100)) + (nc2 * (this.porcentajeCognitiva2 / 100))).toFixed(2));
+    this.definitiva3 = parseFloat(((nf3 * (this.porcentajeFormativa3 / 100)) + (nc3 * (this.porcentajeCognitiva3 / 100))).toFixed(2));
 
     this.definitivaTotal = this.definitiva1 + this.definitiva2 + this.definitiva3;
 

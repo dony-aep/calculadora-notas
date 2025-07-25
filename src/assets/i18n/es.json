@@ -52,6 +52,7 @@
         "ADD_FIELD_BTN": "Agregar Campo",
         "SAVE_CALC_BTN": "Guardar Calculadora",
         "SAVE_SUCCESS_ALERT": "Calculadora personalizada guardada correctamente.",
+        "ADD_FIELD_ALERT": "Debes agregar al menos un campo para guardar la calculadora.",
         "ERROR_EXCEEDS_MSG": "Error: La suma de los porcentajes es {{value}}%. No puede exceder el 100%.",
         "WARN_INCOMPLETE_MSG": "La suma de los porcentajes es {{value}}%. Debe ser 100% para calcular la aprobación.",
         "PASS_MESSAGE": "¡Felicidades! Has aprobado la asignatura :)",

@@ -21,7 +21,7 @@ interface Campo {
 export class CustomCalculatorComponent implements OnInit, OnDestroy {
   campos: Campo[] = [];
   notaDefinitivaTotal = 0;
-  minimaAprobatoria = 3.0;
+  minimaAprobatoria: number | null = null;
   mensajeAprobacion = '';
   mensajeParams: object = {}; // Para los parámetros de traducción
   mensajeColor = '';
@@ -69,6 +69,7 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
     });
 
     this.notaDefinitivaTotal = notaTotal;
+    const minima = this.minimaAprobatoria ?? 3.0;
 
     // Validation and feedback messages
     if (porcentajeTotal > 100) {
@@ -80,7 +81,7 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
         this.mensajeParams = { value: porcentajeTotal.toFixed(1) };
         this.mensajeColor = 'orange';
     } else if (porcentajeTotal === 100) {
-        if (this.notaDefinitivaTotal < this.minimaAprobatoria) {
+        if (this.notaDefinitivaTotal < minima) {
             this.mensajeAprobacion = 'CUSTOM_CALCULATOR.FAIL_MESSAGE';
             this.mensajeParams = {};
             this.mensajeColor = 'var(--color-danger)';
@@ -96,6 +97,12 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
   }
 
   guardarCalculadora(): void {
+    if (this.campos.length === 0) {
+      this.translate.get('CUSTOM_CALCULATOR.ADD_FIELD_ALERT').subscribe((res: string) => {
+        alert(res);
+      });
+      return;
+    }
     localStorage.setItem('calculadoraPersonalizada', JSON.stringify(this.campos));
     this.translate.get('CUSTOM_CALCULATOR.SAVE_SUCCESS_ALERT').subscribe((res: string) => {
       alert(res);
@@ -114,7 +121,7 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
     if (!this.hasInputs) return;
 
     this.campos = [];
-    this.minimaAprobatoria = 3.0;
+    this.minimaAprobatoria = null;
     this.calcularNotaPersonalizada();
 
     this.showResetFeedback = true;

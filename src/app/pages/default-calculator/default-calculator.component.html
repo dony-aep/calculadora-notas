@@ -53,7 +53,7 @@
     <div *ngIf="hasInputs">
         <div class="nota-definitiva-total">
             <p class="nota-definitiva-total-text">{{ 'DEFAULT_CALCULATOR.TOTAL_FINAL_GRADE' | translate }}</p>
-            <p>{{ definitivaTotal.toFixed(2) }}</p>
+            <p>{{ definitivaTotal.toFixed(1) }}</p>
         </div>
         <div class="mensaje-aprobacion" [style.color]="mensajeColor">
             {{ mensajeAprobacion | translate }}

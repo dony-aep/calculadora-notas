@@ -50,19 +50,38 @@ Para usar la Calculadora de Notas, simplemente accede al siguiente enlace: [http
    - Selecciona tu idioma preferido (español/inglés).
    - Accede a la ayuda para instrucciones detalladas.
 
-## Ejemplo de Cálculo
+## Ejemplo de Cálculo (Sistema 2025)
 
-- **Nota Formativa 1:** 4.5
-- **Nota Cognitiva 1:** 3.0
+El nuevo sistema de evaluación de la Universidad Americana - Colombia establece los siguientes porcentajes:
+
+| Corte | Nota Formativa | Nota Cognitiva | Total |
+|-------|---------------|----------------|-------|
+| Corte 1 | 15% | 15% | 30% |
+| Corte 2 | 15% | 15% | 30% |
+| Corte 3 | 20% | 20% | 40% |
+
+### Ejemplo:
+- **Nota Formativa:** 4.5
+- **Nota Cognitiva:** 3.0
 
 **Nota Definitiva 1 (Corte 1):**
 ```
-(4.5 * 0.09) + (3.0 * 0.21) = 0.405 + 0.63 = 1.035
+(4.5 * 0.15) + (3.0 * 0.15) = 0.675 + 0.45 = 1.13
+```
+
+**Nota Definitiva 2 (Corte 2):**
+```
+(4.5 * 0.15) + (3.0 * 0.15) = 0.675 + 0.45 = 1.13
+```
+
+**Nota Definitiva 3 (Corte 3):**
+```
+(4.5 * 0.20) + (3.0 * 0.20) = 0.9 + 0.6 = 1.5
 ```
 
 **Nota Definitiva Total:**
 ```
-Nota Definitiva 1 + Nota Definitiva 2 + Nota Definitiva 3
+1.13 + 1.13 + 1.5 = 3.76
 ```
 
 **Nota Final:** Asegúrate de que la nota final total sea mayor o igual a 3.0 para aprobar.

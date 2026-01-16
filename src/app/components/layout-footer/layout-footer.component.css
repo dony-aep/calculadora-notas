@@ -1,0 +1,196 @@
+:host {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.controls-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    border-top: none;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+footer .dony {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-text); /* White text by default */
+    transition: color 0.3s ease;
+}
+
+footer .dony:hover {
+    color: var(--color-primary); /* Blue on hover */
+}
+
+
+/* === FLOATING CONTROLS WRAPPER === */
+.controls-container-left {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--color-footer-bg);
+    border: 1px solid var(--color-footer-border);
+    border-radius: 20px;
+    padding: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.controls-container-right {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* === BUTTONS INSIDE LEFT CONTAINER === */
+.controls-container-left .control-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-text);
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+}
+
+.controls-container-left .control-btn:hover {
+    background-color: var(--color-footer-btn-hover-bg);
+}
+
+.controls-container-left #toggle-mode {
+    width: 40px;
+}
+
+.controls-container-left .lang-btn {
+    width: auto;
+    padding: 6px 10px 6px 10px;
+    gap: 8px;
+    background-color: var(--color-footer-lang-btn-bg);
+}
+
+.selected-language {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dropdown-arrow {
+    font-size: 20px;
+}
+
+
+/* === BUTTONS INSIDE RIGHT CONTAINER === */
+.controls-container-right .control-btn {
+    font-size: 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-footer-right-btn-border);
+    background-color: var(--color-footer-right-btn-bg);
+    color: var(--color-text);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    padding: 0;
+}
+
+.controls-container-right .control-btn:hover {
+    color: var(--color-primary);
+}
+
+.controls-container-right #app-download-btn:hover {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.controls-container-right #ayuda-btn:hover {
+    border-color: var(--color-primary);
+}
+
+
+/* === LANGUAGE DROPDOWN === */
+.language-selector {
+    position: relative;
+}
+
+.language-dropdown {
+    display: block;
+    position: absolute;
+    bottom: 55px;
+    left: 0;
+    background: var(--color-bg-dropdown);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--color-shadow);
+    width: 100%;
+    overflow: hidden;
+}
+
+.language-option {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.language-option:hover {
+    background-color: var(--color-dropdown-hover);
+}
+
+.language-option .check-icon {
+    color: var(--color-text);
+} 
+
+@media screen and (max-width: 768px) {
+    .controls-container-left {
+        top: 10px;
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+    }
+
+    .controls-container-right {
+        flex-direction: column;
+    }
+
+    .language-dropdown {
+        bottom: auto; /* Desactivamos la posición inferior */
+        top: 55px;    /* Activamos la posición superior para que se despliegue hacia abajo */
+    }
+} 

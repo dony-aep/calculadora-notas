@@ -1,0 +1,124 @@
+/** 
+ * Variables CSS: 
+ * Se definen variables comunes y luego se especifican los valores
+ * para el tema claro (por defecto) y el tema oscuro.
+ */
+
+/* === Variables Comunes === */
+/* Colores que no cambian con el tema */
+:root {
+    --color-primary: #1DA1F2;       
+    --color-primary-rgb: 29, 161, 242; 
+    --color-secondary: #4CAF50;     
+    --color-danger: #ff4d4d;        
+    --color-danger-rgb: 255, 77, 77; 
+    --color-text-muted: #aaaaaa;       
+    --color-border-modal: #888;
+    --color-modal-overlay: rgba(0, 0, 0, 0.5);
+    --color-divider: rgba(128, 128, 128, 0.3);
+}
+
+/* === Tema Claro (por defecto) === */
+:root {
+    --color-bg: #FFFFFF;      
+    --color-text: #000000;    
+    --color-hover: #DDDDDD;   
+    --color-border: #000000;   
+    --color-shadow: rgba(0, 0, 0, 0.2);
+    --color-tooltip-bg: rgba(0, 0, 0, 0.8);
+    --color-tooltip-text: #FFFFFF;
+    --color-bg-dropdown: #FFFFFF; 
+    --color-dropdown-hover: #f0f0f0;
+    
+    /* Variables específicas de componentes */
+    --color-modal-bg: rgba(255, 255, 255, 0.9);
+    --color-modal-border: rgba(0, 0, 0, 0.1);
+    --color-modal-close-button-text: #555;
+    --color-modal-close-button-hover-bg: rgba(0, 0, 0, 0.1);
+    --color-modal-shadow: 0 5px 15px var(--color-shadow);
+    --color-btn-gradient-text: #000000;
+
+    /* Variables específicas del Footer */
+    --color-footer-bg: rgba(240, 240, 240, 0.8);
+    --color-footer-border: rgba(0, 0, 0, 0.1);
+    --color-footer-btn-hover-bg: rgba(0, 0, 0, 0.08);
+    --color-footer-lang-btn-bg: rgba(0, 0, 0, 0.05);
+    --color-footer-right-btn-bg: var(--color-footer-bg);
+    --color-footer-right-btn-border: rgba(0, 0, 0, 0.1);
+
+    /* Variables específicas del Home */
+    --color-home-btn-bg: rgba(240, 240, 240, 0.8);
+    --color-home-btn-border: rgba(0, 0, 0, 0.1);
+
+    /* Variables para Calculadoras (Default y Custom) */
+    --color-input-bg: rgba(221, 221, 221, 0.3);
+    --color-input-border: rgba(0, 0, 0, 0.1);
+    --color-input-focus-bg: rgba(var(--color-primary-rgb), 0.1);
+    --color-control-btn-bg: rgba(240, 240, 240, 0.8);
+    --color-control-btn-border: rgba(0, 0, 0, 0.1);
+    --color-delete-btn-bg: rgba(221, 221, 221, 0.3);
+    --color-delete-btn-border: rgba(0, 0, 0, 0.1);
+    --color-delete-btn-hover-bg: rgba(var(--color-danger-rgb), 0.15);
+    --color-delete-btn-hover-border: rgba(var(--color-danger-rgb), 0.3);
+    --color-secondary-action-btn-bg: rgba(240, 240, 240, 0.8);
+    --color-secondary-action-btn-border: rgba(0, 0, 0, 0.1);
+
+    /* Variables para App Download */
+    --color-changelog-bg: rgba(240, 240, 240, 0.8);
+    --color-changelog-border: rgba(0, 0, 0, 0.1);
+    --color-version-badge-bg: rgba(var(--color-primary-rgb), 0.1);
+    --color-version-badge-border: rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* === Tema Oscuro === */
+/* Se sobreescriben las variables cuando html tiene la clase .dark-mode */
+html.dark-mode {
+    --color-bg: #202124;       
+    --color-text: #FFFFFF;     
+    --color-hover: #444444;    
+    --color-border: #FFFFFF;   
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-tooltip-bg: rgba(255, 255, 255, 0.9);
+    --color-tooltip-text: #000000;
+    --color-bg-dropdown: #222222; 
+    --color-dropdown-hover: var(--color-hover);
+    --color-btn-gradient-text: #FFFFFF;
+
+    /* Variables específicas de componentes */
+    --color-modal-bg: rgba(30, 30, 30, .6);
+    --color-modal-border: rgba(255, 255, 255, 0.1);
+    --color-modal-close-button-text: #aaa;
+    --color-modal-close-button-hover-bg: rgba(255, 255, 255, 0.1);
+    --color-modal-shadow: 0 5px 15px var(--color-shadow);
+
+    /* Variables específicas del Footer */
+    --color-footer-bg: rgba(30, 30, 30, 0.8);
+    --color-footer-border: rgba(255, 255, 255, 0.1);
+    --color-footer-btn-hover-bg: rgba(255, 255, 255, 0.1);
+    --color-footer-lang-btn-bg: rgba(68, 68, 68, 0.2);
+    --color-footer-right-btn-bg: rgba(30, 30, 30, 0.6);
+    --color-footer-right-btn-border: rgba(255, 255, 255, 0.1);
+
+    /* Variables específicas del Home */
+    --color-home-btn-bg: rgba(30, 30, 30, 0.6);
+    --color-home-btn-border: rgba(255, 255, 255, 0.1);
+
+    /* Variables para Calculadoras (Default y Custom) */
+    --color-input-bg: rgba(68, 68, 68, 0.2);
+    --color-input-border: rgba(255, 255, 255, 0.1);
+    --color-input-focus-bg: rgba(var(--color-primary-rgb), 0.15);
+    --color-control-btn-bg: rgba(30, 30, 30, 0.6);
+    --color-control-btn-border: rgba(255, 255, 255, 0.1);
+    --color-delete-btn-bg: rgba(68, 68, 68, 0.2);
+    --color-delete-btn-border: rgba(255, 255, 255, 0.1);
+    --color-delete-btn-hover-bg: rgba(var(--color-danger-rgb), 0.2);
+    --color-delete-btn-hover-border: rgba(var(--color-danger-rgb), 0.4);
+    --color-secondary-action-btn-bg: rgba(30, 30, 30, 0.6);
+    --color-secondary-action-btn-border: rgba(255, 255, 255, 0.1);
+    
+    /* Variables para App Download */
+    --color-changelog-bg: rgba(30, 30, 30, 0.6);
+    --color-changelog-border: rgba(255, 255, 255, 0.1);
+    --color-version-badge-bg: rgba(var(--color-primary-rgb), 0.2);
+    --color-version-badge-border: rgba(var(--color-primary-rgb), 0.3);
+}

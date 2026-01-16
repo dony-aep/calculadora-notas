@@ -1,0 +1,70 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--color-modal-overlay);
+}
+
+.modal-content {
+    background-color: var(--color-modal-bg);
+    backdrop-filter: blur(10px);
+    color: var(--color-text);
+    margin: auto;
+    padding: 20px 40px;
+    border: 1px solid var(--color-modal-border);
+    width: 80%;
+    max-width: 700px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: var(--color-modal-shadow);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--color-modal-close-button-text);
+}
+
+.close-button .material-symbols-outlined {
+    font-size: 28px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    background-color: var(--color-modal-close-button-hover-bg);
+    color: var(--color-text);
+} 
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 80%;
+        padding: 30px;
+        max-height: 90vh;
+    }
+
+    .modal-content h2 {
+        font-size: 20px;
+    }
+
+    .modal-content h3 {
+        font-size: 18px;
+    }
+} 

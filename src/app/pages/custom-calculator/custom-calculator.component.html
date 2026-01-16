@@ -1,0 +1,77 @@
+<!-- Fixed top-left buttons -->
+<div class="buttons-fixed">
+    <button id="volver-personalizado-btn" class="control-btn" routerLink="/home" [title]="'CUSTOM_CALCULATOR.BACK_BTN_TOOLTIP' | translate">
+        <span class="material-symbols-outlined notranslate">arrow_back</span>
+    </button>
+    <button id="restablecer-personalizada-btn" class="control-btn" [title]="'CUSTOM_CALCULATOR.RESET_BTN_TOOLTIP' | translate" (click)="restablecer()" [disabled]="!hasInputs">
+        @if (!showResetFeedback) {
+            <span class="material-symbols-outlined notranslate">refresh</span>
+        }
+        @if (showResetFeedback) {
+            <span class="material-symbols-outlined notranslate">check</span>
+        }
+    </button>
+</div>
+
+<div id="calculadora-personalizada" class="calculadora-notas">
+    <h2>
+        <a routerLink="/home" class="titulo-enlace">{{ 'CUSTOM_CALCULATOR.TITLE' | translate }}</a>
+        @if (campos.length > 0) {
+            <span class="field-count-badge">{{ campos.length }}</span>
+        }
+    </h2>
+    
+    <div id="campos-personalizados">
+        @for (campo of campos; track $index; let i = $index) {
+            <div class="campo-personalizado">
+                <div class="input-group">
+                    <label for="nombre-{{i}}">{{ 'CUSTOM_CALCULATOR.NOTE_NAME_LABEL' | translate }}</label>
+                    <input type="text" id="nombre-{{i}}" [placeholder]="'CUSTOM_CALCULATOR.NOTE_NAME_PLACEHOLDER' | translate" [(ngModel)]="campo.nombre" (ngModelChange)="calcularNotaPersonalizada()">
+                </div>
+                
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="porcentaje-{{i}}">{{ 'CUSTOM_CALCULATOR.PERCENTAGE_LABEL' | translate }}</label>
+                        <input type="number" id="porcentaje-{{i}}" [placeholder]="'CUSTOM_CALCULATOR.PERCENTAGE_PLACEHOLDER' | translate" [(ngModel)]="campo.porcentaje" (ngModelChange)="calcularNotaPersonalizada()">
+                    </div>
+                    <div class="input-group">
+                        <label for="nota-{{i}}">{{ 'CUSTOM_CALCULATOR.GRADE_LABEL' | translate }}</label>
+                        <input type="number" id="nota-{{i}}" [placeholder]="'CUSTOM_CALCULATOR.GRADE_PLACEHOLDER' | translate" [(ngModel)]="campo.nota" (ngModelChange)="calcularNotaPersonalizada()" min="0">
+                    </div>
+                </div>
+                
+                <button class="eliminar-campo-btn" (click)="eliminarCampo(i)" [title]="'CUSTOM_CALCULATOR.DELETE_BTN_TOOLTIP' | translate">
+                    <span class="material-symbols-outlined notranslate">delete</span>
+                </button>
+            </div>
+        }
+    </div>
+    
+    @if (showNotaDefinitiva) {
+        <div class="nota-definitiva-total">
+            <span>{{ 'CUSTOM_CALCULATOR.TOTAL_FINAL_GRADE' | translate }} </span> 
+            <span id="nota-definitiva-total-personalizada">{{ notaDefinitivaTotal.toFixed(2) }}</span>
+        </div>
+    }
+
+    <!-- Input field for minimum passing grade -->
+    <div class="minima-aprobatoria-container input-group" style="margin-top: 15px; margin-bottom: 5px;">
+        <label for="minima-aprobatoria-input">{{ 'CUSTOM_CALCULATOR.MIN_PASS_GRADE_LABEL' | translate }}</label>
+        <input type="number" id="minima-aprobatoria-input" [placeholder]="'CUSTOM_CALCULATOR.MIN_PASS_GRADE_PLACEHOLDER' | translate" step="0.1" min="0" max="5" [(ngModel)]="minimaAprobatoria" (ngModelChange)="calcularNotaPersonalizada()">
+    </div>
+    
+    <div id="mensaje-aprobacion-personalizada" class="mensaje-aprobacion" [style.color]="mensajeColor">
+        {{ mensajeAprobacion | translate: mensajeParams }}
+    </div>
+    
+    <div class="buttons">
+        <button id="agregar-campo-btn" class="btn-secondary" (click)="agregarCampo()">
+            <span class="material-symbols-outlined notranslate">add</span>
+            <span>{{ 'CUSTOM_CALCULATOR.ADD_FIELD_BTN' | translate }}</span>
+        </button>
+        <button id="guardar-calculadora-btn" class="btn-secondary" (click)="guardarCalculadora()">
+            <span class="material-symbols-outlined notranslate">save</span>
+            <span>{{ 'CUSTOM_CALCULATOR.SAVE_CALC_BTN' | translate }}</span>
+        </button>
+    </div>
+</div> 

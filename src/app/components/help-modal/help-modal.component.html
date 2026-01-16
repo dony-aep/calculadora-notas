@@ -1,0 +1,54 @@
+@if (isVisible()) {
+<div class="modal" (click)="onBackdropClick($event)">
+    <div class="modal-content">
+        <span class="close-button" (click)="onClose()">
+            <span class="material-symbols-outlined notranslate">close</span>
+        </span>
+        <h2>{{ 'HELP_MODAL.TITLE' | translate }}</h2>
+        
+        <!-- Sección para la Calculadora de Notas Predeterminada -->
+        <section>
+            <h3>{{ 'HELP_MODAL.DEFAULT_CALC_TITLE' | translate }}</h3>
+            <ul>
+                <li>{{ 'HELP_MODAL.DEFAULT_CALC_ITEM_1' | translate }}</li>
+                <li>
+                    <strong>{{ 'HELP_MODAL.DEFAULT_CALC_FORMATIVE_LABEL' | translate }} </strong>
+                    <span>{{ 'HELP_MODAL.DEFAULT_CALC_FORMATIVE_DESC' | translate }}</span>
+                </li>
+                <li>
+                    <strong>{{ 'HELP_MODAL.DEFAULT_CALC_COGNITIVE_LABEL' | translate }} </strong>
+                    <span>{{ 'HELP_MODAL.DEFAULT_CALC_COGNITIVE_DESC' | translate }}</span>
+                </li>
+                <li>{{ 'HELP_MODAL.DEFAULT_CALC_ITEM_2' | translate }}</li>
+            </ul>
+            <p><strong>{{ 'HELP_MODAL.EXAMPLE_LABEL' | translate }} </strong> <span>{{ 'HELP_MODAL.EXAMPLE_DESC' | translate }}</span></p>
+            <ul>
+                <li>{{ 'HELP_MODAL.EXAMPLE_GRADE_1' | translate }}</li>
+                <li>{{ 'HELP_MODAL.EXAMPLE_GRADE_2' | translate }}</li>
+                <li>{{ 'HELP_MODAL.EXAMPLE_GRADE_3' | translate }}</li>
+                <li>{{ 'HELP_MODAL.EXAMPLE_TOTAL' | translate }}</li>
+            </ul>
+            <p><strong>{{ 'HELP_MODAL.REMINDER' | translate }}</strong></p>
+            <p><strong>{{ 'HELP_MODAL.NOTE_LABEL' | translate }} </strong> <span>{{ 'HELP_MODAL.NOTE_DESC_DEFAULT' | translate }}</span></p>
+            <p><strong>{{ 'HELP_MODAL.UPDATE_LABEL' | translate }} </strong> <span>{{ 'HELP_MODAL.UPDATE_DESC' | translate }}</span></p>
+        </section>
+        
+        <!-- Sección para la Calculadora de Notas Personalizada -->
+        <section>
+            <h3>{{ 'HELP_MODAL.CUSTOM_CALC_TITLE' | translate }}</h3>
+            <p>
+                <span>{{ 'HELP_MODAL.CUSTOM_CALC_INTRO_1' | translate }} </span>
+                <strong>{{ 'HELP_MODAL.CUSTOM_CALC_INTRO_2' | translate }} </strong>
+                <span>{{ 'HELP_MODAL.CUSTOM_CALC_INTRO_3' | translate }}</span>
+            </p>
+            <ul>
+                <li>{{ 'HELP_MODAL.CUSTOM_CALC_ITEM_1' | translate }}</li>
+                <li>{{ 'HELP_MODAL.CUSTOM_CALC_ITEM_2' | translate }}</li>
+                <li>{{ 'HELP_MODAL.CUSTOM_CALC_ITEM_3' | translate }}</li>
+                <li>{{ 'HELP_MODAL.CUSTOM_CALC_ITEM_4' | translate }}</li>
+            </ul>
+            <p><strong>{{ 'HELP_MODAL.NOTE_LABEL' | translate }} </strong> <span>{{ 'HELP_MODAL.NOTE_DESC_CUSTOM' | translate }}</span></p>
+        </section>
+    </div>
+</div>
+}

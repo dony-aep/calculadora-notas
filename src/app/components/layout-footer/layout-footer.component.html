@@ -1,0 +1,57 @@
+<div class="controls-wrapper">
+    <!-- Controles Izquierda -->
+    <div class="controls-container-left">
+        <button id="toggle-mode" class="control-btn" (click)="toggleTheme()" [title]="'FOOTER.CHANGE_THEME' | translate">
+            @if (currentTheme === 'light') {
+                <span class="material-symbols-outlined notranslate">dark_mode</span>
+            }
+            @if (currentTheme === 'dark') {
+                <span class="material-symbols-outlined notranslate">light_mode</span>
+            }
+        </button>
+        <div class="language-selector">
+            <button id="toggle-language" class="control-btn lang-btn" (click)="toggleLanguageDropdown()" [title]="'FOOTER.CHANGE_LANGUAGE' | translate">
+                <span class="material-symbols-outlined notranslate">translate</span>
+                <span class="selected-language">{{ selectedLanguage$ | async }}</span>
+                <span class="material-symbols-outlined notranslate dropdown-arrow">
+                    {{ isLanguageDropdownVisible ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+                </span>
+            </button>
+            @if (isLanguageDropdownVisible) {
+                <div class="language-dropdown">
+                    <div class="language-option" (click)="selectLanguage('es')">
+                        <span>{{ 'LANGUAGES.SPANISH' | translate }}</span>
+                        @if (currentLang === 'es') {
+                            <span class="material-symbols-outlined notranslate check-icon">check</span>
+                        }
+                    </div>
+                    <div class="language-option" (click)="selectLanguage('en')">
+                        <span>{{ 'LANGUAGES.ENGLISH' | translate }}</span>
+                        @if (currentLang === 'en') {
+                            <span class="material-symbols-outlined notranslate check-icon">check</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Controles Derecha -->
+    <div class="controls-container-right">
+        <button id="app-download-btn" class="control-btn" routerLink="/app-download" [title]="'FOOTER.DOWNLOAD_APP' | translate">
+            <span class="material-symbols-outlined notranslate">android</span>
+        </button>
+        <button id="ayuda-btn" class="control-btn" (click)="openHelpModal()" [title]="'FOOTER.HELP' | translate">
+            <span class="material-symbols-outlined notranslate">help</span>
+        </button>
+    </div>
+</div>
+
+
+<footer>
+    @if (madeByVisible$ | async) {
+        <p>{{ 'FOOTER.MADE_BY' | translate }} <a href="https://donyaep.vercel.app/" target="_blank" class="dony">dony.</a></p>
+    }
+</footer>
+
+<app-help-modal [isVisible]="isHelpModalVisible" (close)="closeHelpModal()"></app-help-modal> 

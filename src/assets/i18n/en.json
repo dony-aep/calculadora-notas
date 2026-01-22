@@ -63,16 +63,8 @@
         "BRAND_NAME": "CalNotas",
         "TITLE": "Download CalNotas",
         "SUBTITLE": "Get CalNotas on mobile.",
-        "CHANGELOG_TITLE": "Changelog",
-        "CHANGELOG_DATE": "April 30, 2025",
-        "CHANGELOG_VERSION": "v1.0.0",
-        "CHANGELOG_VERSION_TITLE": "Initial Release",
-        "CHANGELOG_ITEM_1": "Compatible with Android 8.0 (Oreo) and newer versions",
-        "CHANGELOG_ITEM_2": "Dark/Light/System theme support",
-        "CHANGELOG_ITEM_3": "English and Spanish language support",
-        "CHANGELOG_ITEM_4": "Custom calculator with adjustable percentages",
-        "DOWNLOAD_APK_BTN": "Download APK",
-        "DOWNLOAD_DRIVE_BTN": "Download from Drive"
+        "VIEW_CHANGELOG": "View changelog",
+        "DOWNLOAD_APK_BTN": "Download APK"
     },
     "HELP_MODAL": {
         "TITLE": "How to use the Grade Calculator?",

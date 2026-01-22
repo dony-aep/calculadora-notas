@@ -38,9 +38,11 @@
 
     <!-- Controles Derecha -->
     <div class="controls-container-right">
-        <button id="app-download-btn" class="control-btn" routerLink="/app-download" [title]="'FOOTER.DOWNLOAD_APP' | translate">
-            <span class="material-symbols-outlined notranslate">android</span>
-        </button>
+        @if (!isAppDownloadRoute) {
+            <button id="app-download-btn" class="control-btn" routerLink="/app-download" [title]="'FOOTER.DOWNLOAD_APP' | translate">
+                <span class="material-symbols-outlined notranslate">android</span>
+            </button>
+        }
         <button id="ayuda-btn" class="control-btn" (click)="openHelpModal()" [title]="'FOOTER.HELP' | translate">
             <span class="material-symbols-outlined notranslate">help</span>
         </button>

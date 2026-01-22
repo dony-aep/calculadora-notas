@@ -63,16 +63,8 @@
         "BRAND_NAME": "CalNotas",
         "TITLE": "Descargar CalNotas",
         "SUBTITLE": "Obtén CalNotas en móvil.",
-        "CHANGELOG_TITLE": "Registro de cambios",
-        "CHANGELOG_DATE": "30 de abril de 2025",
-        "CHANGELOG_VERSION": "v1.0.0",
-        "CHANGELOG_VERSION_TITLE": "Lanzamiento Inicial",
-        "CHANGELOG_ITEM_1": "Compatible con Android 8.0 (Oreo) y versiones posteriores",
-        "CHANGELOG_ITEM_2": "Soporte para tema oscuro/claro/sistema",
-        "CHANGELOG_ITEM_3": "Soporte para idiomas inglés y español",
-        "CHANGELOG_ITEM_4": "Calculadora personalizable con porcentajes ajustables",
-        "DOWNLOAD_APK_BTN": "Descargar APK",
-        "DOWNLOAD_DRIVE_BTN": "Descargar desde Drive"
+        "VIEW_CHANGELOG": "Ver registro de cambios",
+        "DOWNLOAD_APK_BTN": "Descargar APK"
     },
     "HELP_MODAL": {
         "TITLE": "¿Cómo usar la Calculadora de Notas?",

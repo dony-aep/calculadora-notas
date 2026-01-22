@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { HelpModalComponent } from '../help-modal/help-modal.component';
 import { ThemeService } from '../../services/theme.service';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, Observable, filter } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
 import { TranslationService } from '../../services/translation.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -23,12 +23,15 @@ export class LayoutFooterComponent implements OnInit, OnDestroy {
   private readonly footerService = inject(FooterService);
   private readonly elementRef = inject(ElementRef);
   private readonly translationService = inject(TranslationService);
+  private readonly router = inject(Router);
 
   isLanguageDropdownVisible = false;
   isHelpModalVisible = false;
+  isAppDownloadRoute = false;
   
   currentTheme: 'light' | 'dark' = 'light';
   private themeSubscription!: Subscription;
+  private routerSubscription!: Subscription;
   madeByVisible$: Observable<boolean> = this.footerService.madeByVisible$;
 
   selectedLanguage$: Observable<string> = this.translationService.currentLangName$;
@@ -42,6 +45,16 @@ export class LayoutFooterComponent implements OnInit, OnDestroy {
 
     this.langSubscription = this.translationService.currentLang$.subscribe(lang => {
       this.currentLang = lang;
+    });
+
+    // Check initial route
+    this.isAppDownloadRoute = this.router.url.includes('/app-download');
+
+    // Subscribe to route changes
+    this.routerSubscription = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.isAppDownloadRoute = event.urlAfterRedirects.includes('/app-download');
     });
   }
 
@@ -60,6 +73,9 @@ export class LayoutFooterComponent implements OnInit, OnDestroy {
     }
     if (this.langSubscription) {
       this.langSubscription.unsubscribe();
+    }
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
     }
   }
 

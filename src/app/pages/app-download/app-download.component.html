@@ -15,36 +15,18 @@
             <img src="assets/images/app_preview_image_calnotas.png" alt="CalNotas App" class="app-icon">
         </div>
         
-        <h3 class="changelog-title">{{ 'APP_DOWNLOAD.CHANGELOG_TITLE' | translate }}</h3>
-        <div class="changelog-divider"></div>
-
-        <div class="app-changelog">
-            <div class="changelog-header">
-                <div class="changelog-date-version">
-                    <span class="changelog-date">{{ 'APP_DOWNLOAD.CHANGELOG_DATE' | translate }}</span>
-                    <span class="version-badge">{{ 'APP_DOWNLOAD.CHANGELOG_VERSION' | translate }}</span>
-                </div>
-                <h4 class="changelog-version-title">{{ 'APP_DOWNLOAD.CHANGELOG_VERSION_TITLE' | translate }}</h4>
-            </div>
-            <ul>
-                <li>{{ 'APP_DOWNLOAD.CHANGELOG_ITEM_1' | translate }}</li>
-                <li>{{ 'APP_DOWNLOAD.CHANGELOG_ITEM_2' | translate }}</li>
-                <li>{{ 'APP_DOWNLOAD.CHANGELOG_ITEM_3' | translate }}</li>
-                <li>{{ 'APP_DOWNLOAD.CHANGELOG_ITEM_4' | translate }}</li>
-            </ul>
+        <div class="changelog-link-container">
+            <a href="https://github.com/dony-aep/calnotas/blob/main/CHANGELOG.md" class="changelog-link" target="_blank">
+                <span class="material-symbols-outlined notranslate">history</span>
+                <span>{{ 'APP_DOWNLOAD.VIEW_CHANGELOG' | translate }}</span>
+            </a>
         </div>
         
         <div class="download-buttons-container">
-            <!-- Gumroad download button with icon -->
-            <a href="https://donyaep.gumroad.com/l/tbqiy" class="download-btn" target="_blank">
-                <img src="assets/brand_logos/gumroad-icon.svg" alt="Gumroad" class="download-icon">
+            <!-- GitHub Releases download button -->
+            <a href="https://github.com/dony-aep/calnotas/releases/latest" class="download-btn" target="_blank">
+                <img src="assets/brand_logos/github-icon.svg" alt="GitHub" class="download-icon">
                 <span>{{ 'APP_DOWNLOAD.DOWNLOAD_APK_BTN' | translate }}</span>
-            </a>
-            
-            <!-- Google Drive download button -->
-            <a href="https://drive.google.com/drive/folders/1QHcwM1EKQjzxDvBoTsZy9o2e-oIw1Jyg?usp=sharing" class="download-btn" target="_blank">
-                <img src="assets/brand_logos/drive-icon.svg" alt="Google Drive" class="download-icon">
-                <span>{{ 'APP_DOWNLOAD.DOWNLOAD_DRIVE_BTN' | translate }}</span>
             </a>
         </div>
     </div>

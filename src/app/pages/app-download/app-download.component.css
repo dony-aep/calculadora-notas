@@ -68,7 +68,7 @@
 .app-preview {
     margin: 30px auto;
     padding: 0;
-    border-radius: 20px;
+    border-radius: 30px;
     max-width: 1080px;
 }
 
@@ -77,81 +77,34 @@
     height: auto;
     max-width: 1080px;
     object-fit: contain;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
-.changelog-title {
-    text-align: left;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 30px 0 10px 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+.changelog-link-container {
+    margin: 30px 0;
 }
 
-.changelog-divider {
-    height: 1px;
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-    background-color: var(--color-divider);
-}
-
-.app-changelog {
-    margin: 0 auto 30px auto;
-    max-width: 600px;
-    text-align: left;
-    padding: 20px 25px;
-    border-radius: 20px;
-    transition: background-color 0.3s, border-color 0.3s;
-    background-color: var(--color-changelog-bg);
-    border: 1px solid var(--color-changelog-border);
-}
-
-.app-changelog ul {
-    padding-left: 20px;
-    margin-top: 10px;
-}
-
-.app-changelog li {
-    margin-bottom: 12px;
-    line-height: 1.5;
-}
-
-.changelog-header {
-    display: flex;
-    justify-content: space-between;
+.changelog-link {
+    display: inline-flex;
     align-items: center;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.changelog-date-version {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.changelog-date {
-    color: var(--color-text-muted);
-    font-size: 14px;
-}
-
-.version-badge {
-    display: inline-block;
-    padding: 3px 8px;
+    gap: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
     border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: var(--color-version-badge-bg);
+    border: 1px solid var(--color-control-btn-border);
+    background-color: var(--color-control-btn-bg);
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.changelog-link:hover {
+    border-color: var(--color-primary);
     color: var(--color-primary);
-    border: 1px solid var(--color-version-badge-border);
 }
 
-.changelog-version-title {
-    font-size: 18px;
-    margin: 0;
-    font-weight: bold;
+.changelog-link .material-symbols-outlined {
+    font-size: 20px;
 }
 
 .download-buttons-container {
@@ -188,11 +141,17 @@
     width: 24px;
     height: 24px;
     object-fit: contain;
+    filter: var(--filter-icon-color);
+    transition: filter 0.3s;
 }
 
 .download-btn:hover {
     border-color: var(--color-secondary);
     color: var(--color-secondary);
+}
+
+.download-btn:hover .download-icon {
+    filter: var(--filter-icon-color-hover);
 }
 
 @media screen and (max-width: 768px) {
@@ -218,17 +177,6 @@
     .app-preview {
         margin: 20px auto;
     }
-    
-    .changelog-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    .changelog-title, 
-    .changelog-divider {
-        max-width: 90%;
-    }
 }
 
 @media screen and (max-width: 480px) {
@@ -238,17 +186,5 @@
     
     .app-description {
         font-size: 14px;
-    }
-
-    .app-changelog {
-        padding: 15px;
-    }
-    
-    .app-changelog ul {
-        padding-left: 15px;
-    }
-    
-    .app-changelog li {
-        margin-bottom: 8px;
     }
 }

@@ -1,5 +1,6 @@
 {
     "HOME": {
+        "SUBTITLE": "Calculadora de notas académicas",
         "DEFAULT_CALCULATOR_BTN": "Calculadora de Notas",
         "CUSTOM_CALCULATOR_BTN": "Calculadora de Notas Personalizada"
     },

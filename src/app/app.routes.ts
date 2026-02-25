@@ -6,8 +6,14 @@ import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
     {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full'
+    },
+    {
         path: 'home',
-        component: HomeComponent
+        redirectTo: '/',
+        pathMatch: 'full'
     },
     {
         path: 'default-calculator',
@@ -22,12 +28,7 @@ export const routes: Routes = [
         component: AppDownloadComponent
     },
     {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-    },
-    {
         path: '**',
-        redirectTo: '/home'
+        redirectTo: '/'
     }
 ];

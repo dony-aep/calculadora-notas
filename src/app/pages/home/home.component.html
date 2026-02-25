@@ -1,4 +1,16 @@
 <div class="container">
-    <button routerLink="/default-calculator" id="calculadora-btn">{{ 'HOME.DEFAULT_CALCULATOR_BTN' | translate }}</button>
-    <button routerLink="/custom-calculator" id="calculadora-personalizada-btn" class="btn-primary">{{ 'HOME.CUSTOM_CALCULATOR_BTN' | translate }}</button>
+    <div class="brand">
+        <h1 class="brand-title">CalNotas</h1>
+        <p class="brand-subtitle">{{ 'HOME.SUBTITLE' | translate }}</p>
+    </div>
+    <div class="actions">
+        <button routerLink="/default-calculator" class="action-btn">
+            <span class="action-btn__icon material-symbols-outlined notranslate">calculate</span>
+            <span class="action-btn__text">{{ 'HOME.DEFAULT_CALCULATOR_BTN' | translate }}</span>
+        </button>
+        <button routerLink="/custom-calculator" class="action-btn action-btn--alt">
+            <span class="action-btn__icon material-symbols-outlined notranslate">tune</span>
+            <span class="action-btn__text">{{ 'HOME.CUSTOM_CALCULATOR_BTN' | translate }}</span>
+        </button>
+    </div>
 </div> 

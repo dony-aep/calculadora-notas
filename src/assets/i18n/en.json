@@ -1,5 +1,6 @@
 {
     "HOME": {
+        "SUBTITLE": "Academic grade calculator",
         "DEFAULT_CALCULATOR_BTN": "Grade Calculator",
         "CUSTOM_CALCULATOR_BTN": "Custom Grade Calculator"
     },

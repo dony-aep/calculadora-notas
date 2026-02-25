@@ -1,136 +1,136 @@
-/** 
- * Variables CSS: 
- * Se definen variables comunes y luego se especifican los valores
- * para el tema claro (por defecto) y el tema oscuro.
+/**
+ * Variables CSS:
+ * Paleta monocromática: blancos, negros y grises neutros.
+ * Tema claro por defecto, tema oscuro con clase .dark-mode.
  */
 
 /* === Variables Comunes === */
-/* Colores que no cambian con el tema */
 :root {
-    --color-primary: #1DA1F2;       
-    --color-primary-rgb: 29, 161, 242; 
-    --color-secondary: #4CAF50;     
-    --color-danger: #ff4d4d;        
-    --color-danger-rgb: 255, 77, 77; 
-    --color-text-muted: #aaaaaa;       
-    --color-border-modal: #888;
-    --color-modal-overlay: rgba(0, 0, 0, 0.5);
-    --color-divider: rgba(128, 128, 128, 0.3);
+    --color-primary: #6b7280;
+    --color-primary-rgb: 107, 114, 128;
+    --color-secondary: #0cce6b;
+    --color-secondary-rgb: 12, 206, 107;
+    --color-danger: #ef4444;
+    --color-danger-rgb: 239, 68, 68;
+    --color-text-muted: #a3a3a3;
+    --color-border-modal: #d4d4d4;
+    --color-modal-overlay: rgba(0, 0, 0, 0.35);
+    --color-divider: rgba(163, 163, 163, 0.2);
 }
 
-/* === Tema Claro (por defecto) === */
+/* === Tema Claro === */
 :root {
-    --color-bg: #FFFFFF;      
-    --color-text: #000000;    
-    --color-hover: #DDDDDD;   
-    --color-border: #000000;   
-    --color-shadow: rgba(0, 0, 0, 0.2);
-    --color-tooltip-bg: rgba(0, 0, 0, 0.8);
-    --color-tooltip-text: #FFFFFF;
-    --color-bg-dropdown: #FFFFFF; 
-    --color-dropdown-hover: #f0f0f0;
-    
-    /* Variables específicas de componentes */
-    --color-modal-bg: rgba(255, 255, 255, 0.9);
-    --color-modal-border: rgba(0, 0, 0, 0.1);
-    --color-modal-close-button-text: #555;
-    --color-modal-close-button-hover-bg: rgba(0, 0, 0, 0.1);
-    --color-modal-shadow: 0 5px 15px var(--color-shadow);
-    --color-btn-gradient-text: #000000;
+    --color-bg: #f5f5f5;
+    --color-text: #141414;
+    --color-hover: #ebebeb;
+    --color-border: #e0e0e0;
+    --color-shadow: rgba(0, 0, 0, 0.05);
+    --color-tooltip-bg: rgba(20, 20, 20, 0.92);
+    --color-tooltip-text: #ffffff;
+    --color-bg-dropdown: #ffffff;
+    --color-dropdown-hover: #f5f5f5;
 
-    /* Variables específicas del Footer */
-    --color-footer-bg: rgba(240, 240, 240, 0.8);
-    --color-footer-border: rgba(0, 0, 0, 0.1);
-    --color-footer-btn-hover-bg: rgba(0, 0, 0, 0.08);
-    --color-footer-lang-btn-bg: rgba(0, 0, 0, 0.05);
-    --color-footer-right-btn-bg: var(--color-footer-bg);
-    --color-footer-right-btn-border: rgba(0, 0, 0, 0.1);
+    /* Modal */
+    --color-modal-bg: rgba(255, 255, 255, 0.96);
+    --color-modal-border: rgba(0, 0, 0, 0.05);
+    --color-modal-close-button-text: #737373;
+    --color-modal-close-button-hover-bg: rgba(0, 0, 0, 0.05);
+    --color-modal-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
+    --color-btn-gradient-text: #ffffff;
 
-    /* Variables específicas del Home */
-    --color-home-btn-bg: rgba(240, 240, 240, 0.8);
-    --color-home-btn-border: rgba(0, 0, 0, 0.1);
+    /* Footer */
+    --color-footer-bg: rgba(255, 255, 255, 0.88);
+    --color-footer-border: rgba(0, 0, 0, 0.05);
+    --color-footer-btn-hover-bg: rgba(0, 0, 0, 0.04);
+    --color-footer-lang-btn-bg: rgba(0, 0, 0, 0.03);
+    --color-footer-right-btn-bg: rgba(255, 255, 255, 0.88);
+    --color-footer-right-btn-border: rgba(0, 0, 0, 0.07);
 
-    /* Variables para Calculadoras (Default y Custom) */
-    --color-input-bg: rgba(221, 221, 221, 0.3);
-    --color-input-border: rgba(0, 0, 0, 0.1);
-    --color-input-focus-bg: rgba(var(--color-primary-rgb), 0.1);
-    --color-control-btn-bg: rgba(240, 240, 240, 0.8);
-    --color-control-btn-border: rgba(0, 0, 0, 0.1);
-    --color-delete-btn-bg: rgba(221, 221, 221, 0.3);
-    --color-delete-btn-border: rgba(0, 0, 0, 0.1);
-    --color-delete-btn-hover-bg: rgba(var(--color-danger-rgb), 0.15);
-    --color-delete-btn-hover-border: rgba(var(--color-danger-rgb), 0.3);
-    --color-secondary-action-btn-bg: rgba(240, 240, 240, 0.8);
-    --color-secondary-action-btn-border: rgba(0, 0, 0, 0.1);
+    /* Home */
+    --color-home-btn-bg: rgba(255, 255, 255, 0.85);
+    --color-home-btn-border: rgba(0, 0, 0, 0.07);
 
-    /* Variables para App Download */
-    --color-changelog-bg: rgba(240, 240, 240, 0.8);
-    --color-changelog-border: rgba(0, 0, 0, 0.1);
-    --color-version-badge-bg: rgba(var(--color-primary-rgb), 0.1);
-    --color-version-badge-border: rgba(var(--color-primary-rgb), 0.2);
-    --color-download-btn-bg: rgba(240, 240, 240, 0.8);
-    --color-download-btn-border: rgba(0, 0, 0, 0.1);
+    /* Calculadoras */
+    --color-input-bg: rgba(0, 0, 0, 0.02);
+    --color-input-border: rgba(0, 0, 0, 0.08);
+    --color-input-focus-bg: rgba(var(--color-primary-rgb), 0.04);
+    --color-control-btn-bg: rgba(255, 255, 255, 0.88);
+    --color-control-btn-border: rgba(0, 0, 0, 0.07);
+    --color-delete-btn-bg: rgba(0, 0, 0, 0.02);
+    --color-delete-btn-border: rgba(0, 0, 0, 0.07);
+    --color-delete-btn-hover-bg: rgba(var(--color-danger-rgb), 0.07);
+    --color-delete-btn-hover-border: rgba(var(--color-danger-rgb), 0.2);
+    --color-secondary-action-btn-bg: rgba(255, 255, 255, 0.85);
+    --color-secondary-action-btn-border: rgba(0, 0, 0, 0.07);
+
+    /* App Download */
+    --color-changelog-bg: rgba(255, 255, 255, 0.85);
+    --color-changelog-border: rgba(0, 0, 0, 0.05);
+    --color-version-badge-bg: rgba(var(--color-primary-rgb), 0.06);
+    --color-version-badge-border: rgba(var(--color-primary-rgb), 0.12);
+    --color-download-btn-bg: rgba(255, 255, 255, 0.85);
+    --color-download-btn-border: rgba(0, 0, 0, 0.07);
 
     /* Filtros para iconos SVG */
-    --filter-icon-color: brightness(0); /* Negro para tema claro */
-    --filter-icon-color-hover: brightness(0) saturate(100%) invert(58%) sepia(52%) saturate(552%) hue-rotate(79deg) brightness(93%) contrast(90%); /* Verde para hover */
+    --filter-icon-color: brightness(0);
+    --filter-icon-color-hover: brightness(0);
 }
 
 /* === Tema Oscuro === */
-/* Se sobreescriben las variables cuando html tiene la clase .dark-mode */
 html.dark-mode {
-    --color-bg: #202124;       
-    --color-text: #FFFFFF;     
-    --color-hover: #444444;    
-    --color-border: #FFFFFF;   
-    --color-shadow: rgba(0, 0, 0, 0.5);
-    --color-tooltip-bg: rgba(255, 255, 255, 0.9);
-    --color-tooltip-text: #000000;
-    --color-bg-dropdown: #222222; 
-    --color-dropdown-hover: var(--color-hover);
-    --color-btn-gradient-text: #FFFFFF;
+    --color-bg: #0e0e0e;
+    --color-text: #e5e5e5;
+    --color-hover: #1c1c1c;
+    --color-border: rgba(255, 255, 255, 0.07);
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-tooltip-bg: rgba(245, 245, 245, 0.95);
+    --color-tooltip-text: #141414;
+    --color-bg-dropdown: #171717;
+    --color-dropdown-hover: #1f1f1f;
+    --color-btn-gradient-text: #ffffff;
 
-    /* Variables específicas de componentes */
-    --color-modal-bg: rgba(30, 30, 30, .6);
-    --color-modal-border: rgba(255, 255, 255, 0.1);
-    --color-modal-close-button-text: #aaa;
-    --color-modal-close-button-hover-bg: rgba(255, 255, 255, 0.1);
-    --color-modal-shadow: 0 5px 15px var(--color-shadow);
+    /* Modal */
+    --color-modal-bg: rgba(18, 18, 18, 0.96);
+    --color-modal-border: rgba(255, 255, 255, 0.06);
+    --color-modal-close-button-text: #a3a3a3;
+    --color-modal-close-button-hover-bg: rgba(255, 255, 255, 0.07);
+    --color-modal-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+    --color-divider: rgba(255, 255, 255, 0.08);
 
-    /* Variables específicas del Footer */
-    --color-footer-bg: rgba(30, 30, 30, 0.8);
-    --color-footer-border: rgba(255, 255, 255, 0.1);
-    --color-footer-btn-hover-bg: rgba(255, 255, 255, 0.1);
-    --color-footer-lang-btn-bg: rgba(68, 68, 68, 0.2);
-    --color-footer-right-btn-bg: rgba(30, 30, 30, 0.6);
-    --color-footer-right-btn-border: rgba(255, 255, 255, 0.1);
+    /* Footer */
+    --color-footer-bg: rgba(14, 14, 14, 0.92);
+    --color-footer-border: rgba(255, 255, 255, 0.05);
+    --color-footer-btn-hover-bg: rgba(255, 255, 255, 0.07);
+    --color-footer-lang-btn-bg: rgba(255, 255, 255, 0.04);
+    --color-footer-right-btn-bg: rgba(14, 14, 14, 0.88);
+    --color-footer-right-btn-border: rgba(255, 255, 255, 0.07);
 
-    /* Variables específicas del Home */
-    --color-home-btn-bg: rgba(30, 30, 30, 0.6);
-    --color-home-btn-border: rgba(255, 255, 255, 0.1);
+    /* Home */
+    --color-home-btn-bg: rgba(255, 255, 255, 0.04);
+    --color-home-btn-border: rgba(255, 255, 255, 0.07);
 
-    /* Variables para Calculadoras (Default y Custom) */
-    --color-input-bg: rgba(68, 68, 68, 0.2);
-    --color-input-border: rgba(255, 255, 255, 0.1);
-    --color-input-focus-bg: rgba(var(--color-primary-rgb), 0.15);
-    --color-control-btn-bg: rgba(30, 30, 30, 0.6);
-    --color-control-btn-border: rgba(255, 255, 255, 0.1);
-    --color-delete-btn-bg: rgba(68, 68, 68, 0.2);
-    --color-delete-btn-border: rgba(255, 255, 255, 0.1);
-    --color-delete-btn-hover-bg: rgba(var(--color-danger-rgb), 0.2);
-    --color-delete-btn-hover-border: rgba(var(--color-danger-rgb), 0.4);
-    --color-secondary-action-btn-bg: rgba(30, 30, 30, 0.6);
-    --color-secondary-action-btn-border: rgba(255, 255, 255, 0.1);
-    
-    /* Variables para App Download */
-    --color-changelog-bg: rgba(30, 30, 30, 0.6);
-    --color-changelog-border: rgba(255, 255, 255, 0.1);
-    --color-version-badge-bg: rgba(var(--color-primary-rgb), 0.2);
-    --color-version-badge-border: rgba(var(--color-primary-rgb), 0.3);
-    --color-download-btn-bg: rgba(30, 30, 30, 0.6);
-    --color-download-btn-border: rgba(255, 255, 255, 0.1);
+    /* Calculadoras */
+    --color-input-bg: rgba(255, 255, 255, 0.04);
+    --color-input-border: rgba(255, 255, 255, 0.07);
+    --color-input-focus-bg: rgba(var(--color-primary-rgb), 0.1);
+    --color-control-btn-bg: rgba(14, 14, 14, 0.88);
+    --color-control-btn-border: rgba(255, 255, 255, 0.07);
+    --color-delete-btn-bg: rgba(255, 255, 255, 0.04);
+    --color-delete-btn-border: rgba(255, 255, 255, 0.07);
+    --color-delete-btn-hover-bg: rgba(var(--color-danger-rgb), 0.12);
+    --color-delete-btn-hover-border: rgba(var(--color-danger-rgb), 0.3);
+    --color-secondary-action-btn-bg: rgba(255, 255, 255, 0.04);
+    --color-secondary-action-btn-border: rgba(255, 255, 255, 0.07);
+
+    /* App Download */
+    --color-changelog-bg: rgba(255, 255, 255, 0.04);
+    --color-changelog-border: rgba(255, 255, 255, 0.05);
+    --color-version-badge-bg: rgba(var(--color-primary-rgb), 0.12);
+    --color-version-badge-border: rgba(var(--color-primary-rgb), 0.2);
+    --color-download-btn-bg: rgba(255, 255, 255, 0.04);
+    --color-download-btn-border: rgba(255, 255, 255, 0.07);
 
     /* Filtros para iconos SVG */
-    --filter-icon-color: brightness(0) invert(1); /* Blanco para tema oscuro */
-    --filter-icon-color-hover: brightness(0) saturate(100%) invert(58%) sepia(52%) saturate(552%) hue-rotate(79deg) brightness(93%) contrast(90%); /* Verde para hover */
+    --filter-icon-color: brightness(0) invert(1);
+    --filter-icon-color-hover: brightness(0) invert(1);
 }

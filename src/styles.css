@@ -1,25 +1,17 @@
 @import 'assets/styles/variables.css';
 
-/* You can add global styles to this file, and also import other style files */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Los colores se definen con variables para soportar temas */
     background-color: var(--color-bg);
     color: var(--color-text);
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.modal-open {
     overflow: hidden;
 }
-
-/* 
- * Las anulaciones específicas del tema oscuro para componentes 
- * como el modal ya no son necesarias aquí. 
- * Se gestionan a través de las variables en 'variables.css'.
- * Los estilos de los componentes (p. ej., help-modal.component.css)
- * deben usar las variables genéricas (p. ej., var(--color-modal-bg)).
- */

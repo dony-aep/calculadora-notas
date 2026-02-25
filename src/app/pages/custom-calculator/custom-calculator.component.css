@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    min-height: calc(100vh - 80px); /* Account for footer */
+    min-height: calc(100vh - 80px);
     padding: 80px 20px 20px;
     box-sizing: border-box;
 }
@@ -14,41 +14,40 @@
     left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     z-index: 100;
 }
 
 .control-btn {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     padding: 0;
-    font-size: 24px;
-    border-radius: 20px;
+    font-size: 22px;
+    border-radius: 14px;
     cursor: pointer;
     border: 1px solid var(--color-control-btn-border);
-    backdrop-filter: blur(10px);
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s, background-color 0.2s;
     background-color: var(--color-control-btn-bg);
     color: var(--color-text);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
 }
 
 .control-btn:not(:disabled):hover {
     border-color: var(--color-primary);
-    color: var(--color-primary);
 }
 
 .control-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.35;
     cursor: not-allowed;
 }
 
 .calculadora-notas {
     width: 100%;
-    max-width: 1000px;
+    max-width: 960px;
     color: var(--color-text);
 }
 
@@ -57,16 +56,18 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
 }
 
 .field-count-badge {
     display: inline-block;
     padding: 3px 10px;
     margin-left: 10px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 700;
     border-radius: 20px;
     background-color: var(--color-version-badge-bg);
     color: var(--color-primary);
@@ -74,26 +75,35 @@
     vertical-align: middle;
 }
 
-.calculadora-notas h2 a {
+.titulo-enlace {
     color: inherit;
     text-decoration: none;
+    transition: color 0.25s;
+}
+
+.titulo-enlace:hover {
+    color: var(--color-primary);
 }
 
 #campos-personalizados {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
 }
 
 .campo-personalizado {
     display: block;
-    /* margin-bottom: 15px; */
     background-color: var(--color-changelog-bg);
     border: 1px solid var(--color-changelog-border);
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 20px;
-    width: calc(50% - 7.5px);
+    width: calc(50% - 6px);
     box-sizing: border-box;
+    transition: border-color 0.25s;
+}
+
+.campo-personalizado:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.15);
 }
 
 .campo-personalizado:last-child:nth-child(odd) {
@@ -110,23 +120,26 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .input-group label {
-    margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.3px;
 }
 
 .campo-personalizado input {
-    font-family: 'Poppins', sans-serif;
-    padding: 12px 15px;
-    font-size: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 500;
     border: 1px solid var(--color-input-border);
     width: 100%;
     box-sizing: border-box;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    transition: border-color 0.2s, background-color 0.2s;
     border-radius: 10px;
     background-color: var(--color-input-bg);
     color: var(--color-text);
@@ -134,21 +147,21 @@
 
 .campo-personalizado input:focus {
     outline: none;
-    box-shadow: none;
     border-color: var(--color-primary);
     background-color: var(--color-input-focus-bg);
 }
 
 .campo-personalizado input::placeholder {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--color-text-muted);
-    opacity: 0.8;
+    opacity: 0.6;
+    font-weight: 400;
 }
 
 .eliminar-campo-btn {
     flex: 0 0 auto;
     width: 100%;
-    height: 46px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,7 +170,8 @@
     background-color: var(--color-delete-btn-bg);
     color: var(--color-danger);
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 20px;
 }
 
 .eliminar-campo-btn:hover {
@@ -167,8 +181,18 @@
 
 .nota-definitiva-total {
     text-align: center;
-    margin-top: 20px;
-    font-size: 24px;
+    margin: 24px 0 8px;
+    padding: 20px;
+    font-size: 14px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.06), rgba(var(--color-primary-rgb), 0.02));
+    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+}
+
+#nota-definitiva-total-personalizada {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .minima-aprobatoria-container {
@@ -176,18 +200,23 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 300px;
-    margin: 15px auto 5px auto;
+    max-width: 280px;
+    margin: 20px auto 5px auto;
 }
 
 .minima-aprobatoria-container label {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.3px;
 }
 
 #minima-aprobatoria-input {
-    font-family: 'Poppins', sans-serif;
-    padding: 10px 12px;
-    font-size: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 500;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -195,12 +224,11 @@
     border-radius: 10px;
     background-color: var(--color-input-bg);
     color: var(--color-text);
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    transition: border-color 0.2s, background-color 0.2s;
 }
 
 #minima-aprobatoria-input:focus {
     outline: none;
-    box-shadow: none;
     border-color: var(--color-primary);
     background-color: var(--color-input-focus-bg);
 }
@@ -208,10 +236,11 @@
 .mensaje-aprobacion {
     text-align: center;
     margin-top: 10px;
-    font-weight: bold;
-    min-height: 24px;   /* Usar min-height para permitir que el contenedor crezca */
-    line-height: 1.4;   /* Mejorar la legibilidad si el texto ocupa varias líneas */
-    padding-bottom: 10px; /* Añadir un espacio inferior para separarlo de los botones */
+    font-weight: 600;
+    font-size: 14px;
+    min-height: 24px;
+    line-height: 1.4;
+    padding-bottom: 10px;
 }
 
 .buttons {
@@ -224,15 +253,15 @@
 }
 
 .btn-primary, .btn-secondary {
-    font-family: 'Poppins', sans-serif;
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 14px;
     cursor: pointer;
     border: 1px solid transparent;
-    backdrop-filter: blur(5px);
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.2s, color 0.2s;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -254,8 +283,7 @@
 }
 
 #guardar-calculadora-btn:hover {
-    border-color: var(--color-secondary);
-    color: var(--color-secondary);
+    border-color: var(--color-primary);
 }
 
 .btn-secondary {
@@ -266,12 +294,10 @@
 
 .btn-secondary:hover {
     border-color: var(--color-primary);
-    color: var(--color-primary);
 }
 
 @media screen and (max-width: 768px) {
     :host {
-        /* top=50px, sides=0, bottom=100px */
         padding: 50px 0 100px;
     }
 
@@ -288,7 +314,7 @@
     }
 
     .campo-personalizado {
-        padding: 15px;
+        padding: 16px;
         width: 100%;
     }
 
@@ -299,17 +325,17 @@
 
     .eliminar-campo-btn {
         width: 100%;
-        margin-top: 10px; /* Espacio adicional para separarlo de los inputs */
+        margin-top: 8px;
     }
 
     .buttons {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
     }
 
     .btn-secondary, #guardar-calculadora-btn {
         width: 100%;
-        max-width: 300px; /* Opcional: para que no se extiendan demasiado */
+        max-width: 300px;
         justify-content: center;
     }
 }

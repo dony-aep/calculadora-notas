@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class DefaultCalculatorComponent implements OnInit, OnDestroy {
   private readonly footerService = inject(FooterService);
   private readonly translate = inject(TranslateService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   // Propiedades para las notas de entrada
   notaFormativa1: number | null = null;
@@ -119,8 +120,10 @@ export class DefaultCalculatorComponent implements OnInit, OnDestroy {
     this.calcularNotas();
 
     this.showResetFeedback = true;
+    this.cdr.markForCheck();
     setTimeout(() => {
       this.showResetFeedback = false;
+      this.cdr.markForCheck();
     }, 2000);
   }
 } 

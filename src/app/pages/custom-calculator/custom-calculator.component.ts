@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FooterService } from '../../services/footer.service';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ interface Campo {
 export class CustomCalculatorComponent implements OnInit, OnDestroy {
   private readonly footerService = inject(FooterService);
   private readonly translate = inject(TranslateService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   campos: Campo[] = [];
   notaDefinitivaTotal = 0;
@@ -129,8 +130,10 @@ export class CustomCalculatorComponent implements OnInit, OnDestroy {
     this.calcularNotaPersonalizada();
 
     this.showResetFeedback = true;
+    this.cdr.markForCheck();
     setTimeout(() => {
       this.showResetFeedback = false;
+      this.cdr.markForCheck();
     }, 2000);
   }
 } 

@@ -14,74 +14,129 @@
     left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     z-index: 100;
 }
 
 .control-btn {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     padding: 0;
-    font-size: 24px;
-    border-radius: 20px;
+    font-size: 22px;
+    border-radius: 14px;
     cursor: pointer;
     border: 1px solid var(--color-control-btn-border);
-    backdrop-filter: blur(10px);
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s;
     background-color: var(--color-control-btn-bg);
     color: var(--color-text);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
 }
 
 .control-btn:hover {
     border-color: var(--color-primary);
-    color: var(--color-primary);
 }
+
+/* Content */
 
 .app-download-content {
     text-align: center;
-    max-width: 800px;
+    max-width: 560px;
+    width: 100%;
     margin: 0 auto;
     color: var(--color-text);
 }
 
-.app-small-title {
-    font-size: 16px;
-    margin-bottom: 10px;
-    opacity: 0.8;
+/* Header */
+
+.app-header {
+    margin-bottom: 32px;
+}
+
+.app-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 20px;
 }
 
 .app-title {
-    font-size: 32px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 10px;
+    letter-spacing: -0.8px;
+    line-height: 1.15;
 }
 
 .app-description {
-    font-size: 18px;
-    margin-bottom: 30px;
-    opacity: 0.9;
+    font-size: 15px;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    line-height: 1.5;
 }
 
-.app-preview {
-    margin: 30px auto;
-    padding: 0;
-    border-radius: 30px;
-    max-width: 1080px;
+/* Preview */
+
+.app-preview-card {
+    margin: 0 auto 32px;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    background-color: var(--color-input-bg);
 }
 
-.app-icon {
+.app-preview-img {
     width: 100%;
     height: auto;
-    max-width: 1080px;
+    display: block;
     object-fit: contain;
-    border-radius: 30px;
 }
 
-.changelog-link-container {
-    margin: 30px 0;
+/* Actions */
+
+.app-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--color-download-btn-border);
+    transition: border-color 0.2s;
+    background-color: var(--color-download-btn-bg);
+    color: var(--color-text);
+}
+
+.download-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: var(--filter-icon-color);
+}
+
+.download-btn:hover {
+    border-color: var(--color-primary);
 }
 
 .changelog-link {
@@ -90,74 +145,28 @@
     gap: 8px;
     color: var(--color-text);
     text-decoration: none;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 14px;
     border: 1px solid var(--color-control-btn-border);
     background-color: var(--color-control-btn-bg);
-    transition: border-color 0.3s, color 0.3s;
+    transition: border-color 0.2s;
 }
 
 .changelog-link:hover {
     border-color: var(--color-primary);
-    color: var(--color-primary);
 }
 
 .changelog-link .material-symbols-outlined {
-    font-size: 20px;
-}
-
-.download-buttons-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 25px;
-    border-radius: 20px;
-    font-family: 'Poppins', sans-serif;
     font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    margin: 0;
-    width: 250px;
-    max-width: 100%;
-    border: 1px solid transparent;
-    backdrop-filter: blur(5px);
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    background-color: var(--color-download-btn-bg);
-    border-color: var(--color-download-btn-border);
-    color: var(--color-text);
 }
 
-.download-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    filter: var(--filter-icon-color);
-    transition: filter 0.3s;
-}
-
-.download-btn:hover {
-    border-color: var(--color-secondary);
-    color: var(--color-secondary);
-}
-
-.download-btn:hover .download-icon {
-    filter: var(--filter-icon-color-hover);
-}
+/* Responsive */
 
 @media screen and (max-width: 768px) {
     :host {
-        /* top=50px, sides=0, bottom=100px */
-        padding: 50px 20px 100px; /* Añadido padding lateral para que el contenido no se pegue */
+        padding: 50px 16px 100px;
     }
 
     .buttons-fixed {
@@ -166,25 +175,47 @@
         flex-direction: row;
     }
 
+    .app-download-content {
+        max-width: 100%;
+    }
+
     .app-title {
-        font-size: 28px;
+        font-size: 24px;
+        letter-spacing: -0.5px;
     }
-    
+
     .app-description {
-        font-size: 16px;
+        font-size: 14px;
     }
-    
-    .app-preview {
-        margin: 20px auto;
+
+    .app-preview-card {
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+
+    .app-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .download-btn,
+    .changelog-link {
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
     }
 }
 
 @media screen and (max-width: 480px) {
     .app-title {
-        font-size: 24px;
+        font-size: 22px;
     }
-    
+
     .app-description {
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+    .app-badge {
+        font-size: 10px;
     }
 }

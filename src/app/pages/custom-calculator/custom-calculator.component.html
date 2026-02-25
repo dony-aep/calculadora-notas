@@ -1,6 +1,6 @@
 <!-- Fixed top-left buttons -->
 <div class="buttons-fixed">
-    <button id="volver-personalizado-btn" class="control-btn" routerLink="/home" [title]="'CUSTOM_CALCULATOR.BACK_BTN_TOOLTIP' | translate">
+    <button id="volver-personalizado-btn" class="control-btn" routerLink="/" [title]="'CUSTOM_CALCULATOR.BACK_BTN_TOOLTIP' | translate">
         <span class="material-symbols-outlined notranslate">arrow_back</span>
     </button>
     <button id="restablecer-personalizada-btn" class="control-btn" [title]="'CUSTOM_CALCULATOR.RESET_BTN_TOOLTIP' | translate" (click)="restablecer()" [disabled]="!hasInputs">
@@ -15,7 +15,7 @@
 
 <div id="calculadora-personalizada" class="calculadora-notas">
     <h2>
-        <a routerLink="/home" class="titulo-enlace">{{ 'CUSTOM_CALCULATOR.TITLE' | translate }}</a>
+        <a routerLink="/" class="titulo-enlace">{{ 'CUSTOM_CALCULATOR.TITLE' | translate }}</a>
         @if (campos.length > 0) {
             <span class="field-count-badge">{{ campos.length }}</span>
         }

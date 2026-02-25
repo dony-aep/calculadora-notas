@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.0] - 2026-02-25
+
+### Added
+
+- Plus Jakarta Sans font via Google Fonts CDN.
+- Monochrome color palette (white, black, and neutral grays only); color reserved for semantic actions (delete in red, pass/fail in green/red).
+- Redesigned help modal with structured layout: header with close button, scrollable body, section icons (`calculate`/`tune`), example block with left border, info callout, and section divider.
+- Redesigned app-download page with pill-shaped brand badge, bordered preview card, and horizontal action buttons layout.
+- Dark mode divider CSS variable (`--color-divider`) for proper neutral separation in dark theme.
+
+### Changed
+
+- Neutralized all blue-tinted colors to pure grays in both light and dark themes (e.g., dark background from `#0c0c14` to `#0e0e0e`, text from `#e4e4ed` to `#e5e5e5`).
+- Removed all glow `box-shadow` effects and `translateY` hover animations across every component.
+- Simplified all hover transitions to `border-color 0.2s` only, with monochrome behavior.
+- Changed root route from `/home` to `/` with backward-compatible redirect.
+- Increased `anyComponentStyle` CSS budget from 6kB to 7kB.
+- Translated README.md to English; added new Spanish README (`README.es.md`).
+
+### Fixed
+
+- Reset button icon stuck on "check" state after resetting fields in both calculators. Added `ChangeDetectorRef.markForCheck()` to properly trigger re-render with `OnPush` change detection after `setTimeout`.
+
 ## [4.4.0] - 2026-02-24
 
 ### Changed

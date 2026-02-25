@@ -1,95 +1,88 @@
-# Calculadora de Notas
+# Grade Calculator
 
-Bienvenido al proyecto **Calculadora de Notas**. Esta aplicación web está diseñada para ayudar a los estudiantes de la Universidad Americana en Colombia a calcular sus notas de manera rápida y eficiente. La calculadora permite ingresar notas formativas y cognitivas para obtener una nota definitiva y una nota definitiva total.
+> PWA web application for calculating academic grades at Universidad Americana (Colombia).
 
-## Descripción
+[![Español](https://img.shields.io/badge/Readme-Español-blue)](README.es.md)
 
-La Calculadora de Notas permite a los estudiantes ingresar sus notas formativas y cognitivas para tres cortes diferentes. Basado en los porcentajes de evaluación establecidos por la universidad, la aplicación calculará automáticamente las notas definitivas y la nota definitiva total.
+![CalNotas Preview](calnotas-preview.png)
 
-## Funcionalidades
+## Description
 
-### Calculadora Predeterminada
-- **Ingreso de Notas:** Introduce tus notas formativas y cognitivas en los campos correspondientes.
-- **Cálculo Automático:** Los resultados se calcularán automáticamente en tiempo real.
-- **Ayuda en Línea:** Un botón de ayuda proporciona instrucciones sobre cómo usar la calculadora y un ejemplo de cálculo.
-- **Restablecer:** Opción para restablecer todos los campos y resultados.
+The Grade Calculator allows students to enter their formative and cognitive grades across three evaluation periods. Based on the university's grading percentages, the application automatically calculates the final grades and the overall final grade.
 
-### Calculadora Personalizada
-- **Campos Personalizables:** Añade tantos campos como necesites con nombres y porcentajes personalizados.
-- **Porcentajes Flexibles:** Define tus propios porcentajes para cada campo.
-- **Guardado Local:** Guarda tu configuración personalizada para uso futuro.
-- **Validación de Porcentajes:** Asegura que los porcentajes sumen 100%.
+## Features
 
-### Características Generales
-- **Cambio de Tema:** Alterna entre modo claro y oscuro según tu preferencia.
-- **Idiomas:** Soporte para español e inglés con traducción en tiempo real.
-- **Diseño Responsivo:** Adaptable a cualquier dispositivo (móvil, tablet, escritorio).
-- **PWA:** Instalable como aplicación progresiva web.
-- **Modo Offline:** Funciona sin conexión a internet.
+### Default Calculator
+- **Grade Input:** Enter your formative and cognitive grades in the corresponding fields.
+- **Auto Calculation:** Results are calculated automatically in real time.
+- **Online Help:** A help button provides instructions on how to use the calculator with a calculation example.
+- **Reset:** Option to reset all fields and results.
 
-## Acceso a la Aplicación
+### Custom Calculator
+- **Custom Fields:** Add as many fields as needed with custom names and percentages.
+- **Flexible Percentages:** Define your own percentages for each field.
+- **Local Storage:** Save your custom configuration for future use.
+- **Percentage Validation:** Ensures percentages add up to 100%.
 
-Para usar la Calculadora de Notas, simplemente accede al siguiente enlace: [https://calnotas.vercel.app/](https://calnotas.vercel.app/).
+### General Features
+- **Theme Toggle:** Switch between light and dark mode.
+- **Languages:** Support for Spanish and English with real-time translation.
+- **Responsive Design:** Adapts to any device (mobile, tablet, desktop).
+- **PWA:** Installable as a progressive web app.
+- **Offline Mode:** Works without an internet connection.
 
-## Uso
+## Access
 
-1. **Elegir Calculadora:**
-   - Selecciona entre la calculadora predeterminada o personalizada según tus necesidades.
+Use the application at: [https://calnotas.vercel.app/](https://calnotas.vercel.app/)
 
-2. **Calculadora Predeterminada:**
-   - Ingresa las notas formativas y cognitivas.
-   - Visualiza los resultados en tiempo real.
+## Usage
 
-3. **Calculadora Personalizada:**
-   - Crea campos personalizados con nombres y porcentajes.
-   - Guarda tu configuración para uso futuro.
-   - Calcula notas según tus porcentajes personalizados.
+1. **Choose Calculator:** Select between the default or custom calculator.
+2. **Default Calculator:** Enter formative and cognitive grades. Results are displayed in real time.
+3. **Custom Calculator:** Create fields with custom names and percentages. Save your configuration for future use.
+4. **Customization:** Switch between light/dark mode and select your preferred language (Spanish/English).
 
-4. **Personalización:**
-   - Cambia entre modo claro y oscuro.
-   - Selecciona tu idioma preferido (español/inglés).
-   - Accede a la ayuda para instrucciones detalladas.
+## 2025 Grading System
 
-## Ejemplo de Cálculo (Sistema 2025)
+| Period | Formative Grade | Cognitive Grade | Total |
+|--------|----------------|----------------|-------|
+| Cut 1 | 15% | 15% | 30% |
+| Cut 2 | 15% | 15% | 30% |
+| Cut 3 | 20% | 20% | 40% |
 
-El nuevo sistema de evaluación de la Universidad Americana - Colombia establece los siguientes porcentajes:
+### Example
 
-| Corte | Nota Formativa | Nota Cognitiva | Total |
-|-------|---------------|----------------|-------|
-| Corte 1 | 15% | 15% | 30% |
-| Corte 2 | 15% | 15% | 30% |
-| Corte 3 | 20% | 20% | 40% |
+For a Formative Grade of 4.5 and a Cognitive Grade of 3.0:
 
-### Ejemplo:
-- **Nota Formativa:** 4.5
-- **Nota Cognitiva:** 3.0
-
-**Nota Definitiva 1 (Corte 1):**
 ```
-(4.5 * 0.15) + (3.0 * 0.15) = 0.675 + 0.45 = 1.13
+Cut 1: (4.5 × 0.15) + (3.0 × 0.15) = 1.13
+Cut 2: (4.5 × 0.15) + (3.0 × 0.15) = 1.13
+Cut 3: (4.5 × 0.20) + (3.0 × 0.20) = 1.50
+Total: 1.13 + 1.13 + 1.50 = 3.76 ✓
 ```
 
-**Nota Definitiva 2 (Corte 2):**
+The final grade must be ≥ 3.0 to pass.
+
+## Tech Stack
+
+- **Framework:** Angular 21
+- **Styles:** CSS with variables (light/dark themes)
+- **i18n:** ngx-translate (Spanish/English)
+- **PWA:** Angular Service Worker
+- **Deployment:** Vercel
+
+## Development
+
+```bash
+npm start          # Dev server at http://localhost:4200
+npm run build      # Production build
+npm test           # Tests
 ```
-(4.5 * 0.15) + (3.0 * 0.15) = 0.675 + 0.45 = 1.13
-```
 
-**Nota Definitiva 3 (Corte 3):**
-```
-(4.5 * 0.20) + (3.0 * 0.20) = 0.9 + 0.6 = 1.5
-```
+## Credits
 
-**Nota Definitiva Total:**
-```
-1.13 + 1.13 + 1.5 = 3.76
-```
+Developed by [dony.](https://github.com/dony-aep)
 
-**Nota Final:** Asegúrate de que la nota final total sea mayor o igual a 3.0 para aprobar.
+## License
 
-## Créditos
-
-Desarrollado por [dony.](https://github.com/dony-aep)
-
-## Licencia
-
-Este proyecto está licenciado bajo los términos de la [Licencia MIT](https://opensource.org/licenses/MIT).
+[MIT](https://opensource.org/licenses/MIT)

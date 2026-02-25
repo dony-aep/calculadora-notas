@@ -6,15 +6,6 @@
     z-index: 100;
 }
 
-.controls-container {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 footer {
     text-align: center;
     padding: 10px;
@@ -27,18 +18,19 @@ footer {
 
 footer p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
 }
 
 footer .dony {
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
-    color: var(--color-text); /* White text by default */
-    transition: color 0.3s ease;
+    color: var(--color-text);
+    transition: color 0.25s;
 }
 
 footer .dony:hover {
-    color: var(--color-primary); /* Blue on hover */
+    color: var(--color-primary);
 }
 
 
@@ -50,12 +42,12 @@ footer .dony:hover {
     z-index: 999;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     background-color: var(--color-footer-bg);
     border: 1px solid var(--color-footer-border);
-    border-radius: 20px;
-    padding: 8px;
-    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 6px;
+    backdrop-filter: blur(16px);
 }
 
 .controls-container-right {
@@ -65,7 +57,7 @@ footer .dony:hover {
     z-index: 999;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 
@@ -74,14 +66,14 @@ footer .dony:hover {
     background-color: transparent;
     border: none;
     color: var(--color-text);
-    height: 40px;
+    height: 38px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: background-color 0.3s;
-    border-radius: 20px;
+    transition: all 0.25s;
+    border-radius: 12px;
 }
 
 .controls-container-left .control-btn:hover {
@@ -89,52 +81,53 @@ footer .dony:hover {
 }
 
 .controls-container-left #toggle-mode {
-    width: 40px;
+    width: 38px;
 }
 
 .controls-container-left .lang-btn {
     width: auto;
-    padding: 6px 10px 6px 10px;
-    gap: 8px;
+    padding: 6px 10px;
+    gap: 6px;
     background-color: var(--color-footer-lang-btn-bg);
+    border-radius: 10px;
 }
 
 .selected-language {
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .dropdown-arrow {
-    font-size: 20px;
+    font-size: 18px;
+    opacity: 0.5;
 }
 
 
 /* === BUTTONS INSIDE RIGHT CONTAINER === */
 .controls-container-right .control-btn {
-    font-size: 24px;
-    border-radius: 20px;
+    font-size: 22px;
+    border-radius: 14px;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--color-footer-right-btn-border);
     background-color: var(--color-footer-right-btn-bg);
     color: var(--color-text);
-    backdrop-filter: blur(10px);
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s;
     padding: 0;
 }
 
 .controls-container-right .control-btn:hover {
-    color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .controls-container-right #app-download-btn:hover {
-    border-color: var(--color-secondary);
-    color: var(--color-secondary);
+    border-color: var(--color-primary);
 }
 
 .controls-container-right #ayuda-btn:hover {
@@ -150,22 +143,26 @@ footer .dony:hover {
 .language-dropdown {
     display: block;
     position: absolute;
-    bottom: 55px;
+    bottom: 50px;
     left: 0;
     background: var(--color-bg-dropdown);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px var(--color-shadow);
+    border: 1px solid var(--color-footer-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--color-shadow);
     width: 100%;
     overflow: hidden;
 }
 
 .language-option {
-    padding: 10px 15px;
+    padding: 10px 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     color: var(--color-text);
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.2s;
 }
 
 .language-option:hover {
@@ -173,8 +170,9 @@ footer .dony:hover {
 }
 
 .language-option .check-icon {
-    color: var(--color-text);
-} 
+    color: var(--color-primary);
+    font-size: 18px;
+}
 
 @media screen and (max-width: 768px) {
     .controls-container-left {
@@ -190,7 +188,7 @@ footer .dony:hover {
     }
 
     .language-dropdown {
-        bottom: auto; /* Desactivamos la posición inferior */
-        top: 55px;    /* Activamos la posición superior para que se despliegue hacia abajo */
+        bottom: auto;
+        top: 50px;
     }
 } 

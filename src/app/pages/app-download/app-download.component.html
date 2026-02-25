@@ -1,32 +1,29 @@
 <div id="app-download-section" class="calculadora-notas">
-    <!-- Fixed top-left buttons -->
     <div class="buttons-fixed">
-        <button id="volver-app-btn" class="control-btn" routerLink="/home" [title]="'APP_DOWNLOAD.BACK_BTN_TOOLTIP' | translate">
+        <button id="volver-app-btn" class="control-btn" routerLink="/" [title]="'APP_DOWNLOAD.BACK_BTN_TOOLTIP' | translate">
             <span class="material-symbols-outlined notranslate">arrow_back</span>
         </button>
     </div>
 
     <div class="app-download-content">
-        <h3 class="app-small-title">{{ 'APP_DOWNLOAD.BRAND_NAME' | translate }}</h3>
-        <h2 class="app-title">{{ 'APP_DOWNLOAD.TITLE' | translate }}</h2>
-        <p class="app-description">{{ 'APP_DOWNLOAD.SUBTITLE' | translate }}</p>
-        
-        <div class="app-preview">
-            <img src="assets/images/app_preview_image_calnotas.png" alt="CalNotas App" class="app-icon">
+        <div class="app-header">
+            <span class="app-badge">{{ 'APP_DOWNLOAD.BRAND_NAME' | translate }}</span>
+            <h1 class="app-title">{{ 'APP_DOWNLOAD.TITLE' | translate }}</h1>
+            <p class="app-description">{{ 'APP_DOWNLOAD.SUBTITLE' | translate }}</p>
         </div>
-        
-        <div class="changelog-link-container">
-            <a href="https://github.com/dony-aep/calnotas/blob/main/CHANGELOG.md" class="changelog-link" target="_blank">
-                <span class="material-symbols-outlined notranslate">history</span>
-                <span>{{ 'APP_DOWNLOAD.VIEW_CHANGELOG' | translate }}</span>
-            </a>
+
+        <div class="app-preview-card">
+            <img src="assets/images/app_preview_image_calnotas.png" alt="CalNotas App" class="app-preview-img">
         </div>
-        
-        <div class="download-buttons-container">
-            <!-- GitHub Releases download button -->
+
+        <div class="app-actions">
             <a href="https://github.com/dony-aep/calnotas/releases/latest" class="download-btn" target="_blank">
                 <img src="assets/brand_logos/github-icon.svg" alt="GitHub" class="download-icon">
                 <span>{{ 'APP_DOWNLOAD.DOWNLOAD_APK_BTN' | translate }}</span>
+            </a>
+            <a href="https://github.com/dony-aep/calnotas/blob/main/CHANGELOG.md" class="changelog-link" target="_blank">
+                <span class="material-symbols-outlined notranslate">history</span>
+                <span>{{ 'APP_DOWNLOAD.VIEW_CHANGELOG' | translate }}</span>
             </a>
         </div>
     </div>

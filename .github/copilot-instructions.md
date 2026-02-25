@@ -4,7 +4,7 @@
 
 PWA de calculadora de notas académicas para la Universidad Americana (Colombia). Permite calcular notas con el sistema de evaluación 2025 (Cortes 1-2: 15% formativa + 15% cognitiva; Corte 3: 20% + 20%) y crear calculadoras personalizadas.
 
-**Stack**: Angular 20 standalone components, ngx-translate (i18n), PWA con Service Worker, desplegado en Vercel.
+**Stack**: Angular 21 standalone components, ngx-translate (i18n), PWA con Service Worker, desplegado en Vercel.
 
 ## Architecture
 
@@ -27,8 +27,8 @@ src/app/
 
 ## Key Patterns
 
-### Standalone Components (Angular 20+)
-Todos los componentes son standalone por defecto en Angular 19+. **NO usar `standalone: true`** en el decorador (es implícito). Usar `inject()` para inyección de dependencias y `ChangeDetectionStrategy.OnPush`:
+### Standalone Components (Angular 21+)
+Todos los componentes son standalone por defecto en Angular 19+. **NO usar `standalone: true`** en el decorador (es implícito). Usar `inject()` para inyección de dependencias y `ChangeDetectionStrategy.OnPush`. Angular 21 usa decoradores TC39 estándar (**NO usar `experimentalDecorators`** en tsconfig.json):
 
 ```typescript
 @Component({
@@ -47,7 +47,7 @@ export class ExampleComponent {
 Usar funciones `input()` y `output()` en lugar de decoradores `@Input()` y `@Output()`:
 
 ```typescript
-// ✅ Correcto (Angular 20+)
+// ✅ Correcto (Angular 21+)
 isVisible = input(false);
 close = output<void>();
 
@@ -103,10 +103,21 @@ npx ng version     # Verificar versiones instaladas
 
 ## Build System
 
-Angular 20 usa `@angular/build` (no `@angular-devkit/build-angular`). Builders en `angular.json`:
+Angular 21 usa `@angular/build` (no `@angular-devkit/build-angular`). Builders en `angular.json`:
 - `@angular/build:application`
 - `@angular/build:dev-server`
 - `@angular/build:karma`
+
+### Configuración i18n (ngx-translate v17+)
+En `app.config.ts` se usa el nuevo patrón funcional:
+```typescript
+import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
+provideTranslateService(),
+provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
+```
+En componentes, seguir importando `TranslateModule` para acceder al pipe `translate` en templates.
 
 ## Important Files
 

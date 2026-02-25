@@ -115,6 +115,14 @@ Actualizar `CHANGELOG.md` con:
 
 ## Compatibilidad de Versiones
 
+### Angular 21.x
+- TypeScript: >=5.9 <6.0
+- zone.js: ~0.15.x o ~0.16.x
+- RxJS: ~7.8.x
+- Node.js: 20.x o 22.x o 24.x
+- ngx-translate: v17.x (usa `provideTranslateService()` + `provideTranslateHttpLoader()`)
+- **NO usar `experimentalDecorators`** en tsconfig.json (decoradores TC39 estándar)
+
 ### Angular 20.x
 - TypeScript: ~5.8.x
 - zone.js: ~0.15.x

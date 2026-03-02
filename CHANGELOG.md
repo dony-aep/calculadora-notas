@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.1] - 2026-03-02
+
+### Updated
+
+- Angular: 21.1.5 → 21.2.0 (all @angular/* packages).
+- Angular CLI: 21.1.5 → 21.2.0.
+- @angular/build: 21.1.5 → 21.2.0.
+
+### Security
+
+- Clean installation with 0 security vulnerabilities found.
+
 ## [4.5.0] - 2026-02-25
 
 ### Added

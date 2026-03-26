@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.2] - 2026-03-26
+
+### Security
+
+- **CRITICAL**: Fixed XSS vulnerability in i18n attribute bindings ([GHSA-g93w-mfhg-p222](https://github.com/advisories/GHSA-g93w-mfhg-p222)).
+
+### Updated
+
+- Angular: 21.2.0 → 21.2.6 (all @angular/* packages).
+- Angular CLI: 21.2.0 → 21.2.4.
+- @angular/build: 21.2.0 → 21.2.4.
+
+### Notes
+
+- Remaining 7 moderate/high vulnerabilities in `picomatch` are dev-only dependencies (inside @angular/cli) with no fix available upstream yet. These do NOT affect production builds or runtime code.
+
 ## [4.5.1] - 2026-03-02
 
 ### Updated

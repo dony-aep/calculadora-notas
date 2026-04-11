@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.3] - 2026-04-11
+
+### Security
+
+- Resolved open Dependabot alerts in development dependencies by refreshing `package-lock.json` to patched transitive versions.
+- `npm audit` now reports 0 vulnerabilities.
+
+### Updated
+
+- Angular framework packages resolved to 21.2.8.
+- Angular CLI resolved to 21.2.7.
+- `@angular/build` resolved to 21.2.7.
+- Security-relevant transitive updates include:
+  - `vite` 7.3.2
+  - `picomatch` 4.0.4
+  - `hono` 4.12.12
+  - `@hono/node-server` 1.19.13
+  - `lodash` 4.18.1
+
 ## [4.5.2] - 2026-03-26
 
 ### Security

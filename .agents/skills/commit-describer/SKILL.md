@@ -1,6 +1,6 @@
 ---
 name: commit-describer
-description: Generate professional, context-aware commit titles and descriptions based on code changes. Use this skill whenever the user wants to: write a commit message, describe changes for a git commit, generate a commit title and body, summarize staged or unstaged changes, or create a conventional commit. Trigger on phrases like "describe my commit", "write commit message", "generate commit", "what should I write in my commit", "help me commit", "crear mensaje de commit", "describir commit", "mensaje para el commit". Always use this skill when the user mentions git changes, diffs, or asks for commit help — even indirectly.
+description: Generate professional, context-aware commit titles and descriptions based on code changes. Use this skill whenever the user wants to write a commit message, describe changes for a git commit, generate a commit title and body, summarize staged or unstaged changes, or create a conventional commit. Trigger on phrases like "describe my commit", "write commit message", "generate commit", "what should I write in my commit", "help me commit", "crear mensaje de commit", "describir commit", "mensaje para el commit". Always use this skill when the user mentions git changes, diffs, or asks for commit help — even indirectly.
 ---
 
 # Commit Describer

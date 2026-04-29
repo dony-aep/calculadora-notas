@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.4] - 2026-04-29
+
+### Fixed
+
+- Repaired `AppComponent` unit tests by providing test-safe dependencies for routing and translation.
+- Updated the outdated default spec assertion to validate the rendered footer component instead of a non-existent `h1` title.
+
+### Security
+
+- Resolved moderate vulnerabilities detected by `npm audit` through lockfile refresh (`package-lock.json`).
+- `npm audit` now reports 0 vulnerabilities again.
+
 ## [4.5.3] - 2026-04-11
 
 ### Security

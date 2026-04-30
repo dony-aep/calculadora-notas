@@ -25,8 +25,7 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -35,7 +34,6 @@
           },
           "configurations": {
             "production": {
-              "serviceWorker": "ngsw-config.json",
               "budgets": [
                 {
                   "type": "initial",
@@ -86,8 +84,7 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"

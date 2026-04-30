@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.5] - 2026-04-29
+
+### Changed
+
+- Updated app visual assets to the new branding set for web and mobile.
+- Replaced the app-download preview image with the new mobile design preview asset.
+- Restored landing preview image usage for README references (`calnotas-preview.png`).
+- Updated PWA manifest icons to the new naming and asset set (`calnotas-icon-black-*`).
+
+### Added
+
+- New icon pack in `src/assets/icons` with 8 variants:
+  - `calnotas-logo-black.png`, `calnotas-logo-white.png`
+  - `calnotas-favicon-black-32.png`, `calnotas-favicon-white-32.png`
+  - `calnotas-icon-black-192.png`, `calnotas-icon-white-192.png`
+  - `calnotas-icon-black-512.png`, `calnotas-icon-white-512.png`
+
+### Fixed
+
+- Web favicon now updates dynamically at runtime based on browser color scheme (`prefers-color-scheme`), including live changes.
+- Removed delayed theme visual transitions globally so appearance changes render instantly.
+
 ## [4.5.4] - 2026-04-29
 
 ### Fixed

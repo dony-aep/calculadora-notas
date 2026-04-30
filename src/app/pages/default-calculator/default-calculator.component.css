@@ -28,7 +28,6 @@
 .titulo-enlace {
     text-decoration: none;
     color: inherit;
-    transition: color 0.25s;
 }
 
 .titulo-enlace:hover {
@@ -64,7 +63,6 @@
     border: 1px solid var(--color-input-border);
     width: 100%;
     box-sizing: border-box;
-    transition: border-color 0.2s, background-color 0.2s;
     border-radius: 12px;
     background-color: var(--color-input-bg);
     color: var(--color-text);
@@ -156,7 +154,6 @@
     cursor: pointer;
     border: 1px solid var(--color-control-btn-border);
     backdrop-filter: blur(12px);
-    transition: border-color 0.2s, background-color 0.2s;
     background-color: var(--color-control-btn-bg);
     color: var(--color-text);
     display: flex;

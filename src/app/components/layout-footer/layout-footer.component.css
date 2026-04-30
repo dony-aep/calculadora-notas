@@ -26,7 +26,6 @@ footer .dony {
     font-weight: 700;
     text-decoration: none;
     color: var(--color-text);
-    transition: color 0.25s;
 }
 
 footer .dony:hover {
@@ -72,7 +71,6 @@ footer .dony:hover {
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: all 0.25s;
     border-radius: 12px;
 }
 
@@ -118,7 +116,6 @@ footer .dony:hover {
     background-color: var(--color-footer-right-btn-bg);
     color: var(--color-text);
     backdrop-filter: blur(12px);
-    transition: border-color 0.2s;
     padding: 0;
 }
 
@@ -162,7 +159,6 @@ footer .dony:hover {
     color: var(--color-text);
     font-size: 13px;
     font-weight: 500;
-    transition: background-color 0.2s;
 }
 
 .language-option:hover {

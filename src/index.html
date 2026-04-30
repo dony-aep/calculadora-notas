@@ -5,7 +5,7 @@
   <title>Calculadora de Notas</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="assets/icons/calculadora_white_icon.png">
+  <link id="app-favicon" rel="icon" type="image/png" href="assets/icons/calnotas-favicon-black-32.png">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#121212">
   <!-- <link rel="manifest" href="manifest.json"> -->
@@ -20,16 +20,38 @@
   <meta property="og:title" content="Calculadora de Notas - Universidad Americana">
   <meta property="og:description" content="Calcula tus notas de manera flexible con nuestra Calculadora de Notas. Elige entre la calculadora predeterminada o crea tu propia calculadora personalizada con porcentajes ajustables. Diseñada para estudiantes de la Universidad Americana, Colombia.">
   <meta property="og:url" content="https://calnotas.vercel.app/">
-  <meta property="og:image" content="https://calnotas.vercel.app/assets/icons/calculadora_white.png">
+  <meta property="og:image" content="https://calnotas.vercel.app/assets/icons/calnotas-logo-black.png">
   
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@calculadoranotas">
   <meta name="twitter:title" content="Calculadora de Notas - Universidad Americana">
   <meta name="twitter:description" content="Calcula tus notas de manera precisa y personalizada. Utiliza nuestra calculadora predeterminada o crea tu propia calculadora con porcentajes ajustables. Perfecto para estudiantes de la Universidad Americana, Colombia.">
-  <meta name="twitter:image" content="https://calnotas.vercel.app/assets/icons/calculadora_white.png">
+  <meta name="twitter:image" content="https://calnotas.vercel.app/assets/icons/calnotas-logo-black.png">
 
   <meta name="google" content="notranslate" class="material-symbols-outlined">
+  <script>
+    (() => {
+      const favicon = document.getElementById('app-favicon');
+      const colorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      const updateFavicon = (isDark) => {
+        favicon?.setAttribute(
+          'href',
+          isDark
+            ? 'assets/icons/calnotas-favicon-white-32.png'
+            : 'assets/icons/calnotas-favicon-black-32.png'
+        );
+      };
+
+      updateFavicon(colorScheme.matches);
+
+      if (typeof colorScheme.addEventListener === 'function') {
+        colorScheme.addEventListener('change', (event) => updateFavicon(event.matches));
+      } else if (typeof colorScheme.addListener === 'function') {
+        colorScheme.addListener((event) => updateFavicon(event.matches));
+      }
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

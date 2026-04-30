@@ -52,7 +52,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.2s;
     color: var(--color-modal-close-button-text);
     flex-shrink: 0;
 }

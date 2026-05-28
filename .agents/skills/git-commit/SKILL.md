@@ -92,11 +92,13 @@ Analyze the diff to determine:
 
 ### 4. Execute Commit
 
+#### Bash / Zsh (Linux, macOS, Git Bash)
+
 ```bash
 # Single line
 git commit -m "<type>[scope]: <description>"
 
-# Multi-line with body/footer
+# Multi-line with body/footer (heredoc)
 git commit -m "$(cat <<'EOF'
 <type>[scope]: <description>
 
@@ -106,6 +108,47 @@ git commit -m "$(cat <<'EOF'
 EOF
 )"
 ```
+
+#### PowerShell (Windows pwsh)
+
+The bash heredoc above does **not** work in PowerShell. Use one of the following:
+
+```powershell
+# Single line
+git commit -m "<type>[scope]: <description>"
+
+# Multi-line via here-string (preserves real newlines)
+$msg = @"
+<type>[scope]: <description>
+
+<optional body>
+
+<optional footer>
+"@
+git commit -m $msg
+
+# Multi-line via temp file (cross-platform, also works for --amend)
+@"
+<type>[scope]: <description>
+
+<optional body>
+
+<optional footer>
+"@ | Set-Content -Path .git/COMMIT_MSG.txt -Encoding utf8
+git commit -F .git/COMMIT_MSG.txt
+Remove-Item .git/COMMIT_MSG.txt
+```
+
+#### Anti-pattern: multiple `-m` flags
+
+**Avoid** chaining `-m` flags for multi-line bodies. Each `-m` inserts a blank line between sections, breaking list/paragraph formatting:
+
+```bash
+# DO NOT do this for body content — produces extra blank lines per item
+git commit -m "title" -m "- item 1" -m "- item 2" -m "- item 3"
+```
+
+Use a heredoc, here-string, or `-F <file>` instead.
 
 ## Best Practices
 

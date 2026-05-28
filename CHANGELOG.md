@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.7] - 2026-05-28
+
+### Security
+
+- Resolved 6 vulnerabilities reported by `npm audit` (1 high, 5 moderate) by refreshing `package-lock.json` to patched transitive versions:
+  - `tmp` < 0.2.6 (high) — Path Traversal via unsanitized prefix/postfix ([GHSA-ph9p-34f9-6g65](https://github.com/advisories/GHSA-ph9p-34f9-6g65)).
+  - `ws` 8.0.0 - 8.20.0 (moderate) — Uninitialized memory disclosure ([GHSA-58qx-3vcg-4xpx](https://github.com/advisories/GHSA-58qx-3vcg-4xpx)).
+  - `brace-expansion` 5.0.2 - 5.0.5 (moderate) — DoS via large numeric ranges ([GHSA-jxxr-4gwj-5jf2](https://github.com/advisories/GHSA-jxxr-4gwj-5jf2)).
+  - `qs` 6.11.1 - 6.15.1 (moderate) — DoS in `qs.stringify` ([GHSA-q8mj-m7cp-5q26](https://github.com/advisories/GHSA-q8mj-m7cp-5q26)).
+  - `engine.io` and `socket.io-adapter` (moderate) — transitive impact via `ws`.
+- `npm audit` now reports 0 vulnerabilities.
+
 ## [4.5.6] - 2026-04-29
 
 ### Changed

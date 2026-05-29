@@ -33,11 +33,31 @@ export class DefaultCalculatorComponent implements OnInit, OnDestroy {
   readonly porcentajeFormativa3 = 20;
   readonly porcentajeCognitiva3 = 20;
 
+  // Pesos (en decimal) de cada una de las 6 notas, en orden.
+  private readonly pesos = [
+    this.porcentajeFormativa1 / 100,
+    this.porcentajeCognitiva1 / 100,
+    this.porcentajeFormativa2 / 100,
+    this.porcentajeCognitiva2 / 100,
+    this.porcentajeFormativa3 / 100,
+    this.porcentajeCognitiva3 / 100,
+  ];
+
   // Propiedades para los resultados calculados
   definitiva1 = 0;
   definitiva2 = 0;
   definitiva3 = 0;
   definitivaTotal = 0;
+
+  // Nota mínima para aprobar la asignatura
+  readonly notaAprobatoria = 3.0;
+
+  // Propiedades para la predicción de notas
+  prediccionEstado: 'none' | 'guaranteed' | 'possible' | 'impossible' | 'complete' = 'none';
+  notaMinimaRequerida = 0;
+  camposVacios = 0;
+  notaSeguridad: number | null = null;
+  numeroNotaSeguridad = 0;
 
   // Propiedades para los mensajes de feedback
   mensajeAprobacion = '';
@@ -56,6 +76,10 @@ export class DefaultCalculatorComponent implements OnInit, OnDestroy {
     return this.notaFormativa1 !== null || this.notaCognitiva1 !== null ||
            this.notaFormativa2 !== null || this.notaCognitiva2 !== null ||
            this.notaFormativa3 !== null || this.notaCognitiva3 !== null;
+  }
+
+  get mostrarSugerencias(): boolean {
+    return this.prediccionEstado === 'possible';
   }
 
   onNotaChange(value: string, fieldName: 'notaFormativa1' | 'notaCognitiva1' | 'notaFormativa2' | 'notaCognitiva2' | 'notaFormativa3' | 'notaCognitiva3') {
@@ -90,6 +114,100 @@ export class DefaultCalculatorComponent implements OnInit, OnDestroy {
     this.definitivaTotal = this.definitiva1 + this.definitiva2 + this.definitiva3;
 
     this.actualizarMensajeAprobacion();
+    this.calcularPrediccion();
+  }
+
+  calcularPrediccion(): void {
+    this.camposVacios = this.notasArray.filter(nota => nota === null).length;
+    this.notaSeguridad = null;
+    this.numeroNotaSeguridad = 0;
+
+    // Sin notas ingresadas: no se predice nada.
+    if (!this.hasInputs) {
+      this.prediccionEstado = 'none';
+      this.notaMinimaRequerida = 0;
+      return;
+    }
+
+    // Todos los campos llenos: ya hay resultado definitivo.
+    if (this.camposVacios === 0) {
+      this.prediccionEstado = 'complete';
+      this.notaMinimaRequerida = 0;
+      return;
+    }
+
+    // La aprobación ya está asegurada aunque saque 0.0 en las notas restantes.
+    if (this.aprueba(this.calcularTotalConRelleno(0))) {
+      this.prediccionEstado = 'guaranteed';
+      this.notaMinimaRequerida = 0;
+      return;
+    }
+
+    // Ni con 5.0 en las notas restantes se alcanza la nota aprobatoria.
+    if (!this.aprueba(this.calcularTotalConRelleno(5))) {
+      this.prediccionEstado = 'impossible';
+      this.notaMinimaRequerida = 0;
+      return;
+    }
+
+    // Se busca la nota mínima (en pasos de 0.1) que garantiza la aprobación,
+    // reutilizando el mismo redondeo por corte que usa la calculadora.
+    for (let paso = 1; paso <= 50; paso++) {
+      const nota = paso / 10;
+      if (this.aprueba(this.calcularTotalConRelleno(nota))) {
+        this.prediccionEstado = 'possible';
+        this.notaMinimaRequerida = nota;
+        this.calcularNotaSeguridad();
+        return;
+      }
+    }
+  }
+
+  // Nota mínima en el SIGUIENTE campo vacío que asegura aprobar por sí sola,
+  // asumiendo 0.0 en los demás campos vacíos. Solo aporta valor con 2+ vacíos.
+  private calcularNotaSeguridad(): void {
+    if (this.camposVacios < 2) {
+      return;
+    }
+
+    const notas = this.notasArray;
+    const indiceSiguiente = notas.findIndex(nota => nota === null);
+    const base = notas.map(nota => nota ?? 0);
+
+    for (let paso = 1; paso <= 50; paso++) {
+      const nota = paso / 10;
+      const valores = [...base];
+      valores[indiceSiguiente] = nota;
+      if (this.aprueba(this.totalDesdeValores(valores))) {
+        this.notaSeguridad = nota;
+        this.numeroNotaSeguridad = indiceSiguiente + 1;
+        return;
+      }
+    }
+  }
+
+  private get notasArray(): (number | null)[] {
+    return [
+      this.notaFormativa1, this.notaCognitiva1,
+      this.notaFormativa2, this.notaCognitiva2,
+      this.notaFormativa3, this.notaCognitiva3,
+    ];
+  }
+
+  private aprueba(total: number): boolean {
+    return total >= this.notaAprobatoria;
+  }
+
+  private calcularTotalConRelleno(relleno: number): number {
+    return this.totalDesdeValores(this.notasArray.map(nota => nota ?? relleno));
+  }
+
+  // Calcula la nota total replicando el mismo redondeo por corte de calcularNotas().
+  private totalDesdeValores(valores: number[]): number {
+    const d1 = parseFloat((valores[0] * this.pesos[0] + valores[1] * this.pesos[1]).toFixed(2));
+    const d2 = parseFloat((valores[2] * this.pesos[2] + valores[3] * this.pesos[3]).toFixed(2));
+    const d3 = parseFloat((valores[4] * this.pesos[4] + valores[5] * this.pesos[5]).toFixed(2));
+    return d1 + d2 + d3;
   }
 
   actualizarMensajeAprobacion(): void {
@@ -116,7 +234,13 @@ export class DefaultCalculatorComponent implements OnInit, OnDestroy {
     this.notaCognitiva2 = null;
     this.notaFormativa3 = null;
     this.notaCognitiva3 = null;
-    
+
+    this.prediccionEstado = 'none';
+    this.notaMinimaRequerida = 0;
+    this.camposVacios = 0;
+    this.notaSeguridad = null;
+    this.numeroNotaSeguridad = 0;
+
     this.calcularNotas();
 
     this.showResetFeedback = true;

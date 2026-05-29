@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.6.0] - 2026-05-28
+
+### Added
+
+- Grade prediction system for the default calculator: a panel appears automatically as grades are entered, showing the minimum uniform grade needed across all remaining empty fields to reach the passing score (3.0).
+- Per-field prediction hint (`Sugerido: ≥ X.X` / `Suggested: ≥ X.X`) displayed under each empty input as a quick inline reference.
+- Safety grade hint displayed contextually under the next relevant empty field when that single grade alone can guarantee a pass (assuming 0.0 in all subsequent fields).
+- Grade prediction documentation added to the Help modal under the default calculator section, covering the prediction panel, per-field hints, and the safety grade hint.
+- Global custom scrollbar styles aligned with the design system: 6px thumb using `--color-border`, `--color-primary` on hover, and transparent track; applies to the entire app.
+
+### Changed
+
+- Removed `border-left` accent from example blocks in the Help modal for a cleaner layout; `border-radius` updated to uniform `10px`.
+- Safety grade prediction replicates the exact cut-level rounding (`toFixed(2)`) used by the main grade calculation to guarantee full consistency.
+
 ## [4.5.7] - 2026-05-28
 
 ### Security

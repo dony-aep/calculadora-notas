@@ -34,7 +34,13 @@
         "CUT_2": "Cut 2",
         "CUT_3": "Cut 3",
         "BACK_BTN_TOOLTIP": "Back",
-        "RESET_BTN_TOOLTIP": "Reset"
+        "RESET_BTN_TOOLTIP": "Reset",
+        "PREDICTION_TITLE": "Prediction to pass",
+        "PREDICTION_NEEDED": "You need at least {{grade}} in each of the {{count}} remaining grades to pass.",
+        "PREDICTION_GUARANTEED": "You've already secured a pass! Any grade on the remaining ones keeps you passing.",
+        "PREDICTION_IMPOSSIBLE": "Even with a 5.0 on the remaining grades, you can't reach 3.0 to pass.",
+        "PREDICTION_FIELD_HINT": "Suggested: ≥ {{grade}}",
+        "PREDICTION_SECURE": "With ≥ {{grade}}, you secure a pass."
     },
     "CUSTOM_CALCULATOR": {
         "TITLE": "Custom Grade Calculator",
@@ -84,6 +90,11 @@
         "EXAMPLE_TOTAL": "Total Final Grade: 1.13 + 1.13 + 1.5 = 3.76",
         "REMINDER": "Remember that the total final grade must be greater than or equal to 3.0 to pass!",
         "NOTE_LABEL": "Note:",
+        "PREDICTION_LABEL": "Grade Prediction:",
+        "PREDICTION_DESC": "As you enter grades, a prediction panel appears automatically.",
+        "PREDICTION_ITEM_1": "It shows the minimum uniform grade needed in the remaining fields to pass.",
+        "PREDICTION_ITEM_2": "Under each empty field, \"Suggested: ≥ X.X\" appears as a quick reference.",
+        "PREDICTION_ITEM_3": "If the next empty field alone can secure a pass (assuming 0.0 for the rest), the hint \"With ≥ X.X, you secure a pass.\" appears right below it.",
         "NOTE_DESC_DEFAULT": "The predefined percentages are based on the evaluation system of Universidad Americana - Colombia.",
         "UPDATE_LABEL": "2025 Update:",
         "UPDATE_DESC": "The percentages have been updated according to the new evaluation system. Now Grades 1-4 have a weight of 15% each, and Grades 5-6 have a weight of 20% each.",

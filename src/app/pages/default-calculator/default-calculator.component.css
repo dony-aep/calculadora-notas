@@ -136,6 +136,101 @@
     height: 24px;
 }
 
+/* === Pistas de predicción por campo === */
+.prediccion-hint {
+    margin: 6px 2px 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.2px;
+    animation: prediccion-fade 0.3s ease;
+}
+
+/* === Panel de predicción === */
+.prediccion-panel {
+    text-align: center;
+    margin: 16px 0 8px;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.06), rgba(var(--color-primary-rgb), 0.02));
+    animation: prediccion-fade 0.35s ease;
+}
+
+.prediccion-titulo {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.prediccion-nota {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 8px 0 4px;
+    line-height: 1;
+}
+
+.prediccion-detalle {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin: 4px 0 0;
+    line-height: 1.5;
+}
+
+.prediccion-seguridad {
+    margin: 3px 2px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    line-height: 1.4;
+    animation: prediccion-fade 0.3s ease;
+}
+
+/* Variantes por estado */
+.prediccion-panel.is-possible {
+    border-color: rgba(var(--color-primary-rgb), 0.15);
+}
+
+.prediccion-panel.is-possible .prediccion-nota {
+    color: var(--color-text);
+}
+
+.prediccion-panel.is-guaranteed {
+    border-color: rgba(var(--color-secondary-rgb), 0.25);
+    background: linear-gradient(135deg, rgba(var(--color-secondary-rgb), 0.08), rgba(var(--color-secondary-rgb), 0.02));
+}
+
+.prediccion-panel.is-guaranteed .prediccion-detalle {
+    color: var(--color-secondary);
+    font-weight: 600;
+}
+
+.prediccion-panel.is-impossible {
+    border-color: rgba(var(--color-danger-rgb), 0.25);
+    background: linear-gradient(135deg, rgba(var(--color-danger-rgb), 0.08), rgba(var(--color-danger-rgb), 0.02));
+}
+
+.prediccion-panel.is-impossible .prediccion-detalle {
+    color: var(--color-danger);
+    font-weight: 600;
+}
+
+@keyframes prediccion-fade {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .buttons {
     position: fixed;
     top: 20px;

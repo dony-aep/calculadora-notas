@@ -34,7 +34,13 @@
         "CUT_2": "Corte 2",
         "CUT_3": "Corte 3",
         "BACK_BTN_TOOLTIP": "Volver",
-        "RESET_BTN_TOOLTIP": "Restablecer"
+        "RESET_BTN_TOOLTIP": "Restablecer",
+        "PREDICTION_TITLE": "Predicción para aprobar",
+        "PREDICTION_NEEDED": "Necesitas al menos {{grade}} en cada una de las {{count}} notas restantes para aprobar.",
+        "PREDICTION_GUARANTEED": "¡Ya aseguraste la aprobación! Cualquier nota en las restantes te mantiene aprobado.",
+        "PREDICTION_IMPOSSIBLE": "Aunque saques 5.0 en las notas restantes, no alcanzas el 3.0 para aprobar.",
+        "PREDICTION_FIELD_HINT": "Sugerido: ≥ {{grade}}",
+        "PREDICTION_SECURE": "Con ≥ {{grade}} aseguras aprobar."
     },
     "CUSTOM_CALCULATOR": {
         "TITLE": "Calculadora de Notas Personalizada",
@@ -84,6 +90,11 @@
         "EXAMPLE_TOTAL": "Nota Definitiva Total: 1.13 + 1.13 + 1.5 = 3.76",
         "REMINDER": "¡Recuerda que la nota final total debe ser mayor o igual a 3.0 para aprobar!",
         "NOTE_LABEL": "Nota:",
+        "PREDICTION_LABEL": "Predicción de notas:",
+        "PREDICTION_DESC": "Al ingresar notas, aparece automáticamente un panel de predicción.",
+        "PREDICTION_ITEM_1": "Muestra la nota mínima uniforme que necesitas en los campos restantes para aprobar.",
+        "PREDICTION_ITEM_2": "Bajo cada campo vacío aparece \"Sugerido: ≥ X.X\" como referencia rápida.",
+        "PREDICTION_ITEM_3": "Si con solo el siguiente campo puedes asegurar la aprobación (suponiendo 0.0 en el resto), verás la pista \"Con ≥ X.X aseguras aprobar.\" justo bajo ese campo.",
         "NOTE_DESC_DEFAULT": "Los porcentajes predefinidos se basan en el sistema de evaluación de la Universidad Americana - Colombia.",
         "UPDATE_LABEL": "Actualización 2025:",
         "UPDATE_DESC": "Los porcentajes han sido actualizados según el nuevo sistema de evaluación. Ahora las Notas 1-4 tienen un peso del 15% cada una, y las Notas 5-6 tienen un peso del 20% cada una.",

@@ -1,0 +1,46 @@
+@if (isVisible()) {
+<div class="modal" (click)="onBackdropClick($event)">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="header-title">
+                <div class="header-title-row">
+                    <span class="header-icon material-symbols-outlined notranslate">auto_awesome</span>
+                    <h2>{{ 'WHATS_NEW.TITLE' | translate }}</h2>
+                    <span class="version-badge notranslate">v{{ version }}</span>
+                </div>
+                <span class="update-date">{{ 'WHATS_NEW.UPDATED_ON' | translate }} {{ updatedAt() }}</span>
+            </div>
+            <span class="close-button" (click)="onClose()">
+                <span class="material-symbols-outlined notranslate">close</span>
+            </span>
+        </div>
+
+        <div class="modal-body">
+            <section class="whats-new-section">
+                <div class="section-header">
+                    <span class="section-icon material-symbols-outlined notranslate">new_releases</span>
+                    <h3>{{ 'WHATS_NEW.NEW_TITLE' | translate }}</h3>
+                </div>
+                <ul class="feature-list">
+                    @for (item of newFeatures; track item) {
+                    <li class="feature-item" [style.animation-delay.ms]="$index * 70">
+                        <span class="feature-icon material-symbols-outlined notranslate">check_circle</span>
+                        <div class="feature-text">
+                            <strong>{{ 'WHATS_NEW.NEW_' + item + '_TITLE' | translate }}</strong>
+                            <span>{{ 'WHATS_NEW.NEW_' + item + '_DESC' | translate }}</span>
+                        </div>
+                    </li>
+                    }
+                </ul>
+            </section>
+        </div>
+
+        <div class="modal-footer">
+            <a class="changelog-link" [href]="changelogUrl" target="_blank" rel="noopener">
+                <span class="material-symbols-outlined notranslate">history</span>
+                {{ 'WHATS_NEW.VIEW_CHANGELOG' | translate }}
+            </a>
+        </div>
+    </div>
+</div>
+}

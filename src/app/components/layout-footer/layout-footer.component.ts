@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ElementRef, ChangeDetectionStrategy, inje
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { HelpModalComponent } from '../help-modal/help-modal.component';
+import { WhatsNewModalComponent, WHATS_NEW_VERSION } from '../whats-new-modal/whats-new-modal.component';
 import { ThemeService } from '../../services/theme.service';
 import { Subscription, Observable, filter } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
@@ -10,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-layout-footer',
-  imports: [CommonModule, RouterLink, HelpModalComponent, TranslateModule],
+  imports: [CommonModule, RouterLink, HelpModalComponent, WhatsNewModalComponent, TranslateModule],
   templateUrl: './layout-footer.component.html',
   styleUrl: './layout-footer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,6 +28,7 @@ export class LayoutFooterComponent implements OnInit, OnDestroy {
 
   isLanguageDropdownVisible = false;
   isHelpModalVisible = false;
+  isWhatsNewModalVisible = false;
   isAppDownloadRoute = false;
   
   currentTheme: 'light' | 'dark' = 'light';
@@ -65,7 +67,12 @@ export class LayoutFooterComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Auto-show the "What's New" modal once per version, on entry.
+    if (localStorage.getItem('whatsNewSeenVersion') !== WHATS_NEW_VERSION) {
+      this.isWhatsNewModalVisible = true;
+    }
+  }
 
   ngOnDestroy(): void {
     if (this.themeSubscription) {
@@ -85,6 +92,15 @@ export class LayoutFooterComponent implements OnInit, OnDestroy {
 
   closeHelpModal() {
     this.isHelpModalVisible = false;
+  }
+
+  openWhatsNewModal() {
+    this.isWhatsNewModalVisible = true;
+  }
+
+  closeWhatsNewModal() {
+    this.isWhatsNewModalVisible = false;
+    localStorage.setItem('whatsNewSeenVersion', WHATS_NEW_VERSION);
   }
 
   toggleTheme() {

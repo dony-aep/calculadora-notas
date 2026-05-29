@@ -43,6 +43,9 @@
                 <span class="material-symbols-outlined notranslate">android</span>
             </button>
         }
+        <button id="whats-new-btn" class="control-btn" (click)="openWhatsNewModal()" [title]="'FOOTER.WHATS_NEW' | translate">
+            <span class="material-symbols-outlined notranslate">auto_awesome</span>
+        </button>
         <button id="ayuda-btn" class="control-btn" (click)="openHelpModal()" [title]="'FOOTER.HELP' | translate">
             <span class="material-symbols-outlined notranslate">help</span>
         </button>
@@ -56,4 +59,6 @@
     }
 </footer>
 
-<app-help-modal [isVisible]="isHelpModalVisible" (close)="closeHelpModal()"></app-help-modal> 
+<app-help-modal [isVisible]="isHelpModalVisible" (close)="closeHelpModal()"></app-help-modal>
+
+<app-whats-new-modal [isVisible]="isWhatsNewModalVisible" (close)="closeWhatsNewModal()"></app-whats-new-modal> 

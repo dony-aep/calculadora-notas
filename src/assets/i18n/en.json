@@ -8,6 +8,7 @@
         "CHANGE_THEME": "Toggle theme",
         "CHANGE_LANGUAGE": "Change language",
         "HELP": "Help",
+        "WHATS_NEW": "What's new",
         "DOWNLOAD_APP": "Download app",
         "MADE_BY": "Made by"
     },
@@ -107,5 +108,19 @@
         "CUSTOM_CALC_ITEM_3": "After entering your custom fields, the results will be calculated automatically in real time.",
         "CUSTOM_CALC_ITEM_4": "Enter the minimum passing grade according to your academic system.",
         "NOTE_DESC_CUSTOM": "You can customize the percentages according to the evaluation system you use."
+    },
+    "WHATS_NEW": {
+        "TITLE": "What's New",
+        "NEW_TITLE": "What's new",
+        "UPDATED_ON": "Updated on",
+        "VIEW_CHANGELOG": "View changelog",
+        "NEW_1_TITLE": "Prediction to pass",
+        "NEW_1_DESC": "A panel automatically calculates the minimum grade you need on the remaining grades to reach 3.0.",
+        "NEW_2_TITLE": "Per-field suggestion",
+        "NEW_2_DESC": "Under each empty field you'll see \"Suggested: ≥ X.X\" as a quick reference.",
+        "NEW_3_TITLE": "Safety grade hint",
+        "NEW_3_DESC": "When a single grade is enough to secure a pass, a hint appears right below that field.",
+        "NEW_4_TITLE": "More polished design",
+        "NEW_4_DESC": "Custom scrollbar and visual refinements in the help modal."
     }
 } 

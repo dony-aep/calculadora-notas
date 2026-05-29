@@ -8,6 +8,7 @@
         "CHANGE_THEME": "Cambiar tema",
         "CHANGE_LANGUAGE": "Cambiar idioma",
         "HELP": "Ayuda",
+        "WHATS_NEW": "Novedades",
         "DOWNLOAD_APP": "Descargar aplicación",
         "MADE_BY": "Hecho por"
     },
@@ -107,5 +108,19 @@
         "CUSTOM_CALC_ITEM_3": "Después de ingresar tus campos personalizados, los resultados se calcularán automáticamente en tiempo real.",
         "CUSTOM_CALC_ITEM_4": "Ingresa la nota mínima para aprobar según el sistema académico donde estudies.",
         "NOTE_DESC_CUSTOM": "Puedes personalizar los porcentajes según el sistema de evaluación que utilices."
+    },
+    "WHATS_NEW": {
+        "TITLE": "Novedades",
+        "NEW_TITLE": "Lo nuevo",
+        "UPDATED_ON": "Actualizado el",
+        "VIEW_CHANGELOG": "Ver registro de cambios",
+        "NEW_1_TITLE": "Predicción para aprobar",
+        "NEW_1_DESC": "Un panel calcula automáticamente la nota mínima que necesitas en las notas restantes para alcanzar el 3.0.",
+        "NEW_2_TITLE": "Sugerencia por campo",
+        "NEW_2_DESC": "Debajo de cada campo vacío verás \"Sugerido: ≥ X.X\" como referencia rápida.",
+        "NEW_3_TITLE": "Nota de seguridad",
+        "NEW_3_DESC": "Cuando una sola nota basta para asegurar la aprobación, se muestra una pista justo debajo del campo.",
+        "NEW_4_TITLE": "Diseño más pulido",
+        "NEW_4_DESC": "Barra de desplazamiento personalizada y mejoras visuales en la ventana de ayuda."
     }
 } 

@@ -9,6 +9,9 @@
     "test": "ng test"
   },
   "private": true,
+  "overrides": {
+    "esbuild": ">=0.28.1"
+  },
   "dependencies": {
     "@angular/animations": "^21.2.0",
     "@angular/common": "^21.2.0",

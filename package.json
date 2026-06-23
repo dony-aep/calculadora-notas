@@ -10,7 +10,17 @@
   },
   "private": true,
   "overrides": {
-    "esbuild": ">=0.28.1"
+    "esbuild": ">=0.28.1",
+    "ws": ">=8.21.0 <9",
+    "@babel/core": ">=7.29.6 <8",
+    "node-gyp": {
+      "undici": ">=6.27.0 <7"
+    },
+    "@angular/build": {
+      "undici": ">=7.28.0 <8",
+      "vite": ">=7.3.5 <8",
+      "piscina": ">=5.2.0 <6"
+    }
   },
   "dependencies": {
     "@angular/animations": "^21.2.0",

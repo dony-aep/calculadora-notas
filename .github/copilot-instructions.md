@@ -4,7 +4,11 @@
 
 PWA de calculadora de notas académicas para la Universidad Americana (Colombia). Permite calcular notas con el sistema de evaluación 2025 (Cortes 1-2: 15% formativa + 15% cognitiva; Corte 3: 20% + 20%) y crear calculadoras personalizadas.
 
-**Stack**: Angular 21 standalone components, ngx-translate (i18n), PWA con Service Worker, desplegado en Vercel.
+**Stack**: Angular 21 standalone components, ngx-translate (i18n), desplegado en Vercel.
+
+> **No hay PWA ni Service Worker.** La integración del web manifest se eliminó en la v4.5.6
+> (ver `CHANGELOG.md`). No existen `ngsw-config.json` ni `src/manifest.webmanifest`, y
+> `app.config.ts` no registra `provideServiceWorker`. No los reintroduzcas sin que se pida.
 
 ## Architecture
 
@@ -16,13 +20,14 @@ src/app/
 │   ├── custom-calculator/       # Calculadora personalizable (localStorage)
 │   └── app-download/            # Página de descarga APK
 ├── components/      # Componentes reutilizables
-│   ├── layout-footer/           # Footer global con controles (tema, idioma, ayuda)
-│   └── help-modal/              # Modal de ayuda contextual
+│   ├── layout-footer/           # Footer global con controles (tema, idioma, ayuda, novedades)
+│   ├── help-modal/              # Modal de ayuda contextual
+│   └── whats-new-modal/         # Modal de novedades por versión (auto-abre en release nueva)
 ├── services/        # Servicios singleton
 │   ├── theme.service.ts         # Dark/light mode (localStorage + system preference)
 │   ├── translation.service.ts   # Wrapper ngx-translate (es/en)
 │   └── footer.service.ts        # Control visibilidad "Made by" en footer
-└── app.config.ts    # Providers (router, http, translate, service-worker)
+└── app.config.ts    # Providers (router, http, translate)
 ```
 
 ## Key Patterns
@@ -91,14 +96,31 @@ Usar `@if`, `@for`, `@switch` en lugar de directivas estructurales:
 - Tema: `localStorage.getItem('theme')`
 - Idioma: `localStorage.getItem('language')`
 - Calculadora personalizada: `localStorage.getItem('customCalculator')`
+- Última versión de novedades vista: `localStorage.getItem('whatsNewSeenVersion')`
+
+### Modal de Novedades (release ritual)
+`layout-footer` abre el modal automáticamente cuando `whatsNewSeenVersion` no coincide con
+`WHATS_NEW_VERSION`. Al anunciar una versión hay que tocar **tres** sitios o el modal queda
+inconsistente:
+1. `CHANGELOG.md`: nueva sección `## [X.Y.Z] - YYYY-MM-DD`.
+2. `whats-new-modal.component.ts`: `WHATS_NEW_VERSION`, `WHATS_NEW_DATE` (misma fecha que el
+   changelog) y la lista `newFeatures`.
+3. `es.json` / `en.json`: claves `WHATS_NEW.NEW_<n>_TITLE` y `WHATS_NEW.NEW_<n>_DESC` por cada
+   número de esa lista.
+
+La versión del proyecto vive en `CHANGELOG.md`, **no** en `package.json` (ahí se queda en
+`0.0.0` a propósito).
 
 ## Development Commands
 
 ```bash
 npm start          # Dev server en http://localhost:4200
-npm run build      # Build producción (incluye PWA)
-npm test           # Tests con Karma
+npm run build      # Build producción → dist/calculadora-notas-angular
+npm test           # Tests con Karma (modo watch, interactivo)
 npx ng version     # Verificar versiones instaladas
+
+# Verificación no interactiva (usar esta al comprobar cambios; npm test se queda colgado)
+npx ng test --watch=false --browsers=ChromeHeadless
 ```
 
 ## Build System
@@ -124,11 +146,10 @@ En componentes, seguir importando `TranslateModule` para acceder al pipe `transl
 | Archivo | Propósito |
 |---------|-----------|
 | `angular.json` | Configuración build/serve, builders |
-| `ngsw-config.json` | Estrategia cache PWA |
-| `src/manifest.webmanifest` | Metadata PWA |
 | `src/assets/styles/variables.css` | Variables CSS (temas) |
 | `src/assets/i18n/*.json` | Traducciones |
-| `CHANGELOG.md` | Historial de cambios por versión |
+| `CHANGELOG.md` | Historial de cambios y **versión real** del proyecto |
+| `CLAUDE.md` | Instrucciones equivalentes para Claude Code |
 
 ## Code Conventions
 
@@ -144,8 +165,11 @@ En componentes, seguir importando `TranslateModule` para acceder al pipe `transl
 ## Testing Checklist
 
 Antes de commit verificar:
-1. `ng serve` funciona sin errores
-2. Cambio de tema funciona
-3. Cambio de idioma actualiza toda la UI
-4. Cálculos producen resultados correctos
-5. PWA: `npm run build` genera service worker
+1. `npm run build` termina sin errores
+2. `npx ng test --watch=false --browsers=ChromeHeadless` pasa en verde
+3. Cambio de tema funciona
+4. Cambio de idioma actualiza toda la UI
+5. Cálculos producen resultados correctos (comprobar a mano un caso con los % UA 2025)
+
+Solo existe un archivo de test (`src/app/app.component.spec.ts`, 3 especificaciones): no asumas
+que la lógica de cálculo está cubierta.

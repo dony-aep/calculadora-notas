@@ -62,6 +62,7 @@ Para trabajo visual, la skill `frontend-design`. Para commits, la skill `git-com
 | `theme` | `'light'` \| `'dark'` |
 | `language` | `'es'` \| `'en'` |
 | `customCalculator` | configuración de la calculadora personalizada |
+| `whatsNewSeenVersion` | última versión de novedades vista; si no coincide con `WHATS_NEW_VERSION`, `layout-footer` abre el modal solo |
 
 ## Ritual de release
 
@@ -81,8 +82,9 @@ Al anunciar una versión nueva hay que tocar tres cosas o el modal de novedades 
 - **No hay PWA ni service worker.** Se eliminaron en v4.5.6. No existen `ngsw-config.json` ni
   `manifest.webmanifest`, y `app.config.ts` no registra `provideServiceWorker`. No los añadas
   "de vuelta" sin que se pida.
-- **`.github/copilot-instructions.md` está parcialmente desactualizado** (sigue describiendo el
-  PWA y omite `whats-new-modal`). Si hay contradicción, este archivo manda.
+- **`.github/copilot-instructions.md` cubre el mismo terreno para Copilot** y está sincronizado
+  con este archivo. Si cambias una convención aquí, actualízalo allí también; si en algún momento
+  se contradicen, este archivo manda.
 - **Vulnerabilidades transitivas se arreglan con `overrides` en `package.json`**, siguiendo el
   patrón ya presente. Nunca uses `npm audit fix --force`: propone degradar `@angular/cli`.
 - La validación de notas inválidas usa `alert()` con texto traducido (`src/app/pages/*`). Es

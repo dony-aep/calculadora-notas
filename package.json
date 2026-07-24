@@ -16,6 +16,9 @@
     "node-gyp": {
       "undici": ">=6.27.0 <7"
     },
+    "@modelcontextprotocol/sdk": {
+      "@hono/node-server": ">=2.0.5 <3"
+    },
     "@angular/build": {
       "undici": ">=7.28.0 <8",
       "vite": ">=7.3.5 <8",

@@ -28,6 +28,9 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+# AI agents (las skills sí se versionan; los ajustes locales no)
+.claude/settings.local.json
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/

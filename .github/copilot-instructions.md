@@ -100,16 +100,17 @@ Usar `@if`, `@for`, `@switch` en lugar de directivas estructurales:
 
 ### Modal de Novedades (release ritual)
 `layout-footer` abre el modal automáticamente cuando `whatsNewSeenVersion` no coincide con
-`WHATS_NEW_VERSION`. Al anunciar una versión hay que tocar **tres** sitios o el modal queda
+`WHATS_NEW_VERSION`. Al anunciar una versión hay que tocar **cuatro** sitios o el modal queda
 inconsistente:
 1. `CHANGELOG.md`: nueva sección `## [X.Y.Z] - YYYY-MM-DD`.
 2. `whats-new-modal.component.ts`: `WHATS_NEW_VERSION`, `WHATS_NEW_DATE` (misma fecha que el
    changelog) y la lista `newFeatures`.
 3. `es.json` / `en.json`: claves `WHATS_NEW.NEW_<n>_TITLE` y `WHATS_NEW.NEW_<n>_DESC` por cada
    número de esa lista.
+4. `package.json`: campo `version` con la misma `X.Y.Z` del changelog.
 
-La versión del proyecto vive en `CHANGELOG.md`, **no** en `package.json` (ahí se queda en
-`0.0.0` a propósito).
+La versión canónica del proyecto vive en `CHANGELOG.md` y `package.json` debe reflejarla.
+Si difieren, manda el changelog.
 
 ## Development Commands
 

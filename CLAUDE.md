@@ -66,16 +66,17 @@ Para trabajo visual, la skill `frontend-design`. Para commits, la skill `git-com
 
 ## Ritual de release
 
-La versión del proyecto vive en `CHANGELOG.md`, **no en `package.json`** (ahí sigue en `0.0.0`
-a propósito — no lo "arregles"). El changelog sigue Keep a Changelog + SemVer.
+La versión canónica del proyecto vive en `CHANGELOG.md` (Keep a Changelog + SemVer), y
+`package.json` debe reflejar esa misma versión. Si difieren, manda el changelog.
 
-Al anunciar una versión nueva hay que tocar tres cosas o el modal de novedades queda inconsistente:
+Al anunciar una versión nueva hay que tocar cuatro cosas o el modal de novedades queda inconsistente:
 
 1. `CHANGELOG.md`: nueva sección `## [X.Y.Z] - YYYY-MM-DD`.
 2. `whats-new-modal.component.ts`: `WHATS_NEW_VERSION` y `WHATS_NEW_DATE` (misma fecha que el
    changelog) y la lista `newFeatures` con los ítems a mostrar.
 3. `es.json` / `en.json`: claves `WHATS_NEW.NEW_<n>_TITLE` y `WHATS_NEW.NEW_<n>_DESC` para cada
    número de esa lista.
+4. `package.json`: campo `version` con la misma `X.Y.Z` del changelog.
 
 ## Trampas conocidas
 

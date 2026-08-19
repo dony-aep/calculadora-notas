@@ -32,8 +32,10 @@
           "beginsPattern": {
             "regexp": "(.*?)"
           },
+          // Cierra en el resumen de Vitest, no en "bundle generation complete":
+          // esa línea la imprime la fase de build, antes de que los tests corran.
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": "Duration +[0-9]"
           }
         }
       }

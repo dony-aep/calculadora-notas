@@ -9,31 +9,16 @@
     "test": "ng test"
   },
   "private": true,
-  "overrides": {
-    "esbuild": ">=0.28.1",
-    "ws": ">=8.21.0 <9",
-    "@babel/core": ">=7.29.6 <8",
-    "node-gyp": {
-      "undici": ">=6.27.0 <7"
-    },
-    "@modelcontextprotocol/sdk": {
-      "@hono/node-server": ">=2.0.5 <3"
-    },
-    "@angular/build": {
-      "undici": ">=7.29.0 <8",
-      "vite": ">=7.3.5 <8",
-      "piscina": ">=5.2.0 <6"
-    }
+  "engines": {
+    "node": "24.x"
   },
   "dependencies": {
-    "@angular/animations": "^21.2.19",
-    "@angular/common": "^21.2.19",
-    "@angular/compiler": "^21.2.19",
-    "@angular/core": "^21.2.19",
-    "@angular/forms": "^21.2.19",
-    "@angular/platform-browser": "^21.2.19",
-    "@angular/platform-browser-dynamic": "^21.2.19",
-    "@angular/router": "^21.2.19",
+    "@angular/common": "^22.1.3",
+    "@angular/compiler": "^22.1.3",
+    "@angular/core": "^22.1.3",
+    "@angular/forms": "^22.1.3",
+    "@angular/platform-browser": "^22.1.3",
+    "@angular/router": "^22.1.3",
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "@vercel/analytics": "^1.5.0",
@@ -43,16 +28,17 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular/build": "^21.2.0",
-    "@angular/cli": "^21.2.0",
-    "@angular/compiler-cli": "^21.2.19",
+    "@angular/build": "^22.1.5",
+    "@angular/cli": "^22.1.5",
+    "@angular/compiler-cli": "^22.1.3",
     "@types/jasmine": "~5.1.0",
+    "istanbul-lib-instrument": "^6.0.3",
     "jasmine-core": "~5.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.9.3"
+    "typescript": "~6.0.3"
   }
 }

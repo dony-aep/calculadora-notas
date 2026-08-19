@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Migrated to Angular 22 (`@angular/core` 22.1.x, `@angular/cli` 22.1.x) and TypeScript 6.0. No application code changed: the only automatic migration that touched `src/` added `withXhr()` to preserve the old HttpClient backend, and it was reverted so the app adopts Fetch, the v22 default.
+- Test toolchain moved from Karma/Jasmine to Vitest on jsdom (`@angular/build:unit-test`). Added `src/test-setup.ts` with a `window.matchMedia` stub, which jsdom does not implement and `ThemeService` reads in its constructor. The verification command is now `ng test --watch=false`; Karma's `--browsers` flag no longer exists.
+- Pinned `engines.node` to `24.x`: the v22 CLI requires Node >= 22.22.3 and `"22.x"` resolves on Vercel to an earlier patch, breaking the build.
+
+### Removed
+
+- Removed the `zone.js` polyfill. Angular has run this app zoneless since v21 — `bootstrapApplication` injects the zoneless provider unless `provideZoneChangeDetection` is used, and this project never used it — so the polyfill was dead weight. Initial bundle: 406.77 kB → 371.41 kB raw (102.43 → 90.97 kB transferred).
+- Removed `@angular/animations` and `@angular/platform-browser-dynamic`, deprecated in v22 and not imported anywhere in `src/`.
+- Removed the entire `overrides` block. All seven security pins are now satisfied naturally by the v22 CLI dependency tree (`npm audit` still reports 0 vulnerabilities), and `vite: ">=7.3.5 <8"` was actively holding back the vite 8 the new build system requires.
+
 ## [4.6.0] - 2026-05-28
 
 ### Added

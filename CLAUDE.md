@@ -1,6 +1,6 @@
 # CalNotas — Calculadora de Notas (Angular)
 
-PWA-less SPA en Angular 21 (standalone) para calcular notas académicas de la Universidad
+PWA-less SPA en Angular 22 (standalone) para calcular notas académicas de la Universidad
 Americana (Colombia). Desplegada en Vercel: https://calnotas.vercel.app/
 
 Sistema de evaluación UA 2025 (lógica de negocio central, no deducible del código sin leerlo):
@@ -13,12 +13,13 @@ nota aprobatoria **3.0**.
 npm start                                          # dev server → http://localhost:4200
 npm run build                                      # build de producción → dist/
 npm test                                           # tests en modo watch (interactivo)
-npx ng test --watch=false --browsers=ChromeHeadless # tests en CI / verificación no interactiva
+npx ng test --watch=false                          # tests en CI / verificación no interactiva
 npm audit                                          # debe reportar 0 vulnerabilidades
 ```
 
-Usa siempre la variante `--watch=false --browsers=ChromeHeadless` al verificar cambios: `npm test`
-a secas se queda colgado esperando.
+Usa siempre la variante `--watch=false` al verificar cambios: `npm test` a secas se queda colgado
+esperando. Los tests corren con **Vitest** sobre jsdom (`@angular/build:unit-test`); la bandera
+`--browsers` de Karma ya no existe.
 
 ## Convenciones de código
 
@@ -61,7 +62,7 @@ Para trabajo visual, la skill `frontend-design`. Para commits, la skill `git-com
 |---|---|
 | `theme` | `'light'` \| `'dark'` |
 | `language` | `'es'` \| `'en'` |
-| `customCalculator` | configuración de la calculadora personalizada |
+| `calculadoraPersonalizada` | configuración de la calculadora personalizada |
 | `whatsNewSeenVersion` | última versión de novedades vista; si no coincide con `WHATS_NEW_VERSION`, `layout-footer` abre el modal solo |
 
 ## Ritual de release
@@ -86,16 +87,29 @@ Al anunciar una versión nueva hay que tocar cuatro cosas o el modal de novedade
 - **`.github/copilot-instructions.md` cubre el mismo terreno para Copilot** y está sincronizado
   con este archivo. Si cambias una convención aquí, actualízalo allí también; si en algún momento
   se contradicen, este archivo manda.
-- **Vulnerabilidades transitivas se arreglan con `overrides` en `package.json`**, siguiendo el
-  patrón ya presente. Nunca uses `npm audit fix --force`: propone degradar `@angular/cli`.
+- **`package.json` ya no tiene bloque `overrides`.** Los siete pines de seguridad que había se
+  volvieron obsoletos al subir a v22 (el árbol del CLI resuelve solo las versiones parchadas) y uno
+  de ellos, `vite: ">=7.3.5 <8"`, frenaba activamente el vite 8 que pide el build system. Si vuelve
+  a aparecer una vulnerabilidad transitiva, comprueba primero si el CLI ya declara la versión
+  parchada antes de añadir un override. Nunca uses `npm audit fix --force`: propone degradar
+  `@angular/cli`.
+- **No hay `zone.js`.** Angular corre zoneless por defecto desde v21 (`bootstrapApplication`
+  inyecta el proveedor solo), así que el polyfill se eliminó en la migración a v22. No añadas
+  `provideZonelessChangeDetection()`: es el default y no haría nada. Lo que sí importa es que todo
+  cambio de estado llegue por una vía que notifique al scheduler: escritura de signal,
+  `markForCheck()`, pipe `async`/`translate`, listener de template o `host`, o navegación del router.
+- **`engines.node` está fijado a `24.x`.** El CLI de v22 exige Node >= 22.22.3 y `"22.x"` resuelve
+  en Vercel a un parche anterior, lo que rompe el build.
 - La validación de notas inválidas usa `alert()` con texto traducido (`src/app/pages/*`). Es
   intencional; no lo cambies por un toast sin pedirlo.
 - Solo existe un archivo de test: `src/app/app.component.spec.ts` (3 especificaciones). No
   asumas cobertura de la lógica de cálculo.
+- **`src/test-setup.ts` existe porque jsdom no implementa `window.matchMedia`**, que `ThemeService`
+  consulta en su constructor. Sin ese stub no arranca ningún spec que monte el árbol de la app.
 
 ## Antes de dar algo por terminado
 
 1. `npm run build` → sin errores.
-2. `npx ng test --watch=false --browsers=ChromeHeadless` → todo en verde.
+2. `npx ng test --watch=false` → todo en verde.
 3. Si tocaste UI: verifica cambio de tema y cambio de idioma (la UI completa debe traducirse).
 4. Si tocaste cálculos: comprueba a mano un caso con los porcentajes UA 2025.

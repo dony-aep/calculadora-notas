@@ -4,7 +4,7 @@
 
 PWA de calculadora de notas académicas para la Universidad Americana (Colombia). Permite calcular notas con el sistema de evaluación 2025 (Cortes 1-2: 15% formativa + 15% cognitiva; Corte 3: 20% + 20%) y crear calculadoras personalizadas.
 
-**Stack**: Angular 21 standalone components, ngx-translate (i18n), desplegado en Vercel.
+**Stack**: Angular 22 standalone components, ngx-translate (i18n), desplegado en Vercel.
 
 > **No hay PWA ni Service Worker.** La integración del web manifest se eliminó en la v4.5.6
 > (ver `CHANGELOG.md`). No existen `ngsw-config.json` ni `src/manifest.webmanifest`, y
@@ -32,8 +32,8 @@ src/app/
 
 ## Key Patterns
 
-### Standalone Components (Angular 21+)
-Todos los componentes son standalone por defecto en Angular 19+. **NO usar `standalone: true`** en el decorador (es implícito). Usar `inject()` para inyección de dependencias y `ChangeDetectionStrategy.OnPush`. Angular 21 usa decoradores TC39 estándar (**NO usar `experimentalDecorators`** en tsconfig.json):
+### Standalone Components (Angular 22+)
+Todos los componentes son standalone por defecto en Angular 19+. **NO usar `standalone: true`** en el decorador (es implícito). Usar `inject()` para inyección de dependencias y `ChangeDetectionStrategy.OnPush`. Angular 22 usa decoradores TC39 estándar (**NO usar `experimentalDecorators`** en tsconfig.json):
 
 ```typescript
 @Component({
@@ -52,7 +52,7 @@ export class ExampleComponent {
 Usar funciones `input()` y `output()` en lugar de decoradores `@Input()` y `@Output()`:
 
 ```typescript
-// ✅ Correcto (Angular 21+)
+// ✅ Correcto (Angular 22+)
 isVisible = input(false);
 close = output<void>();
 
@@ -117,19 +117,22 @@ Si difieren, manda el changelog.
 ```bash
 npm start          # Dev server en http://localhost:4200
 npm run build      # Build producción → dist/calculadora-notas-angular
-npm test           # Tests con Karma (modo watch, interactivo)
+npm test           # Tests con Vitest (modo watch, interactivo)
 npx ng version     # Verificar versiones instaladas
 
 # Verificación no interactiva (usar esta al comprobar cambios; npm test se queda colgado)
-npx ng test --watch=false --browsers=ChromeHeadless
+npx ng test --watch=false
 ```
 
 ## Build System
 
-Angular 21 usa `@angular/build` (no `@angular-devkit/build-angular`). Builders en `angular.json`:
+Angular 22 usa `@angular/build` (no `@angular-devkit/build-angular`). Builders en `angular.json`:
 - `@angular/build:application`
 - `@angular/build:dev-server`
-- `@angular/build:karma`
+- `@angular/build:unit-test` (runner Vitest sobre jsdom)
+
+No hay `zone.js`: Angular corre zoneless por defecto desde v21 y el polyfill se eliminó en la
+migración a v22. `engines.node` está fijado a `24.x` porque el CLI de v22 exige Node >= 22.22.3.
 
 ### Configuración i18n (ngx-translate v17+)
 En `app.config.ts` se usa el nuevo patrón funcional:
@@ -167,7 +170,7 @@ En componentes, seguir importando `TranslateModule` para acceder al pipe `transl
 
 Antes de commit verificar:
 1. `npm run build` termina sin errores
-2. `npx ng test --watch=false --browsers=ChromeHeadless` pasa en verde
+2. `npx ng test --watch=false` pasa en verde
 3. Cambio de tema funciona
 4. Cambio de idioma actualiza toda la UI
 5. Cálculos producen resultados correctos (comprobar a mano un caso con los % UA 2025)

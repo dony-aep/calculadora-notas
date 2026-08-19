@@ -114,13 +114,9 @@
         "NEW_TITLE": "What's new",
         "UPDATED_ON": "Updated on",
         "VIEW_CHANGELOG": "View changelog",
-        "NEW_1_TITLE": "Prediction to pass",
-        "NEW_1_DESC": "A panel automatically calculates the minimum grade you need on the remaining grades to reach 3.0.",
-        "NEW_2_TITLE": "Per-field suggestion",
-        "NEW_2_DESC": "Under each empty field you'll see \"Suggested: ≥ X.X\" as a quick reference.",
-        "NEW_3_TITLE": "Safety grade hint",
-        "NEW_3_DESC": "When a single grade is enough to secure a pass, a hint appears right below that field.",
-        "NEW_4_TITLE": "More polished design",
-        "NEW_4_DESC": "Custom scrollbar and visual refinements in the help modal."
+        "NEW_1_TITLE": "Faster to load",
+        "NEW_1_DESC": "The app is about 11% smaller, so it opens faster and uses less data.",
+        "NEW_2_TITLE": "Now built on Angular 22",
+        "NEW_2_DESC": "The internal technology is up to date. The calculator works exactly as before."
     }
 } 

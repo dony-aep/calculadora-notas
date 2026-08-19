@@ -4,8 +4,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TranslationService } from '../../services/translation.service';
 
 /** Bump these when announcing a new release: version + date of its commit (CHANGELOG date). */
-export const WHATS_NEW_VERSION = '4.6.0';
-const WHATS_NEW_DATE = '2026-05-28';
+export const WHATS_NEW_VERSION = '4.7.0';
+const WHATS_NEW_DATE = '2026-08-19';
 
 @Component({
   selector: 'app-whats-new-modal',
@@ -27,7 +27,7 @@ export class WhatsNewModalComponent {
   readonly changelogUrl = 'https://github.com/dony-aep/calculadora-notas/blob/main/CHANGELOG.md';
 
   // i18n key suffixes for each announced item; edit this list to manage what's shown.
-  readonly newFeatures = [1, 2, 3, 4];
+  readonly newFeatures = [1, 2];
 
   /** Static release date, localized to the active language. */
   readonly updatedAt = computed(() =>

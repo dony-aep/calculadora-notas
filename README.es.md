@@ -1,6 +1,6 @@
 # Calculadora de Notas
 
-> Aplicación web PWA para calcular notas académicas de la Universidad Americana (Colombia).
+> Aplicación web para calcular notas académicas de la Universidad Americana (Colombia).
 
 ![CalNotas Preview](calnotas-preview.png)
 
@@ -26,8 +26,6 @@ La Calculadora de Notas permite a los estudiantes ingresar sus notas formativas 
 - **Cambio de Tema:** Alterna entre modo claro y oscuro según tu preferencia.
 - **Idiomas:** Soporte para español e inglés con traducción en tiempo real.
 - **Diseño Responsivo:** Adaptable a cualquier dispositivo (móvil, tablet, escritorio).
-- **PWA:** Instalable como aplicación progresiva web.
-- **Modo Offline:** Funciona sin conexión a internet.
 
 ## Acceso
 
@@ -63,18 +61,19 @@ La nota final debe ser ≥ 3.0 para aprobar.
 
 ## Stack Tecnológico
 
-- **Framework:** Angular 21
+- **Framework:** Angular 22
 - **Estilos:** CSS con variables (temas claro/oscuro)
 - **i18n:** ngx-translate (español/inglés)
-- **PWA:** Angular Service Worker
+- **Tests:** Vitest sobre jsdom
 - **Despliegue:** Vercel
 
 ## Desarrollo
 
 ```bash
-npm start          # Servidor de desarrollo en http://localhost:4200
-npm run build      # Build de producción
-npm test           # Tests
+npm start                  # Servidor de desarrollo en http://localhost:4200
+npm run build              # Build de producción
+npm test                   # Tests (modo watch)
+npx ng test --watch=false  # Tests, una sola pasada
 ```
 
 ## Créditos

@@ -1,6 +1,6 @@
 # Grade Calculator
 
-> PWA web application for calculating academic grades at Universidad Americana (Colombia).
+> Web application for calculating academic grades at Universidad Americana (Colombia).
 
 [![Español](https://img.shields.io/badge/Readme-Español-blue)](README.es.md)
 
@@ -28,8 +28,6 @@ The Grade Calculator allows students to enter their formative and cognitive grad
 - **Theme Toggle:** Switch between light and dark mode.
 - **Languages:** Support for Spanish and English with real-time translation.
 - **Responsive Design:** Adapts to any device (mobile, tablet, desktop).
-- **PWA:** Installable as a progressive web app.
-- **Offline Mode:** Works without an internet connection.
 
 ## Access
 
@@ -65,18 +63,19 @@ The final grade must be ≥ 3.0 to pass.
 
 ## Tech Stack
 
-- **Framework:** Angular 21
+- **Framework:** Angular 22
 - **Styles:** CSS with variables (light/dark themes)
 - **i18n:** ngx-translate (Spanish/English)
-- **PWA:** Angular Service Worker
+- **Tests:** Vitest on jsdom
 - **Deployment:** Vercel
 
 ## Development
 
 ```bash
-npm start          # Dev server at http://localhost:4200
-npm run build      # Production build
-npm test           # Tests
+npm start                  # Dev server at http://localhost:4200
+npm run build              # Production build
+npm test                   # Tests (watch mode)
+npx ng test --watch=false  # Tests, single run
 ```
 
 ## Credits

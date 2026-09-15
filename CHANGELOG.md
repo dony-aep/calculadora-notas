@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.7.1] - 2026-09-15
+
+### Security
+
+- Resolved 3 vulnerabilities reported by `npm audit` (1 high, 2 moderate) by refreshing `package-lock.json`. All three reach the project only through `@angular/cli`, a dev dependency, so none of them was in the production bundle:
+  - `fast-uri` 3.1.5 → 3.1.8 (high): host confusion and SSRF in URI normalization ([GHSA-5jgf-p345-68v8](https://github.com/advisories/GHSA-5jgf-p345-68v8), [GHSA-f65p-4m7j-42xc](https://github.com/advisories/GHSA-f65p-4m7j-42xc), [GHSA-fph4-wmhf-6fwf](https://github.com/advisories/GHSA-fph4-wmhf-6fwf), [GHSA-jqff-g426-hqxp](https://github.com/advisories/GHSA-jqff-g426-hqxp)).
+  - `hono` 4.13.3 → 4.13.8 (moderate): path traversal in `toSSG()`, memory exhaustion in `parseBody()` and query parsing past the URL fragment ([GHSA-gqvv-2mrq-wpjv](https://github.com/advisories/GHSA-gqvv-2mrq-wpjv), [GHSA-g6gw-c38x-mqfc](https://github.com/advisories/GHSA-g6gw-c38x-mqfc), [GHSA-crvj-82cr-hjcx](https://github.com/advisories/GHSA-crvj-82cr-hjcx)).
+  - `qs` 6.15.3 → 6.16.0 (moderate): array-limit bypass and DoS through `isBuffer` ([GHSA-x5fp-wj9c-mxmx](https://github.com/advisories/GHSA-x5fp-wj9c-mxmx), [GHSA-4mjr-xmp4-gh2g](https://github.com/advisories/GHSA-4mjr-xmp4-gh2g)).
+- `npm audit` reports 0 vulnerabilities again.
+
+### Changed
+
+- Updated Angular framework packages to 22.1.6, and `@angular/cli` and `@angular/build` to 22.1.8.
+- Updated `@vercel/analytics` to 2.0.1. The major version changes the license (MPL-2.0 to MIT) and the Nuxt integration; the `inject()` call this app makes keeps the same signature, so no code changed.
+- Updated `simple-icons` to 16.31.0.
+
 ## [4.7.0] - 2026-08-19
 
 ### Changed

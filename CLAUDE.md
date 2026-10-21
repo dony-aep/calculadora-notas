@@ -48,7 +48,7 @@ Para trabajo visual, la skill `frontend-design`. Para commits, la skill `git-com
 - **Todo texto nuevo va en AMBOS archivos**, en la misma posición. Un texto solo en `es.json`
   aparece como clave cruda en inglés.
 - Idioma por defecto: `es`. En templates: `{{ 'CLAVE' | translate }}`; el componente debe
-  importar `TranslateModule`.
+  importar `TranslatePipe` (`TranslateModule` ya no existe en ngx-translate 18).
 
 ## Temas y estilos
 
@@ -87,12 +87,12 @@ Al anunciar una versión nueva hay que tocar cuatro cosas o el modal de novedade
 - **`.github/copilot-instructions.md` cubre el mismo terreno para Copilot** y está sincronizado
   con este archivo. Si cambias una convención aquí, actualízalo allí también; si en algún momento
   se contradicen, este archivo manda.
-- **`package.json` ya no tiene bloque `overrides`.** Los siete pines de seguridad que había se
-  volvieron obsoletos al subir a v22 (el árbol del CLI resuelve solo las versiones parchadas) y uno
-  de ellos, `vite: ">=7.3.5 <8"`, frenaba activamente el vite 8 que pide el build system. Si vuelve
-  a aparecer una vulnerabilidad transitiva, comprueba primero si el CLI ya declara la versión
-  parchada antes de añadir un override. Nunca uses `npm audit fix --force`: propone degradar
-  `@angular/cli`.
+- **`package.json` tiene un único override, `vite: "^8.3.4"`, y es temporal.** `@angular/build`
+  22.2.3 fija vite exacto a 8.3.0, vulnerable (GHSA-587h-7wmj-h5pm y otras cinco). Bórralo en
+  cuanto un `@angular/build` estable declare vite >= 8.3.3 (22.3.0-next.2 ya fija 8.3.4): un pin
+  olvidado frena parches, como pasó con `vite: ">=7.3.5 <8"` antes de v22. Si vuelve a aparecer
+  una vulnerabilidad transitiva, comprueba primero si el CLI ya declara la versión parchada antes
+  de añadir otro override. Nunca uses `npm audit fix --force`: propone degradar `@angular/build`.
 - **No hay `zone.js`.** Angular corre zoneless por defecto desde v21 (`bootstrapApplication`
   inyecta el proveedor solo), así que el polyfill se eliminó en la migración a v22. No añadas
   `provideZonelessChangeDetection()`: es el default y no haría nada. Lo que sí importa es que todo

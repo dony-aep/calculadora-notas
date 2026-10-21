@@ -38,7 +38,7 @@ Todos los componentes son standalone por defecto en Angular 19+. **NO usar `stan
 ```typescript
 @Component({
   selector: 'app-example',
-  imports: [CommonModule, FormsModule, TranslateModule, RouterLink],
+  imports: [CommonModule, FormsModule, TranslatePipe, RouterLink],
   templateUrl: './example.component.html',
   styleUrl: './example.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -134,7 +134,7 @@ Angular 22 usa `@angular/build` (no `@angular-devkit/build-angular`). Builders e
 No hay `zone.js`: Angular corre zoneless por defecto desde v21 y el polyfill se eliminó en la
 migración a v22. `engines.node` está fijado a `24.x` porque el CLI de v22 exige Node >= 22.22.3.
 
-### Configuración i18n (ngx-translate v17+)
+### Configuración i18n (ngx-translate v18)
 En `app.config.ts` se usa el nuevo patrón funcional:
 ```typescript
 import { provideTranslateService } from '@ngx-translate/core';
@@ -143,7 +143,7 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 provideTranslateService(),
 provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
 ```
-En componentes, seguir importando `TranslateModule` para acceder al pipe `translate` en templates.
+En componentes, importar `TranslatePipe` para usar el pipe `translate` en templates. `TranslateModule` se eliminó en v18, y el idioma de respaldo se fija con `setFallbackLang()` (antes `setDefaultLang()`).
 
 ## Important Files
 

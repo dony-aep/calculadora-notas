@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FooterService } from '../../services/footer.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-app-download',
-  imports: [RouterLink, TranslateModule],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './app-download.component.html',
   styleUrl: './app-download.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

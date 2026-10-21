@@ -7,11 +7,11 @@ import { ThemeService } from '../../services/theme.service';
 import { Subscription, Observable, filter } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
 import { TranslationService } from '../../services/translation.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-layout-footer',
-  imports: [CommonModule, RouterLink, HelpModalComponent, WhatsNewModalComponent, TranslateModule],
+  imports: [CommonModule, RouterLink, HelpModalComponent, WhatsNewModalComponent, TranslatePipe],
   templateUrl: './layout-footer.component.html',
   styleUrl: './layout-footer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

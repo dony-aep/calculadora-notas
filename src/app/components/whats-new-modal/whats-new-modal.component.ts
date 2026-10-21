@@ -1,6 +1,6 @@
 import { Component, input, output, ChangeDetectionStrategy, effect, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TranslationService } from '../../services/translation.service';
 
 /** Bump these when announcing a new release: version + date of its commit (CHANGELOG date). */
@@ -9,7 +9,7 @@ const WHATS_NEW_DATE = '2026-08-19';
 
 @Component({
   selector: 'app-whats-new-modal',
-  imports: [TranslateModule],
+  imports: [TranslatePipe],
   templateUrl: './whats-new-modal.component.html',
   styleUrl: './whats-new-modal.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

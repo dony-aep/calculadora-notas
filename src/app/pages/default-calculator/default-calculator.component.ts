@@ -3,11 +3,11 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FooterService } from '../../services/footer.service';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-default-calculator',
-  imports: [RouterLink, FormsModule, CommonModule, TranslateModule],
+  imports: [RouterLink, FormsModule, CommonModule, TranslatePipe],
   templateUrl: './default-calculator.component.html',
   styleUrl: './default-calculator.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

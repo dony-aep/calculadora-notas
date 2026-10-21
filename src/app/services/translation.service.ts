@@ -13,7 +13,7 @@ export class TranslationService {
 
   constructor() {
     this.translate.addLangs(['en', 'es']);
-    this.translate.setDefaultLang('es');
+    this.translate.setFallbackLang('es');
 
     const savedLang = localStorage.getItem('language') || this.translate.getBrowserLang() || 'es';
     const initialLang = this.translate.getLangs().includes(savedLang) ? savedLang : 'es';

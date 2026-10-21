@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.7.2] - 2026-10-21
+
+### Security
+
+- Resolved 8 vulnerabilities reported by `npm audit` against the 4.7.1 lockfile (2 critical, 5 high, 1 moderate). `npm audit` reports 0 vulnerabilities again.
+  - `@angular/router` 22.1.6 → 22.2.3 (high): three denial-of-service paths during server-side rendering ([GHSA-ff3f-86qr-9cv3](https://github.com/advisories/GHSA-ff3f-86qr-9cv3), [GHSA-62vg-58rm-qff7](https://github.com/advisories/GHSA-62vg-58rm-qff7), [GHSA-57xq-rjx2-v5xh](https://github.com/advisories/GHSA-57xq-rjx2-v5xh)). This is a production dependency, but the app has no SSR, so the vulnerable code never ran.
+  - `piscina` 5.2.0 → 5.3.2 (critical): prototype pollution in `ThreadPool.options` that allows remote code execution ([GHSA-67c8-pqhq-4rmx](https://github.com/advisories/GHSA-67c8-pqhq-4rmx)). It reached the project through `@angular/build`.
+  - `@modelcontextprotocol/sdk` (high, five advisories) and `hono` (moderate, [GHSA-5r4p-p66f-jhc7](https://github.com/advisories/GHSA-5r4p-p66f-jhc7)) left the tree: `@angular/cli` 22.2 no longer depends on them.
+  - `source-map-js` 1.2.1 → 1.2.2 (high): event-loop denial of service through indexed source-map section offsets ([GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q)).
+  - `vite` 8.1.5 → 8.3.5 (high): command execution and file existence checks through `launch-editor` on Windows, cross-origin script execution through custom middleware, and files served outside `server.fs.allow` ([GHSA-587h-7wmj-h5pm](https://github.com/advisories/GHSA-587h-7wmj-h5pm), [GHSA-698v-4r3x-3vcv](https://github.com/advisories/GHSA-698v-4r3x-3vcv), [GHSA-r825-w8mm-5pxw](https://github.com/advisories/GHSA-r825-w8mm-5pxw), [GHSA-9jrq-w75r-8gcw](https://github.com/advisories/GHSA-9jrq-w75r-8gcw), [GHSA-rq7h-c2jc-7f22](https://github.com/advisories/GHSA-rq7h-c2jc-7f22), [GHSA-vfpm-58rq-9qcg](https://github.com/advisories/GHSA-vfpm-58rq-9qcg)).
+- Added an `overrides` entry, `vite: "^8.3.4"`. `@angular/build` 22.2.3 pins `vite` to exactly 8.3.0, which is still vulnerable, and no stable `@angular/build` declares a patched version yet. 22.3.0-next.2 already pins 8.3.4, so remove the override once 22.3.0 is out.
+
+### Changed
+
+- Updated Angular framework packages, `@angular/cli` and `@angular/build` to 22.2.3.
+- Updated `vitest` to 5.0.5. The three specs needed no changes: none of the Vitest 5 breaking changes (top-level `vi.mock`, `clearMocks` on by default, removed `sequential`) apply to them.
+- Updated `@ngx-translate/core` and `@ngx-translate/http-loader` to 18.0.0. Version 18 removes `TranslateModule`, so the seven components that translate their templates now import `TranslatePipe` instead, and `TranslationService` calls `setFallbackLang()` in place of the removed `setDefaultLang()`. Initial bundle: 372.17 kB → 375.75 kB raw (91.25 → 92.41 kB transferred).
+- Updated `jsdom` to 30.1.3 and `simple-icons` to 16.35.0.
+
 ## [4.7.1] - 2026-09-15
 
 ### Security

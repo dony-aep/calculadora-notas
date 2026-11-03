@@ -1,65 +1,68 @@
-# Calculadora de Notas
+# CalNotas
 
-> Aplicación web para calcular notas académicas de la Universidad Americana (Colombia).
+> Calculadora de notas para estudiantes de la Universidad Americana (Colombia): tu nota por cortes y cuánto te falta para aprobar.
 
-![CalNotas Preview](calnotas-preview.png)
+[![English](https://img.shields.io/badge/Readme-English-blue)](README.md)
 
-## Descripción
+![Pantalla de inicio de CalNotas](calnotas-preview-es.png)
 
-La Calculadora de Notas permite a los estudiantes ingresar sus notas formativas y cognitivas para tres cortes diferentes. Basado en los porcentajes de evaluación establecidos por la universidad, la aplicación calculará automáticamente las notas definitivas y la nota definitiva total.
+## Qué hace
+
+CalNotas toma las notas formativa y cognitiva de cada uno de los tres cortes, aplica los porcentajes de la universidad y muestra la nota de cada corte y la definitiva, de 0 a 5. La nota aprobatoria es 3.0.
+
+Mientras faltan notas, también te dice el mínimo que necesitas en las restantes para aprobar.
 
 ## Funcionalidades
 
-### Calculadora Predeterminada
-- **Ingreso de Notas:** Introduce tus notas formativas y cognitivas en los campos correspondientes.
-- **Cálculo Automático:** Los resultados se calcularán automáticamente en tiempo real.
-- **Ayuda en Línea:** Un botón de ayuda proporciona instrucciones sobre cómo usar la calculadora y un ejemplo de cálculo.
-- **Restablecer:** Opción para restablecer todos los campos y resultados.
+### Calculadora predeterminada
 
-### Calculadora Personalizada
-- **Campos Personalizables:** Añade tantos campos como necesites con nombres y porcentajes personalizados.
-- **Porcentajes Flexibles:** Define tus propios porcentajes para cada campo.
-- **Guardado Local:** Guarda tu configuración personalizada para uso futuro.
-- **Validación de Porcentajes:** Asegura que los porcentajes sumen 100%.
+- Trae los porcentajes 2025 de la Universidad Americana, así que solo ingresas tus notas.
+- Recalcula mientras escribes.
+- Un panel de predicción muestra la nota mínima uniforme que necesitas en cada campo vacío para llegar a 3.0. También avisa cuando ya aprobaste o cuando ni con 5.0 te alcanza.
+- Cada campo vacío muestra una sugerencia (`Sugerido: ≥ X.X`). Si una sola nota basta para aprobar, el campo siguiente lo indica.
+- Una ventana de ayuda explica el sistema con un ejemplo resuelto, y un botón borra todos los campos.
 
-### Características Generales
-- **Cambio de Tema:** Alterna entre modo claro y oscuro según tu preferencia.
-- **Idiomas:** Soporte para español e inglés con traducción en tiempo real.
-- **Diseño Responsivo:** Adaptable a cualquier dispositivo (móvil, tablet, escritorio).
+### Calculadora personalizada
+
+- Añade los campos que necesites, cada uno con su nombre y su porcentaje.
+- Define tu propia nota aprobatoria (3.0 por defecto).
+- Los porcentajes deben sumar 100%.
+- La configuración se guarda en el navegador para la próxima vez.
+
+### En toda la app
+
+- Tema claro y oscuro.
+- Español e inglés.
+- Funciona en celular, tablet y computador.
+- Una ventana de novedades resume los cambios de la última versión.
+- También hay app para Android: la [página de descarga](https://calnotas.vercel.app/app-download) enlaza al último APK en [dony-aep/calnotas](https://github.com/dony-aep/calnotas/releases/latest).
 
 ## Acceso
 
-Accede a la aplicación en: [https://calnotas.vercel.app/](https://calnotas.vercel.app/)
+[https://calnotas.vercel.app/](https://calnotas.vercel.app/)
 
-## Uso
+## Sistema de evaluación 2025
 
-1. **Elegir Calculadora:** Selecciona entre la calculadora predeterminada o personalizada.
-2. **Calculadora Predeterminada:** Ingresa las notas formativas y cognitivas. Los resultados se muestran en tiempo real.
-3. **Calculadora Personalizada:** Crea campos con nombres y porcentajes personalizados. Guarda tu configuración para uso futuro.
-4. **Personalización:** Cambia entre modo claro/oscuro y selecciona tu idioma preferido (español/inglés).
-
-## Sistema de Evaluación 2025
-
-| Corte | Nota Formativa | Nota Cognitiva | Total |
-|-------|---------------|----------------|-------|
+| Corte | Formativa | Cognitiva | Total |
+|-------|-----------|-----------|-------|
 | Corte 1 | 15% | 15% | 30% |
 | Corte 2 | 15% | 15% | 30% |
 | Corte 3 | 20% | 20% | 40% |
 
 ### Ejemplo
 
-Para una Nota Formativa de 4.5 y una Nota Cognitiva de 3.0:
+Con una nota formativa de 4.5 y una cognitiva de 3.0 en todos los cortes:
 
 ```
 Corte 1: (4.5 × 0.15) + (3.0 × 0.15) = 1.13
 Corte 2: (4.5 × 0.15) + (3.0 × 0.15) = 1.13
 Corte 3: (4.5 × 0.20) + (3.0 × 0.20) = 1.50
-Total:   1.13 + 1.13 + 1.50 = 3.76 ✓
+Total:   1.13 + 1.13 + 1.50 = 3.76
 ```
 
-La nota final debe ser ≥ 3.0 para aprobar.
+3.76 es mayor o igual que 3.0, así que este estudiante aprueba.
 
-## Stack Tecnológico
+## Stack tecnológico
 
 - **Framework:** Angular 22
 - **Estilos:** CSS con variables (temas claro/oscuro)
@@ -83,4 +86,4 @@ Desarrollado por [dony.](https://github.com/dony-aep)
 
 ## Licencia
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](LICENSE)

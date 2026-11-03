@@ -1,67 +1,68 @@
-# Grade Calculator
+# CalNotas
 
-> Web application for calculating academic grades at Universidad Americana (Colombia).
+> Grade calculator for students at Universidad Americana (Colombia): your grade per cut, and how much you still need to pass.
 
 [![Español](https://img.shields.io/badge/Readme-Español-blue)](README.es.md)
 
-![CalNotas Preview](calnotas-preview.png)
+![CalNotas home screen](calnotas-preview.png)
 
-## Description
+## What it does
 
-The Grade Calculator allows students to enter their formative and cognitive grades across three evaluation periods. Based on the university's grading percentages, the application automatically calculates the final grades and the overall final grade.
+CalNotas takes the formative and cognitive grades of each of the three cuts, applies the university's percentages and shows the grade for each cut and the final grade, from 0 to 5. The passing grade is 3.0.
+
+While some grades are still missing, it also tells you the minimum you need in the remaining ones to pass.
 
 ## Features
 
-### Default Calculator
-- **Grade Input:** Enter your formative and cognitive grades in the corresponding fields.
-- **Auto Calculation:** Results are calculated automatically in real time.
-- **Online Help:** A help button provides instructions on how to use the calculator with a calculation example.
-- **Reset:** Option to reset all fields and results.
+### Default calculator
 
-### Custom Calculator
-- **Custom Fields:** Add as many fields as needed with custom names and percentages.
-- **Flexible Percentages:** Define your own percentages for each field.
-- **Local Storage:** Save your custom configuration for future use.
-- **Percentage Validation:** Ensures percentages add up to 100%.
+- Comes with the Universidad Americana 2025 percentages, so you only enter your grades.
+- Recalculates as you type.
+- A prediction panel shows the minimum uniform grade you need in every empty field to reach 3.0. It also tells you when you have already passed, or when even a 5.0 would not be enough.
+- Each empty field shows a hint (`Suggested: ≥ X.X`). When a single grade is enough to pass, the next field says so.
+- A help window explains the system with a worked example, and a button clears every field.
 
-### General Features
-- **Theme Toggle:** Switch between light and dark mode.
-- **Languages:** Support for Spanish and English with real-time translation.
-- **Responsive Design:** Adapts to any device (mobile, tablet, desktop).
+### Custom calculator
+
+- Add as many fields as you need, each with its own name and percentage.
+- Set your own passing grade (3.0 by default).
+- Percentages must add up to 100%.
+- The configuration is saved in the browser for next time.
+
+### Everywhere
+
+- Light and dark theme.
+- Spanish and English.
+- Works on phones, tablets and desktop.
+- A "What's new" window shows what changed in the latest version.
+- There is also an Android app: the [download page](https://calnotas.vercel.app/app-download) links to the latest APK in [dony-aep/calnotas](https://github.com/dony-aep/calnotas/releases/latest).
 
 ## Access
 
-Use the application at: [https://calnotas.vercel.app/](https://calnotas.vercel.app/)
+[https://calnotas.vercel.app/](https://calnotas.vercel.app/)
 
-## Usage
+## 2025 grading system
 
-1. **Choose Calculator:** Select between the default or custom calculator.
-2. **Default Calculator:** Enter formative and cognitive grades. Results are displayed in real time.
-3. **Custom Calculator:** Create fields with custom names and percentages. Save your configuration for future use.
-4. **Customization:** Switch between light/dark mode and select your preferred language (Spanish/English).
-
-## 2025 Grading System
-
-| Period | Formative Grade | Cognitive Grade | Total |
-|--------|----------------|----------------|-------|
+| Cut | Formative | Cognitive | Total |
+|-----|-----------|-----------|-------|
 | Cut 1 | 15% | 15% | 30% |
 | Cut 2 | 15% | 15% | 30% |
 | Cut 3 | 20% | 20% | 40% |
 
 ### Example
 
-For a Formative Grade of 4.5 and a Cognitive Grade of 3.0:
+With a formative grade of 4.5 and a cognitive grade of 3.0 in every cut:
 
 ```
 Cut 1: (4.5 × 0.15) + (3.0 × 0.15) = 1.13
 Cut 2: (4.5 × 0.15) + (3.0 × 0.15) = 1.13
 Cut 3: (4.5 × 0.20) + (3.0 × 0.20) = 1.50
-Total: 1.13 + 1.13 + 1.50 = 3.76 ✓
+Total: 1.13 + 1.13 + 1.50 = 3.76
 ```
 
-The final grade must be ≥ 3.0 to pass.
+3.76 is at least 3.0, so this student passes.
 
-## Tech Stack
+## Tech stack
 
 - **Framework:** Angular 22
 - **Styles:** CSS with variables (light/dark themes)
@@ -85,4 +86,4 @@ Developed by [dony.](https://github.com/dony-aep)
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](LICENSE)

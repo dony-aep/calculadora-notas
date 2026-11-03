@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.8.1] - 2026-11-03
+
+### Changed
+
+- Links to the app now show a 1200×630 banner with the CalNotas name and logo. The previous preview used the square logo on a transparent background, which nearly disappeared in dark-mode chats and was cropped by X's large card. The banner is `public/og-image.png`, rendered from `design/og-image.html`.
+- The page title, description and link-preview text use the CalNotas name and fit what Google and chat apps display (141 and 119 characters, down from 213). The Universidad Americana moves from the title to the description.
+- The page declares Spanish, the language of its content (`lang="es"`, `og:locale` `es_CO`), and adds a canonical URL.
+
+### Removed
+
+- Removed the `twitter:site` tag (`@calculadoranotas`).
+- Removed `calnotas-logo-black.png`, which only the old link preview used.
+
 ## [4.8.0] - 2026-11-03
 
 ### Changed

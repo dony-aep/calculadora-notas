@@ -156,6 +156,7 @@ En componentes, importar `TranslatePipe` para usar el pipe `translate` en templa
 | `src/assets/styles/variables.css` | Variables CSS (temas) |
 | `src/assets/i18n/*.json` | Traducciones |
 | `CHANGELOG.md` | Historial de cambios y **versión real** del proyecto |
+| `design/og-image.html` | Fuente de `public/og-image.png` (1200×630, `og:image`); regenerar el PNG al cambiarla (comando en `CLAUDE.md`) |
 | `CLAUDE.md` | Instrucciones equivalentes para Claude Code |
 
 ## Code Conventions

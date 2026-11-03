@@ -5,11 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [4.8.0] - 2026-11-03
 
 ### Changed
 
-- Icons now come from Lucide (`@lucide/angular`) instead of the Material Symbols font. They are SVGs bundled with the app, so they render with the page instead of waiting for a font from Google Fonts, which the app no longer requests. Every icon shares the same 1.5 stroke width, and the Android download button keeps its logo, now taken from Simple Icons because Lucide has no brand icons. Initial bundle: 375.75 kB → 449.09 kB raw (92.41 → 97.27 kB transferred).
+- Icons now come from Lucide (`@lucide/angular`) instead of the Material Symbols font. They are SVGs bundled with the app, so they render with the page instead of waiting for a font from Google Fonts, which the app no longer requests. Every icon shares the same 1.5 stroke width, and the Android download button keeps its logo, now taken from Simple Icons because Lucide has no brand icons. Initial bundle: 375.75 kB → 449.09 kB raw (92.41 → 97.33 kB transferred).
 
 ## [4.7.2] - 2026-10-21
 

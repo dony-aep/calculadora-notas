@@ -114,9 +114,7 @@
         "NEW_TITLE": "What's new",
         "UPDATED_ON": "Updated on",
         "VIEW_CHANGELOG": "View changelog",
-        "NEW_1_TITLE": "Faster to load",
-        "NEW_1_DESC": "The app is about 11% smaller, so it opens faster and uses less data.",
-        "NEW_2_TITLE": "Now built on Angular 22",
-        "NEW_2_DESC": "The internal technology is up to date. The calculator works exactly as before."
+        "NEW_1_TITLE": "Refreshed icons",
+        "NEW_1_DESC": "Every icon now shares the same stroke and appears with the page, without waiting for an external font to load."
     }
 } 

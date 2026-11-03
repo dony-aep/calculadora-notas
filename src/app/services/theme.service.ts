@@ -19,6 +19,11 @@ export class ThemeService {
   private applyTheme(theme: 'light' | 'dark') {
     this.currentTheme = theme;
     document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    // La barra del navegador móvil toma el fondo del tema activo, no el del sistema.
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim();
+    if (bg) {
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bg);
+    }
     localStorage.setItem('theme', theme);
     this.theme$.next(this.currentTheme);
   }

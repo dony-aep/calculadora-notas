@@ -19,6 +19,7 @@ export class TranslationService {
     const initialLang = this.translate.getLangs().includes(savedLang) ? savedLang : 'es';
     
     this.translate.use(initialLang);
+    document.documentElement.lang = initialLang;
     this.currentLang$ = new BehaviorSubject(initialLang);
 
     this.currentLangName$ = this.currentLang$.pipe(
@@ -31,6 +32,7 @@ export class TranslationService {
 
   setLanguage(lang: string) {
     this.translate.use(lang);
+    document.documentElement.lang = lang;
     localStorage.setItem('language', lang);
     this.currentLang$.next(lang);
   }

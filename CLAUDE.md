@@ -84,7 +84,13 @@ Al anunciar una versión nueva hay que tocar cuatro cosas o el modal de novedade
    número de esa lista.
 4. `package.json`: campo `version` con la misma `X.Y.Z` del changelog.
 
-## Imagen para compartir
+## Iconos de marca e imagen para compartir
+
+`public/favicon.svg` es el logo de barras y cambia de color con el tema del sistema. Safari no usa
+favicons SVG y toma `public/favicon.ico`, que por eso lleva fondo blanco. iOS usa
+`public/apple-touch-icon.png` (180×180, con fondo propio porque rellena de negro la transparencia).
+El `.ico` y el icono de iOS salen de `python design/generar-iconos.py`: si cambias el logo, cámbialo
+en el SVG y en ese script.
 
 Los metadatos de `src/index.html` son estáticos y en español: los crawlers no ejecutan JavaScript,
 así que ngx-translate no los alcanza. `og:image` es `public/og-image.png` (1200×630), generado desde

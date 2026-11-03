@@ -4,6 +4,7 @@ import { FooterService } from '../../services/footer.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2 } from '@lucide/angular';
 
 interface Campo {
   nombre: string;
@@ -13,7 +14,7 @@ interface Campo {
 
 @Component({
   selector: 'app-custom-calculator',
-  imports: [RouterLink, FormsModule, CommonModule, TranslatePipe],
+  imports: [RouterLink, FormsModule, CommonModule, TranslatePipe, LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2],
   templateUrl: './custom-calculator.component.html',
   styleUrl: './custom-calculator.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

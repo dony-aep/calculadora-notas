@@ -8,10 +8,12 @@ import { Subscription, Observable, filter } from 'rxjs';
 import { FooterService } from '../../services/footer.service';
 import { TranslationService } from '../../services/translation.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LucideCheck, LucideChevronDown, LucideChevronUp, LucideCircleQuestionMark, LucideLanguages, LucideMoon, LucideSparkles, LucideSun } from '@lucide/angular';
+import { siAndroid } from 'simple-icons';
 
 @Component({
   selector: 'app-layout-footer',
-  imports: [CommonModule, RouterLink, HelpModalComponent, WhatsNewModalComponent, TranslatePipe],
+  imports: [CommonModule, RouterLink, HelpModalComponent, WhatsNewModalComponent, TranslatePipe, LucideCheck, LucideChevronDown, LucideChevronUp, LucideCircleQuestionMark, LucideLanguages, LucideMoon, LucideSparkles, LucideSun],
   templateUrl: './layout-footer.component.html',
   styleUrl: './layout-footer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,7 +32,9 @@ export class LayoutFooterComponent implements OnInit, OnDestroy {
   isHelpModalVisible = false;
   isWhatsNewModalVisible = false;
   isAppDownloadRoute = false;
-  
+  // Lucide no trae logos de marca; el de Android sale de Simple Icons.
+  readonly androidIconPath = siAndroid.path;
+
   currentTheme: 'light' | 'dark' = 'light';
   private themeSubscription!: Subscription;
   private routerSubscription!: Subscription;

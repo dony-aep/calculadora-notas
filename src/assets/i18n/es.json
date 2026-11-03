@@ -114,9 +114,7 @@
         "NEW_TITLE": "Lo nuevo",
         "UPDATED_ON": "Actualizado el",
         "VIEW_CHANGELOG": "Ver registro de cambios",
-        "NEW_1_TITLE": "Carga más rápida",
-        "NEW_1_DESC": "La app pesa alrededor de un 11% menos, así que abre más rápido y gasta menos datos.",
-        "NEW_2_TITLE": "Base actualizada a Angular 22",
-        "NEW_2_DESC": "Puesta al día de las tecnologías internas. La calculadora se usa exactamente igual que antes."
+        "NEW_1_TITLE": "Iconos renovados",
+        "NEW_1_DESC": "Todos los iconos comparten ahora el mismo trazo y aparecen junto con la página, sin esperar a que cargue una fuente externa."
     }
 } 

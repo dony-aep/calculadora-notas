@@ -3,32 +3,34 @@
     <div class="controls-container-left">
         <button id="toggle-mode" class="control-btn" (click)="toggleTheme()" [title]="'FOOTER.CHANGE_THEME' | translate">
             @if (currentTheme === 'light') {
-                <span class="material-symbols-outlined notranslate">dark_mode</span>
+                <svg lucideMoon></svg>
             }
             @if (currentTheme === 'dark') {
-                <span class="material-symbols-outlined notranslate">light_mode</span>
+                <svg lucideSun></svg>
             }
         </button>
         <div class="language-selector">
             <button id="toggle-language" class="control-btn lang-btn" (click)="toggleLanguageDropdown()" [title]="'FOOTER.CHANGE_LANGUAGE' | translate">
-                <span class="material-symbols-outlined notranslate">translate</span>
+                <svg lucideLanguages></svg>
                 <span class="selected-language">{{ selectedLanguage$ | async }}</span>
-                <span class="material-symbols-outlined notranslate dropdown-arrow">
-                    {{ isLanguageDropdownVisible ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
-                </span>
+                @if (isLanguageDropdownVisible) {
+                    <svg lucideChevronUp class="dropdown-arrow"></svg>
+                } @else {
+                    <svg lucideChevronDown class="dropdown-arrow"></svg>
+                }
             </button>
             @if (isLanguageDropdownVisible) {
                 <div class="language-dropdown">
                     <div class="language-option" (click)="selectLanguage('es')">
                         <span>{{ 'LANGUAGES.SPANISH' | translate }}</span>
                         @if (currentLang === 'es') {
-                            <span class="material-symbols-outlined notranslate check-icon">check</span>
+                            <svg lucideCheck class="check-icon"></svg>
                         }
                     </div>
                     <div class="language-option" (click)="selectLanguage('en')">
                         <span>{{ 'LANGUAGES.ENGLISH' | translate }}</span>
                         @if (currentLang === 'en') {
-                            <span class="material-symbols-outlined notranslate check-icon">check</span>
+                            <svg lucideCheck class="check-icon"></svg>
                         }
                     </div>
                 </div>
@@ -40,14 +42,16 @@
     <div class="controls-container-right">
         @if (!isAppDownloadRoute) {
             <button id="app-download-btn" class="control-btn" routerLink="/app-download" [title]="'FOOTER.DOWNLOAD_APP' | translate">
-                <span class="material-symbols-outlined notranslate">android</span>
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path [attr.d]="androidIconPath"></path>
+                </svg>
             </button>
         }
         <button id="whats-new-btn" class="control-btn" (click)="openWhatsNewModal()" [title]="'FOOTER.WHATS_NEW' | translate">
-            <span class="material-symbols-outlined notranslate">auto_awesome</span>
+            <svg lucideSparkles></svg>
         </button>
         <button id="ayuda-btn" class="control-btn" (click)="openHelpModal()" [title]="'FOOTER.HELP' | translate">
-            <span class="material-symbols-outlined notranslate">help</span>
+            <svg lucideCircleQuestionMark></svg>
         </button>
     </div>
 </div>

@@ -1,10 +1,11 @@
 import { Component, input, output, ChangeDetectionStrategy, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LucideCalculator, LucideInfo, LucideSlidersHorizontal, LucideX } from '@lucide/angular';
 
 @Component({
   selector: 'app-help-modal',
-  imports: [CommonModule, TranslatePipe],
+  imports: [CommonModule, TranslatePipe, LucideCalculator, LucideInfo, LucideSlidersHorizontal, LucideX],
   templateUrl: './help-modal.component.html',
   styleUrl: './help-modal.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

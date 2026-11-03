@@ -91,6 +91,9 @@ Usar `@if`, `@for`, `@switch` en lugar de directivas estructurales:
 - Clase `.dark-mode` en `<html>` para tema oscuro
 - Usar `var(--color-*)` para colores, nunca hardcodear valores
 - `ThemeService.toggleTheme()` para cambiar tema
+- Iconos con `@lucide/angular`: `<svg lucideNombre class="...">` e importar `LucideNombre` en el componente
+- Tamaño de icono vía `font-size` sobre el icono (24px por defecto, regla `svg.lucide` en `styles.css`); trazo global en `provideLucideConfig` (`app.config.ts`)
+- Logos de marca desde `simple-icons` en `<svg class="brand-icon">` (Lucide no los trae). Material Symbols ya no se carga
 
 ### State Persistence
 - Tema: `localStorage.getItem('theme')`

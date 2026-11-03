@@ -90,7 +90,7 @@
     flex-shrink: 0;
 }
 
-.close-button .material-symbols-outlined {
+.close-button .lucide {
     font-size: 20px;
 }
 
@@ -191,7 +191,7 @@
     color: var(--color-text);
 }
 
-.changelog-link .material-symbols-outlined {
+.changelog-link .lucide {
     font-size: 17px;
 }
 

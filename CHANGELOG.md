@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.8.2] - 2026-11-03
+
+### Fixed
+
+- `/favicon.ico` showed the Angular logo, left over from the project template. It is now the CalNotas logo on a white tile, which Safari and other clients that request that file directly can read on light and dark tab bars.
+- The mobile browser bar now follows the app's theme. It was always dark (`#121212`), even in the light theme.
+- `<html lang>` now follows the selected language. It stayed on Spanish after switching to English, which affected screen readers and automatic translation.
+
+### Added
+
+- `apple-touch-icon.png` (180×180), so adding the site to an iPhone home screen shows the CalNotas logo instead of a screenshot of the page.
+
+### Changed
+
+- The tab icon is a single `favicon.svg` that switches between black and white with the system theme. It replaces two PNGs and the inline script that swapped them.
+- The `<noscript>` notice is in Spanish and English. It was only in English.
+- Both READMEs use the CalNotas name, show a current screenshot (each in its own language) and describe the grade prediction, the custom passing grade, the "What's new" window and the Android app.
+
+### Removed
+
+- Removed seven unused PNGs from `src/assets/icons/`: the two old favicons and the PWA icons and logo, unused since the PWA was removed in 4.5.6.
+
 ## [4.8.1] - 2026-11-03
 
 ### Changed

@@ -5,7 +5,9 @@
   <title>CalNotas · Calculadora de notas por cortes</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link id="app-favicon" rel="icon" type="image/png" href="assets/icons/calnotas-favicon-black-32.png">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#121212">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
   
@@ -33,33 +35,12 @@
   <meta name="twitter:image:alt" content="CalNotas, calculadora de notas por cortes">
 
   <meta name="google" content="notranslate">
-  <script>
-    (() => {
-      const favicon = document.getElementById('app-favicon');
-      const colorScheme = window.matchMedia('(prefers-color-scheme: dark)');
-      const updateFavicon = (isDark) => {
-        favicon?.setAttribute(
-          'href',
-          isDark
-            ? 'assets/icons/calnotas-favicon-white-32.png'
-            : 'assets/icons/calnotas-favicon-black-32.png'
-        );
-      };
-
-      updateFavicon(colorScheme.matches);
-
-      if (typeof colorScheme.addEventListener === 'function') {
-        colorScheme.addEventListener('change', (event) => updateFavicon(event.matches));
-      } else if (typeof colorScheme.addListener === 'function') {
-        colorScheme.addListener((event) => updateFavicon(event.matches));
-      }
-    })();
-  </script>
 </head>
 <body>
   <app-root></app-root>
   <noscript>
-    <p>Please enable JavaScript to continue using this application.</p>
+    <p>Activa JavaScript para usar CalNotas.</p>
+    <p lang="en">Please enable JavaScript to use CalNotas.</p>
   </noscript>
 </body>
 </html>

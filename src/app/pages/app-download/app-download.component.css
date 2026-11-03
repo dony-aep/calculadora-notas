@@ -155,7 +155,7 @@
     border-color: var(--color-primary);
 }
 
-.changelog-link .material-symbols-outlined {
+.changelog-link .lucide {
     font-size: 18px;
 }
 

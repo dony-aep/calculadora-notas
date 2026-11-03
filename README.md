@@ -65,6 +65,7 @@ The final grade must be ≥ 3.0 to pass.
 
 - **Framework:** Angular 22
 - **Styles:** CSS with variables (light/dark themes)
+- **Icons:** Lucide and Simple Icons
 - **i18n:** ngx-translate (Spanish/English)
 - **Tests:** Vitest on jsdom
 - **Deployment:** Vercel

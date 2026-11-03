@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FooterService } from '../../services/footer.service';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { LucideArrowLeft, LucideCheck, LucideRotateCw } from '@lucide/angular';
 
 @Component({
   selector: 'app-default-calculator',
-  imports: [RouterLink, FormsModule, CommonModule, TranslatePipe],
+  imports: [RouterLink, FormsModule, CommonModule, TranslatePipe, LucideArrowLeft, LucideCheck, LucideRotateCw],
   templateUrl: './default-calculator.component.html',
   styleUrl: './default-calculator.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

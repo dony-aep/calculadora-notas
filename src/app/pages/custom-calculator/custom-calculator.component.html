@@ -1,14 +1,14 @@
 <!-- Fixed top-left buttons -->
 <div class="buttons-fixed">
     <button id="volver-personalizado-btn" class="control-btn" routerLink="/" [title]="'CUSTOM_CALCULATOR.BACK_BTN_TOOLTIP' | translate">
-        <span class="material-symbols-outlined notranslate">arrow_back</span>
+        <svg lucideArrowLeft></svg>
     </button>
     <button id="restablecer-personalizada-btn" class="control-btn" [title]="'CUSTOM_CALCULATOR.RESET_BTN_TOOLTIP' | translate" (click)="restablecer()" [disabled]="!hasInputs">
         @if (!showResetFeedback) {
-            <span class="material-symbols-outlined notranslate">refresh</span>
+            <svg lucideRotateCw></svg>
         }
         @if (showResetFeedback) {
-            <span class="material-symbols-outlined notranslate">check</span>
+            <svg lucideCheck></svg>
         }
     </button>
 </div>
@@ -41,7 +41,7 @@
                 </div>
                 
                 <button class="eliminar-campo-btn" (click)="eliminarCampo(i)" [title]="'CUSTOM_CALCULATOR.DELETE_BTN_TOOLTIP' | translate">
-                    <span class="material-symbols-outlined notranslate">delete</span>
+                    <svg lucideTrash2></svg>
                 </button>
             </div>
         }
@@ -66,11 +66,11 @@
     
     <div class="buttons">
         <button id="agregar-campo-btn" class="btn-secondary" (click)="agregarCampo()">
-            <span class="material-symbols-outlined notranslate">add</span>
+            <svg lucidePlus></svg>
             <span>{{ 'CUSTOM_CALCULATOR.ADD_FIELD_BTN' | translate }}</span>
         </button>
         <button id="guardar-calculadora-btn" class="btn-secondary" (click)="guardarCalculadora()">
-            <span class="material-symbols-outlined notranslate">save</span>
+            <svg lucideSave></svg>
             <span>{{ 'CUSTOM_CALCULATOR.SAVE_CALC_BTN' | translate }}</span>
         </button>
     </div>

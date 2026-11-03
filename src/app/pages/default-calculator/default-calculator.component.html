@@ -122,14 +122,14 @@
     <!-- Buttons -->
     <div class="buttons">
         <button id="volver-btn" routerLink="/" [title]="'DEFAULT_CALCULATOR.BACK_BTN_TOOLTIP' | translate">
-            <span class="material-symbols-outlined notranslate">arrow_back</span>
+            <svg lucideArrowLeft></svg>
         </button>
         <button id="restablecer-btn" (click)="restablecer()" [disabled]="!hasInputs" [title]="'DEFAULT_CALCULATOR.RESET_BTN_TOOLTIP' | translate">
             @if (!showResetFeedback) {
-                <span class="material-symbols-outlined notranslate">refresh</span>
+                <svg lucideRotateCw></svg>
             }
             @if (showResetFeedback) {
-                <span class="material-symbols-outlined notranslate">check</span>
+                <svg lucideCheck></svg>
             }
         </button>
     </div>

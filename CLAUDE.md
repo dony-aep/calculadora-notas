@@ -55,6 +55,11 @@ Para trabajo visual, la skill `frontend-design`. Para commits, la skill `git-com
 - Variables CSS en `src/assets/styles/variables.css`; el tema oscuro es la clase `.dark-mode`
   en `<html>`.
 - **Usa siempre `var(--color-*)`**, nunca colores hardcodeados. Nunca `!important`.
+- **Iconos con `@lucide/angular`**: `<svg lucideNombre class="...">` e importa `LucideNombre` en el
+  componente. El tamaño sale del `font-size` del propio icono (24px por defecto, regla `svg.lucide`
+  en `styles.css`) y el trazo global de `provideLucideConfig` en `app.config.ts`. Lucide no trae
+  logos de marca: tómalos de `simple-icons` en un `<svg class="brand-icon">` (ver el de Android en
+  `layout-footer`). Material Symbols ya no se carga.
 
 ## Estado persistido en localStorage
 

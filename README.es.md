@@ -63,6 +63,7 @@ La nota final debe ser ≥ 3.0 para aprobar.
 
 - **Framework:** Angular 22
 - **Estilos:** CSS con variables (temas claro/oscuro)
+- **Iconos:** Lucide y Simple Icons
 - **i18n:** ngx-translate (español/inglés)
 - **Tests:** Vitest sobre jsdom
 - **Despliegue:** Vercel

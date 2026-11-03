@@ -11,6 +11,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Mismo contrato que la clase de Material Symbols: 24px por defecto y cada componente
+   cambia el tamaño con font-size sobre el icono. brand-icon son los logos de Simple Icons. */
+svg.lucide,
+svg.brand-icon {
+    font-size: 24px;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+}
+
 body.modal-open {
     overflow: hidden;
 }

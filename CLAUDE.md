@@ -84,6 +84,20 @@ Al anunciar una versión nueva hay que tocar cuatro cosas o el modal de novedade
    número de esa lista.
 4. `package.json`: campo `version` con la misma `X.Y.Z` del changelog.
 
+## Imagen para compartir
+
+Los metadatos de `src/index.html` son estáticos y en español: los crawlers no ejecutan JavaScript,
+así que ngx-translate no los alcanza. `og:image` es `public/og-image.png` (1200×630), generado desde
+`design/og-image.html`. Si cambias el nombre, el lema o el logo, edita el HTML y regenera el PNG
+desde la raíz del repo en Git Bash (`pwd -W` da la ruta `D:/...` que Chrome necesita; `$PWD` falla):
+
+```bash
+"/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=8000 --screenshot="$(pwd -W)/public/og-image.png" "file:///$(pwd -W)/design/og-image.html"
+```
+
+WhatsApp guarda en caché la vista previa de cada enlace: un cambio no se ve en los chats donde ya
+se compartió.
+
 ## Trampas conocidas
 
 - **No hay PWA ni service worker.** Se eliminaron en v4.5.6. No existen `ngsw-config.json` ni

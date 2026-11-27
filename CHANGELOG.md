@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- The app starts with less to download: only the home page loads at startup, and each calculator and the download page load when you open them. The initial download drops from 96.5 kB to 90.7 kB transferred.
+- The app starts with less to download: only the home page loads at startup, and each calculator and the download page load when you open them. The initial download drops from 97.4 kB to 90.6 kB transferred.
 
 ### Fixed
 

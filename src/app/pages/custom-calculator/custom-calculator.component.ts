@@ -1,138 +1,76 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormField, applyEach, form, max, min } from '@angular/forms/signals';
 import { FooterService } from '../../services/footer.service';
-import { FormsModule } from '@angular/forms';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2 } from '@lucide/angular';
-
-interface Campo {
-  nombre: string;
-  porcentaje: number | null;
-  nota: number | null;
-}
+import { CLAVE_GUARDADO, CalculadoraPersonalizada, calcularResultado, leerCamposGuardados } from './calculo-personalizado';
 
 @Component({
   selector: 'app-custom-calculator',
-  imports: [RouterLink, FormsModule, TranslatePipe, LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2],
+  imports: [RouterLink, FormField, TranslatePipe, LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2],
   templateUrl: './custom-calculator.component.html',
   styleUrl: './custom-calculator.component.css'
 })
 export class CustomCalculatorComponent implements OnInit, OnDestroy {
   private readonly footerService = inject(FooterService);
   private readonly translate = inject(TranslateService);
-  private readonly cdr = inject(ChangeDetectorRef);
 
-  campos: Campo[] = [];
-  notaDefinitivaTotal = 0;
-  minimaAprobatoria: number | null = null;
-  mensajeAprobacion = '';
-  mensajeParams: object = {}; // Para los parámetros de traducción
-  mensajeColor = '';
-  showResetFeedback = false;
-  showNotaDefinitiva = false;
+  private readonly modelo = signal<CalculadoraPersonalizada>({
+    campos: leerCamposGuardados(localStorage.getItem(CLAVE_GUARDADO)),
+    minimaAprobatoria: null
+  });
+  protected readonly calculadoraForm = form(this.modelo, ruta => {
+    applyEach(ruta.campos, campo => min(campo.nota, 0));
+    min(ruta.minimaAprobatoria, 0);
+    max(ruta.minimaAprobatoria, 5);
+  });
+
+  protected readonly cantidadCampos = computed(() => this.modelo().campos.length);
+  protected readonly resultado = computed(() => calcularResultado(this.modelo()));
+  protected readonly showResetFeedback = signal(false);
 
   ngOnInit(): void {
-    this.footerService.madeByVisible$.next(false);
-    this.cargarCalculadora();
+    this.footerService.madeByVisible.set(false);
   }
 
   ngOnDestroy(): void {
-    this.footerService.madeByVisible$.next(true);
+    this.footerService.madeByVisible.set(true);
   }
 
-  get hasInputs(): boolean {
-    return this.campos.length > 0;
+  protected agregarCampo(): void {
+    this.modelo.update(modelo => ({
+      ...modelo,
+      campos: [...modelo.campos, { nombre: '', porcentaje: null, nota: null }]
+    }));
   }
 
-  agregarCampo(): void {
-    this.campos.push({ nombre: '', porcentaje: null, nota: null });
+  protected eliminarCampo(indice: number): void {
+    this.modelo.update(modelo => ({
+      ...modelo,
+      campos: modelo.campos.filter((_, i) => i !== indice)
+    }));
   }
 
-  eliminarCampo(index: number): void {
-    this.campos.splice(index, 1);
-    this.calcularNotaPersonalizada();
-  }
-
-  calcularNotaPersonalizada(): void {
-    let notaTotal = 0;
-    let porcentajeTotal = 0;
-
-    this.campos.forEach(campo => {
-      const nota = campo.nota ?? 0;
-      const porcentaje = campo.porcentaje ?? 0;
-
-      if (nota >= 0 && porcentaje > 0) {
-        notaTotal += (nota * porcentaje) / 100;
-        porcentajeTotal += porcentaje;
-      }
-    });
-
-    const minima = this.minimaAprobatoria ?? 3.0;
-
-    this.notaDefinitivaTotal = 0;
-    this.showNotaDefinitiva = false;
-    this.mensajeAprobacion = '';
-    this.mensajeParams = {};
-
-    if (porcentajeTotal > 100) {
-        this.mensajeAprobacion = 'CUSTOM_CALCULATOR.ERROR_EXCEEDS_MSG';
-        this.mensajeParams = { value: porcentajeTotal.toFixed(1) };
-        this.mensajeColor = 'var(--color-danger)';
-    } else if (porcentajeTotal > 0 && porcentajeTotal < 100) {
-        this.mensajeAprobacion = 'CUSTOM_CALCULATOR.WARN_INCOMPLETE_MSG';
-        this.mensajeParams = { value: porcentajeTotal.toFixed(1) };
-        this.mensajeColor = 'orange';
-    } else if (porcentajeTotal === 100) {
-        this.notaDefinitivaTotal = notaTotal;
-        this.showNotaDefinitiva = true;
-        if (this.notaDefinitivaTotal < minima) {
-            this.mensajeAprobacion = 'CUSTOM_CALCULATOR.FAIL_MESSAGE';
-            this.mensajeParams = {};
-            this.mensajeColor = 'var(--color-danger)';
-        } else {
-            this.mensajeAprobacion = 'CUSTOM_CALCULATOR.PASS_MESSAGE';
-            this.mensajeParams = {};
-            this.mensajeColor = 'var(--color-secondary)';
-        }
-    } else {
-        this.mensajeAprobacion = '';
-        this.mensajeParams = {};
-    }
-  }
-
-  guardarCalculadora(): void {
-    if (this.campos.length === 0) {
-      this.translate.get('CUSTOM_CALCULATOR.ADD_FIELD_ALERT').subscribe((res: string) => {
-        alert(res);
-      });
+  protected guardarCalculadora(): void {
+    const campos = this.modelo().campos;
+    if (campos.length === 0) {
+      this.alertar('CUSTOM_CALCULATOR.ADD_FIELD_ALERT');
       return;
     }
-    localStorage.setItem('calculadoraPersonalizada', JSON.stringify(this.campos));
-    this.translate.get('CUSTOM_CALCULATOR.SAVE_SUCCESS_ALERT').subscribe((res: string) => {
-      alert(res);
-    });
+    localStorage.setItem(CLAVE_GUARDADO, JSON.stringify(campos));
+    this.alertar('CUSTOM_CALCULATOR.SAVE_SUCCESS_ALERT');
   }
 
-  cargarCalculadora(): void {
-    const data = localStorage.getItem('calculadoraPersonalizada');
-    if (data) {
-      this.campos = JSON.parse(data);
-      this.calcularNotaPersonalizada();
-    }
+  protected restablecer(): void {
+    if (this.cantidadCampos() === 0) return;
+
+    this.modelo.set({ campos: [], minimaAprobatoria: null });
+    this.showResetFeedback.set(true);
+    setTimeout(() => this.showResetFeedback.set(false), 2000);
   }
 
-  restablecer(): void {
-    if (!this.hasInputs) return;
-
-    this.campos = [];
-    this.minimaAprobatoria = null;
-    this.calcularNotaPersonalizada();
-
-    this.showResetFeedback = true;
-    this.cdr.markForCheck();
-    setTimeout(() => {
-      this.showResetFeedback = false;
-      this.cdr.markForCheck();
-    }, 2000);
+  private alertar(clave: string): void {
+    this.translate.get(clave).subscribe((res: string) => alert(res));
   }
-} 
+}

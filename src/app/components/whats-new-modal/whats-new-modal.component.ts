@@ -1,5 +1,4 @@
 import { Component, input, output, effect, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LucideBadgeCheck, LucideCircleCheck, LucideHistory, LucideSparkles, LucideX } from '@lucide/angular';
 import { TranslationService } from '../../services/translation.service';
@@ -21,7 +20,7 @@ export class WhatsNewModalComponent {
   isVisible = input(false);
   close = output<void>();
 
-  private readonly lang = toSignal(inject(TranslationService).currentLang$);
+  private readonly lang = inject(TranslationService).currentLang;
 
   readonly version = WHATS_NEW_VERSION;
   readonly changelogUrl = 'https://github.com/dony-aep/calculadora-notas/blob/main/CHANGELOG.md';
@@ -31,7 +30,7 @@ export class WhatsNewModalComponent {
 
   /** Static release date, localized to the active language. */
   readonly updatedAt = computed(() =>
-    new Intl.DateTimeFormat(this.lang() ?? 'es', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+    new Intl.DateTimeFormat(this.lang(), { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
       .format(new Date(WHATS_NEW_DATE))
   );
 

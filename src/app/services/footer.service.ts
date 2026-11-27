@@ -1,7 +1,6 @@
-import { Service } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Service, signal } from '@angular/core';
 
 @Service()
 export class FooterService {
-  public readonly madeByVisible$ = new BehaviorSubject<boolean>(true);
-} 
+  readonly madeByVisible = signal(true);
+}

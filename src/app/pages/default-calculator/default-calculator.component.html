@@ -1,136 +1,70 @@
 <div class="calculadora-notas">
     <h2><a class="titulo-enlace" routerLink="/">{{ 'DEFAULT_CALCULATOR.TITLE' | translate }}</a></h2>
 
-    <!-- Corte 1 -->
-    <div class="nota-container">
-        <div class="nota-left">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_1_FORMATIVE' | translate }} ({{porcentajeFormativa1}}%)</h3>
-            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa1" (ngModelChange)="onNotaChange($event, 'notaFormativa1')">
-            @if (notaFormativa1 === null && mostrarSugerencias) {
-                <p class="prediccion-hint">{{ 'DEFAULT_CALCULATOR.PREDICTION_FIELD_HINT' | translate:{ grade: notaMinimaRequerida.toFixed(1) } }}</p>
-                @if (notaSeguridad !== null && numeroNotaSeguridad === 1) {
-                    <p class="prediccion-seguridad">{{ 'DEFAULT_CALCULATOR.PREDICTION_SECURE' | translate:{ grade: notaSeguridad.toFixed(1) } }}</p>
-                }
+    @for (corte of cortes; track corte.clave; let numero = $index) {
+        <div class="nota-container">
+            @for (nota of corte.notas; track nota.campo) {
+                <div [class]="nota.lado">
+                    <h3>{{ nota.etiqueta | translate }} ({{ porcentajes[nota.campo] }}%)</h3>
+                    <input type="number" [placeholder]="nota.placeholder | translate" step="0.1" [formField]="notasForm[nota.campo]" (input)="rechazarFueraDeRango(nota.campo, $event)">
+                    @if (notas()[nota.campo] === null && prediccion().estado === 'possible') {
+                        <p class="prediccion-hint">{{ 'DEFAULT_CALCULATOR.PREDICTION_FIELD_HINT' | translate:{ grade: prediccion().notaMinima.toFixed(1) } }}</p>
+                        @let notaSeguridad = prediccion().notaSeguridad;
+                        @if (notaSeguridad !== null && prediccion().campoSeguridad === nota.campo) {
+                            <p class="prediccion-seguridad">{{ 'DEFAULT_CALCULATOR.PREDICTION_SECURE' | translate:{ grade: notaSeguridad.toFixed(1) } }}</p>
+                        }
+                    }
+                </div>
             }
         </div>
-        <div class="nota-right">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_2_COGNITIVE' | translate }} ({{porcentajeCognitiva1}}%)</h3>
-            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva1" (ngModelChange)="onNotaChange($event, 'notaCognitiva1')">
-            @if (notaCognitiva1 === null && mostrarSugerencias) {
-                <p class="prediccion-hint">{{ 'DEFAULT_CALCULATOR.PREDICTION_FIELD_HINT' | translate:{ grade: notaMinimaRequerida.toFixed(1) } }}</p>
-                @if (notaSeguridad !== null && numeroNotaSeguridad === 2) {
-                    <p class="prediccion-seguridad">{{ 'DEFAULT_CALCULATOR.PREDICTION_SECURE' | translate:{ grade: notaSeguridad.toFixed(1) } }}</p>
-                }
+        <div class="nota-definitiva">
+            <h3>{{ 'DEFAULT_CALCULATOR.FINAL_GRADE_CUT' | translate }} {{ numero + 1 }} [{{ corte.clave | translate }}]</h3>
+            @if (notas()[corte.notas[0].campo] !== null || notas()[corte.notas[1].campo] !== null) {
+                <p>{{ resultado().definitivas[numero].toFixed(2) }}</p>
             }
         </div>
-    </div>
-    <div class="nota-definitiva">
-        <h3>{{ 'DEFAULT_CALCULATOR.FINAL_GRADE_CUT' | translate }} 1 [{{ 'DEFAULT_CALCULATOR.CUT_1' | translate }}]</h3>
-        @if (notaFormativa1 !== null || notaCognitiva1 !== null) {
-            <p>{{ definitiva1.toFixed(2) }}</p>
-        }
-    </div>
+    }
 
-    <!-- Corte 2 -->
-    <div class="nota-container">
-        <div class="nota-left">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_3_FORMATIVE' | translate }} ({{porcentajeFormativa2}}%)</h3>
-            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa2" (ngModelChange)="onNotaChange($event, 'notaFormativa2')">
-            @if (notaFormativa2 === null && mostrarSugerencias) {
-                <p class="prediccion-hint">{{ 'DEFAULT_CALCULATOR.PREDICTION_FIELD_HINT' | translate:{ grade: notaMinimaRequerida.toFixed(1) } }}</p>
-                @if (notaSeguridad !== null && numeroNotaSeguridad === 3) {
-                    <p class="prediccion-seguridad">{{ 'DEFAULT_CALCULATOR.PREDICTION_SECURE' | translate:{ grade: notaSeguridad.toFixed(1) } }}</p>
-                }
-            }
-        </div>
-        <div class="nota-right">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_4_COGNITIVE' | translate }} ({{porcentajeCognitiva2}}%)</h3>
-            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva2" (ngModelChange)="onNotaChange($event, 'notaCognitiva2')">
-            @if (notaCognitiva2 === null && mostrarSugerencias) {
-                <p class="prediccion-hint">{{ 'DEFAULT_CALCULATOR.PREDICTION_FIELD_HINT' | translate:{ grade: notaMinimaRequerida.toFixed(1) } }}</p>
-                @if (notaSeguridad !== null && numeroNotaSeguridad === 4) {
-                    <p class="prediccion-seguridad">{{ 'DEFAULT_CALCULATOR.PREDICTION_SECURE' | translate:{ grade: notaSeguridad.toFixed(1) } }}</p>
-                }
-            }
-        </div>
-    </div>
-    <div class="nota-definitiva">
-        <h3>{{ 'DEFAULT_CALCULATOR.FINAL_GRADE_CUT' | translate }} 2 [{{ 'DEFAULT_CALCULATOR.CUT_2' | translate }}]</h3>
-        @if (notaFormativa2 !== null || notaCognitiva2 !== null) {
-            <p>{{ definitiva2.toFixed(2) }}</p>
-        }
-    </div>
-
-    <!-- Corte 3 -->
-    <div class="nota-container">
-        <div class="nota-left">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_5_FORMATIVE' | translate }} ({{porcentajeFormativa3}}%)</h3>
-            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_FORMATIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaFormativa3" (ngModelChange)="onNotaChange($event, 'notaFormativa3')">
-            @if (notaFormativa3 === null && mostrarSugerencias) {
-                <p class="prediccion-hint">{{ 'DEFAULT_CALCULATOR.PREDICTION_FIELD_HINT' | translate:{ grade: notaMinimaRequerida.toFixed(1) } }}</p>
-                @if (notaSeguridad !== null && numeroNotaSeguridad === 5) {
-                    <p class="prediccion-seguridad">{{ 'DEFAULT_CALCULATOR.PREDICTION_SECURE' | translate:{ grade: notaSeguridad.toFixed(1) } }}</p>
-                }
-            }
-        </div>
-        <div class="nota-right">
-            <h3>{{ 'DEFAULT_CALCULATOR.GRADE_6_COGNITIVE' | translate }} ({{porcentajeCognitiva3}}%)</h3>
-            <input type="number" [placeholder]="'DEFAULT_CALCULATOR.ENTER_COGNITIVE' | translate" min="0" max="5" step="0.1" [ngModel]="notaCognitiva3" (ngModelChange)="onNotaChange($event, 'notaCognitiva3')">
-            @if (notaCognitiva3 === null && mostrarSugerencias) {
-                <p class="prediccion-hint">{{ 'DEFAULT_CALCULATOR.PREDICTION_FIELD_HINT' | translate:{ grade: notaMinimaRequerida.toFixed(1) } }}</p>
-                @if (notaSeguridad !== null && numeroNotaSeguridad === 6) {
-                    <p class="prediccion-seguridad">{{ 'DEFAULT_CALCULATOR.PREDICTION_SECURE' | translate:{ grade: notaSeguridad.toFixed(1) } }}</p>
-                }
-            }
-        </div>
-    </div>
-    <div class="nota-definitiva">
-        <h3>{{ 'DEFAULT_CALCULATOR.FINAL_GRADE_CUT' | translate }} 3 [{{ 'DEFAULT_CALCULATOR.CUT_3' | translate }}]</h3>
-        @if (notaFormativa3 !== null || notaCognitiva3 !== null) {
-            <p>{{ definitiva3.toFixed(2) }}</p>
-        }
-    </div>
-
-    <!-- Total -->
-    @if (hasInputs) {
+    @if (hasInputs()) {
         <div class="nota-definitiva-total">
             <p class="nota-definitiva-total-text">{{ 'DEFAULT_CALCULATOR.TOTAL_FINAL_GRADE' | translate }}</p>
-            <p>{{ definitivaTotal.toFixed(1) }}</p>
+            <p>{{ resultado().total.toFixed(1) }}</p>
         </div>
-        <div class="mensaje-aprobacion" [style.color]="mensajeColor">
-            {{ mensajeAprobacion | translate }}
+        <div class="mensaje-aprobacion" [style.color]="mensaje().color">
+            {{ mensaje().clave | translate }}
         </div>
 
-        @if (prediccionEstado !== 'none' && prediccionEstado !== 'complete') {
-            <div class="prediccion-panel" [class.is-possible]="prediccionEstado === 'possible'" [class.is-guaranteed]="prediccionEstado === 'guaranteed'" [class.is-impossible]="prediccionEstado === 'impossible'">
+        @let estado = prediccion().estado;
+        @if (estado !== 'none' && estado !== 'complete') {
+            <div class="prediccion-panel" [class.is-possible]="estado === 'possible'" [class.is-guaranteed]="estado === 'guaranteed'" [class.is-impossible]="estado === 'impossible'">
                 <p class="prediccion-titulo">{{ 'DEFAULT_CALCULATOR.PREDICTION_TITLE' | translate }}</p>
 
-                @if (prediccionEstado === 'possible') {
-                    <p class="prediccion-nota">{{ notaMinimaRequerida.toFixed(1) }}</p>
-                    <p class="prediccion-detalle">{{ 'DEFAULT_CALCULATOR.PREDICTION_NEEDED' | translate:{ grade: notaMinimaRequerida.toFixed(1), count: camposVacios } }}</p>
-                }
-                @if (prediccionEstado === 'guaranteed') {
-                    <p class="prediccion-detalle">{{ 'DEFAULT_CALCULATOR.PREDICTION_GUARANTEED' | translate }}</p>
-                }
-                @if (prediccionEstado === 'impossible') {
-                    <p class="prediccion-detalle">{{ 'DEFAULT_CALCULATOR.PREDICTION_IMPOSSIBLE' | translate }}</p>
+                @switch (estado) {
+                    @case ('possible') {
+                        <p class="prediccion-nota">{{ prediccion().notaMinima.toFixed(1) }}</p>
+                        <p class="prediccion-detalle">{{ 'DEFAULT_CALCULATOR.PREDICTION_NEEDED' | translate:{ grade: prediccion().notaMinima.toFixed(1), count: prediccion().camposVacios } }}</p>
+                    }
+                    @case ('guaranteed') {
+                        <p class="prediccion-detalle">{{ 'DEFAULT_CALCULATOR.PREDICTION_GUARANTEED' | translate }}</p>
+                    }
+                    @case ('impossible') {
+                        <p class="prediccion-detalle">{{ 'DEFAULT_CALCULATOR.PREDICTION_IMPOSSIBLE' | translate }}</p>
+                    }
                 }
             </div>
         }
     }
 
-    <!-- Buttons -->
     <div class="buttons">
         <button id="volver-btn" routerLink="/" [title]="'DEFAULT_CALCULATOR.BACK_BTN_TOOLTIP' | translate">
             <svg lucideArrowLeft></svg>
         </button>
-        <button id="restablecer-btn" (click)="restablecer()" [disabled]="!hasInputs" [title]="'DEFAULT_CALCULATOR.RESET_BTN_TOOLTIP' | translate">
-            @if (!showResetFeedback) {
-                <svg lucideRotateCw></svg>
-            }
-            @if (showResetFeedback) {
+        <button id="restablecer-btn" (click)="restablecer()" [disabled]="!hasInputs()" [title]="'DEFAULT_CALCULATOR.RESET_BTN_TOOLTIP' | translate">
+            @if (showResetFeedback()) {
                 <svg lucideCheck></svg>
+            } @else {
+                <svg lucideRotateCw></svg>
             }
         </button>
     </div>
-</div> 
+</div>

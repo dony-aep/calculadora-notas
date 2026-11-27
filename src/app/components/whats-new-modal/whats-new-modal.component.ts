@@ -1,5 +1,6 @@
-import { Component, input, output, effect, computed, inject } from '@angular/core';
+import { Component, input, output, computed, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { bloquearScrollMientras } from '../bloquear-scroll';
 import { LucideBadgeCheck, LucideCircleCheck, LucideHistory, LucideSparkles, LucideX } from '@lucide/angular';
 import { TranslationService } from '../../services/translation.service';
 
@@ -35,9 +36,7 @@ export class WhatsNewModalComponent {
   );
 
   constructor() {
-    effect(() => {
-      document.body.classList.toggle('modal-open', this.isVisible());
-    });
+    bloquearScrollMientras(this.isVisible);
   }
 
   onClose() {

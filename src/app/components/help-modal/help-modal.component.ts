@@ -1,5 +1,6 @@
-import { Component, input, output, effect } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { bloquearScrollMientras } from '../bloquear-scroll';
 import { LucideCalculator, LucideInfo, LucideSlidersHorizontal, LucideX } from '@lucide/angular';
 
 @Component({
@@ -17,14 +18,7 @@ export class HelpModalComponent {
   close = output<void>();
 
   constructor() {
-    // Efecto para manejar la clase del body cuando cambia isVisible
-    effect(() => {
-      if (this.isVisible()) {
-        document.body.classList.add('modal-open');
-      } else {
-        document.body.classList.remove('modal-open');
-      }
-    });
+    bloquearScrollMientras(this.isVisible);
   }
 
   onClose() {

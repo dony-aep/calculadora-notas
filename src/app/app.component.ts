@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LayoutFooterComponent } from './components/layout-footer/layout-footer.component';
 import { TranslationService } from './services/translation.service';
@@ -8,8 +8,7 @@ import { inject as injectVercelAnalytics } from '@vercel/analytics';
   selector: 'app-root',
   imports: [RouterOutlet, LayoutFooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'calculadora-notas-angular';

@@ -23,20 +23,37 @@ esperando. Los tests corren con **Vitest** sobre jsdom (`@angular/build:unit-tes
 
 ## Convenciones de código
 
-Estas reglas se cumplen hoy en el 100% del código; mantenlas al agregar archivos nuevos.
+Siguen las reglas de Angular 22. Las de esta lista se cumplen en todo el código; mantenlas al
+agregar archivos nuevos.
 
-- **`ChangeDetectionStrategy.OnPush` en todos los componentes**, sin excepción (8/8 actualmente).
+- **No escribas `changeDetection`**: `OnPush` es el default en v22. Un componente que necesite el
+  comportamiento anterior usa `ChangeDetectionStrategy.Eager` (`Default` está deprecado).
+- **No escribas `standalone: true`**: es implícito desde Angular 19.
+- **`@Service()`** para servicios singleton, no `@Injectable({ providedIn: 'root' })`. `@Service`
+  no admite parámetros de constructor; queda `@Injectable` solo para un scope distinto de root o un
+  proveedor `useClass`/`useValue`/`useExisting`.
 - **`inject()`**, nunca inyección por constructor.
 - **`input()` / `output()`**, nunca `@Input()` / `@Output()`.
-- **No escribas `standalone: true`**: es implícito en Angular 19+.
 - **Control flow nativo** en templates: `@if`, `@for` (con `track`), `@switch`. Nunca `*ngIf` / `*ngFor`.
+- **Sin `CommonModule`**: importa solo lo que usa la plantilla (`AsyncPipe` en `layout-footer`).
+  Tampoco `ngClass` / `ngStyle`: usa bindings `[class.x]` y `[style.x]`.
+- **Rutas con `loadComponent`**: toda página nueva se carga diferida. Solo `HomeComponent`, la
+  página de llegada, va en el bundle inicial.
+- **Imágenes estáticas con `NgOptimizedImage`**: `ngSrc` con `width` y `height`, y `priority` en la
+  imagen principal de la página.
 - **`styleUrl`** (singular), no `styleUrls`.
 - **Objeto `host`** en el decorador, no `@HostBinding` / `@HostListener`.
-- **Estado reactivo en servicios**: `BehaviorSubject` público `readonly` con sufijo `$` +
-  `providedIn: 'root'`. En componentes, `toSignal()` para consumirlo.
 - **Nombres de negocio en español** (`notaFormativa`, `calcularNotas`); el resto de la API de
   Angular en inglés.
 - Indentación de 2 espacios y comillas simples en `.ts` (ver `.editorconfig`).
+
+Dos partes siguen con el patrón anterior a v22, y lo nuevo no debe copiarlas:
+
+- **Estado de los servicios**: hoy es un `BehaviorSubject` público `readonly` con sufijo `$`, que
+  los componentes consumen con `toSignal()` o el pipe `async`. El estado nuevo va en signals
+  (`signal()`, `computed()`), y los componentes no deben llevar campos sueltos con `markForCheck()`.
+- **Formularios**: las dos calculadoras usan `ngModel`. Un formulario nuevo va con Signal Forms
+  (`@angular/forms/signals`).
 
 Para dudas de Angular moderno más allá de esta lista, invoca la skill `angular-best-practices`.
 Para trabajo visual, la skill `frontend-design`. Para commits, la skill `git-commit`.
@@ -109,15 +126,21 @@ se compartió.
 - **No hay PWA ni service worker.** Se eliminaron en v4.5.6. No existen `ngsw-config.json` ni
   `manifest.webmanifest`, y `app.config.ts` no registra `provideServiceWorker`. No los añadas
   "de vuelta" sin que se pida.
-- **`.github/copilot-instructions.md` cubre el mismo terreno para Copilot** y está sincronizado
-  con este archivo. Si cambias una convención aquí, actualízalo allí también; si en algún momento
-  se contradicen, este archivo manda.
-- **`package.json` tiene un único override, `vite: "^8.3.4"`, y es temporal.** `@angular/build`
-  22.2.3 fija vite exacto a 8.3.0, vulnerable (GHSA-587h-7wmj-h5pm y otras cinco). Bórralo en
-  cuanto un `@angular/build` estable declare vite >= 8.3.3 (22.3.0-next.2 ya fija 8.3.4): un pin
-  olvidado frena parches, como pasó con `vite: ">=7.3.5 <8"` antes de v22. Si vuelve a aparecer
-  una vulnerabilidad transitiva, comprueba primero si el CLI ya declara la versión parchada antes
-  de añadir otro override. Nunca uses `npm audit fix --force`: propone degradar `@angular/build`.
+- **Actualiza Angular con `npx ng update @angular/core @angular/cli`**, no con `npm install`
+  paquete por paquete: los paquetes de Angular se piden entre sí la versión exacta como peer, y npm
+  falla con `ERESOLVE` contra el lock.
+- **`package.json` no tiene `overrides`.** El último (`vite`) se quitó al subir a 22.3.0, que ya
+  fija una vite parchada. Si aparece una vulnerabilidad transitiva, comprueba primero si una versión
+  nueva del CLI ya declara la versión parchada; un override olvidado frena parches, como pasó con
+  `vite: ">=7.3.5 <8"` antes de v22. Nunca uses `npm audit fix --force`: propone degradar
+  `@angular/build`.
+- **`tsconfig.json` sigue la plantilla de `ng new` 22.3**: `"files": []` con `references` a
+  `tsconfig.app.json` y `tsconfig.spec.json`, para que el editor compile cada archivo con su propio
+  programa (sin eso marca `TS2593` en `describe` dentro de los specs). `experimentalDecorators: true`
+  también viene de la plantilla; la versión 4.4.0 la quitó creyendo que Angular 21 usaba
+  decoradores TC39, pero la plantilla de angular-cli nunca la ha retirado y el bundle sale idéntico
+  con o sin ella. TypeScript queda en 6.0 hasta que `@angular/compiler-cli` acepte 7.x (hoy pide
+  `>=6.0 <6.1`).
 - **No hay `zone.js`.** Angular corre zoneless por defecto desde v21 (`bootstrapApplication`
   inyecta el proveedor solo), así que el polyfill se eliminó en la migración a v22. No añadas
   `provideZonelessChangeDetection()`: es el default y no haría nada. Lo que sí importa es que todo

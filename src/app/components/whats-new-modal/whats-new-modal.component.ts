@@ -1,4 +1,4 @@
-import { Component, input, output, ChangeDetectionStrategy, effect, computed, inject } from '@angular/core';
+import { Component, input, output, effect, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LucideBadgeCheck, LucideCircleCheck, LucideHistory, LucideSparkles, LucideX } from '@lucide/angular';
@@ -13,7 +13,6 @@ const WHATS_NEW_DATE = '2026-11-03';
   imports: [TranslatePipe, LucideBadgeCheck, LucideCircleCheck, LucideHistory, LucideSparkles, LucideX],
   templateUrl: './whats-new-modal.component.html',
   styleUrl: './whats-new-modal.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(click)': 'onBackdropClick($event)'
   }

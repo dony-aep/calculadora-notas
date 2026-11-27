@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Service } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class ThemeService {
   private currentTheme: 'light' | 'dark';
   public readonly theme$: BehaviorSubject<'light' | 'dark'>;

@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FooterService } from '../../services/footer.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2 } from '@lucide/angular';
 
@@ -14,10 +13,9 @@ interface Campo {
 
 @Component({
   selector: 'app-custom-calculator',
-  imports: [RouterLink, FormsModule, CommonModule, TranslatePipe, LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2],
+  imports: [RouterLink, FormsModule, TranslatePipe, LucideArrowLeft, LucideCheck, LucidePlus, LucideRotateCw, LucideSave, LucideTrash2],
   templateUrl: './custom-calculator.component.html',
-  styleUrl: './custom-calculator.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './custom-calculator.component.css'
 })
 export class CustomCalculatorComponent implements OnInit, OnDestroy {
   private readonly footerService = inject(FooterService);

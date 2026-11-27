@@ -1,10 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class TranslationService {
   private readonly translate = inject(TranslateService);
   

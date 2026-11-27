@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, ElementRef, inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { HelpModalComponent } from '../help-modal/help-modal.component';
 import { WhatsNewModalComponent, WHATS_NEW_VERSION } from '../whats-new-modal/whats-new-modal.component';
@@ -13,10 +13,9 @@ import { siAndroid } from 'simple-icons';
 
 @Component({
   selector: 'app-layout-footer',
-  imports: [CommonModule, RouterLink, HelpModalComponent, WhatsNewModalComponent, TranslatePipe, LucideCheck, LucideChevronDown, LucideChevronUp, LucideCircleQuestionMark, LucideLanguages, LucideMoon, LucideSparkles, LucideSun],
+  imports: [AsyncPipe, RouterLink, HelpModalComponent, WhatsNewModalComponent, TranslatePipe, LucideCheck, LucideChevronDown, LucideChevronUp, LucideCircleQuestionMark, LucideLanguages, LucideMoon, LucideSparkles, LucideSun],
   templateUrl: './layout-footer.component.html',
   styleUrl: './layout-footer.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(document:click)': 'onDocumentClick($event)'
   }

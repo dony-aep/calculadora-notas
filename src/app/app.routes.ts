@@ -1,7 +1,4 @@
 import { Routes } from '@angular/router';
-import { AppDownloadComponent } from './pages/app-download/app-download.component';
-import { CustomCalculatorComponent } from './pages/custom-calculator/custom-calculator.component';
-import { DefaultCalculatorComponent } from './pages/default-calculator/default-calculator.component';
 import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
@@ -17,15 +14,15 @@ export const routes: Routes = [
     },
     {
         path: 'default-calculator',
-        component: DefaultCalculatorComponent
+        loadComponent: () => import('./pages/default-calculator/default-calculator.component').then(m => m.DefaultCalculatorComponent)
     },
     {
         path: 'custom-calculator',
-        component: CustomCalculatorComponent
+        loadComponent: () => import('./pages/custom-calculator/custom-calculator.component').then(m => m.CustomCalculatorComponent)
     },
     {
         path: 'app-download',
-        component: AppDownloadComponent
+        loadComponent: () => import('./pages/app-download/app-download.component').then(m => m.AppDownloadComponent)
     },
     {
         path: '**',

@@ -2,34 +2,33 @@
     <!-- Controles Izquierda -->
     <div class="controls-container-left">
         <button id="toggle-mode" class="control-btn" (click)="toggleTheme()" [title]="'FOOTER.CHANGE_THEME' | translate">
-            @if (currentTheme === 'light') {
-                <svg lucideMoon></svg>
-            }
-            @if (currentTheme === 'dark') {
+            @if (currentTheme() === 'dark') {
                 <svg lucideSun></svg>
+            } @else {
+                <svg lucideMoon></svg>
             }
         </button>
         <div class="language-selector">
             <button id="toggle-language" class="control-btn lang-btn" (click)="toggleLanguageDropdown()" [title]="'FOOTER.CHANGE_LANGUAGE' | translate">
                 <svg lucideLanguages></svg>
-                <span class="selected-language">{{ selectedLanguage$ | async }}</span>
-                @if (isLanguageDropdownVisible) {
+                <span class="selected-language">{{ selectedLanguage() }}</span>
+                @if (isLanguageDropdownVisible()) {
                     <svg lucideChevronUp class="dropdown-arrow"></svg>
                 } @else {
                     <svg lucideChevronDown class="dropdown-arrow"></svg>
                 }
             </button>
-            @if (isLanguageDropdownVisible) {
+            @if (isLanguageDropdownVisible()) {
                 <div class="language-dropdown">
                     <div class="language-option" (click)="selectLanguage('es')">
                         <span>{{ 'LANGUAGES.SPANISH' | translate }}</span>
-                        @if (currentLang === 'es') {
+                        @if (currentLang() === 'es') {
                             <svg lucideCheck class="check-icon"></svg>
                         }
                     </div>
                     <div class="language-option" (click)="selectLanguage('en')">
                         <span>{{ 'LANGUAGES.ENGLISH' | translate }}</span>
-                        @if (currentLang === 'en') {
+                        @if (currentLang() === 'en') {
                             <svg lucideCheck class="check-icon"></svg>
                         }
                     </div>
@@ -40,17 +39,17 @@
 
     <!-- Controles Derecha -->
     <div class="controls-container-right">
-        @if (!isAppDownloadRoute) {
+        @if (!isAppDownloadRoute()) {
             <button id="app-download-btn" class="control-btn" routerLink="/app-download" [title]="'FOOTER.DOWNLOAD_APP' | translate">
                 <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path [attr.d]="androidIconPath"></path>
                 </svg>
             </button>
         }
-        <button id="whats-new-btn" class="control-btn" (click)="openWhatsNewModal()" [title]="'FOOTER.WHATS_NEW' | translate">
+        <button id="whats-new-btn" class="control-btn" (click)="isWhatsNewModalVisible.set(true)" [title]="'FOOTER.WHATS_NEW' | translate">
             <svg lucideSparkles></svg>
         </button>
-        <button id="ayuda-btn" class="control-btn" (click)="openHelpModal()" [title]="'FOOTER.HELP' | translate">
+        <button id="ayuda-btn" class="control-btn" (click)="isHelpModalVisible.set(true)" [title]="'FOOTER.HELP' | translate">
             <svg lucideCircleQuestionMark></svg>
         </button>
     </div>
@@ -58,11 +57,11 @@
 
 
 <footer>
-    @if (madeByVisible$ | async) {
+    @if (madeByVisible()) {
         <p>{{ 'FOOTER.MADE_BY' | translate }} <a href="https://donyaep.vercel.app/" target="_blank" class="dony">dony.</a></p>
     }
 </footer>
 
-<app-help-modal [isVisible]="isHelpModalVisible" (close)="closeHelpModal()"></app-help-modal>
+<app-help-modal [isVisible]="isHelpModalVisible()" (close)="isHelpModalVisible.set(false)"></app-help-modal>
 
-<app-whats-new-modal [isVisible]="isWhatsNewModalVisible" (close)="closeWhatsNewModal()"></app-whats-new-modal> 
+<app-whats-new-modal [isVisible]="isWhatsNewModalVisible()" (close)="closeWhatsNewModal()"></app-whats-new-modal>

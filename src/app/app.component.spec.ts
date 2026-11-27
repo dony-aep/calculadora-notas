@@ -3,12 +3,12 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BehaviorSubject, of } from 'rxjs';
+import { signal } from '@angular/core';
 import { AppComponent } from './app.component';
-import { TranslationService } from './services/translation.service';
+import { Idioma, TranslationService } from './services/translation.service';
 
 describe('AppComponent', () => {
-  const currentLang$ = new BehaviorSubject('es');
+  const currentLang = signal<Idioma>('es');
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,9 +21,9 @@ describe('AppComponent', () => {
         {
           provide: TranslationService,
           useValue: {
-            currentLang$,
-            currentLangName$: of('Español'),
-            setLanguage: (lang: string) => currentLang$.next(lang)
+            currentLang,
+            currentLangName: signal('Español'),
+            setLanguage: (lang: Idioma) => currentLang.set(lang)
           }
         }
       ]

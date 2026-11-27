@@ -15,10 +15,10 @@ export class AppDownloadComponent implements OnInit, OnDestroy {
   private readonly footerService = inject(FooterService);
 
   ngOnInit(): void {
-    this.footerService.madeByVisible$.next(false);
+    this.footerService.madeByVisible.set(false);
   }
 
   ngOnDestroy(): void {
-    this.footerService.madeByVisible$.next(true);
+    this.footerService.madeByVisible.set(true);
   }
 }

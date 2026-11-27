@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- The app starts with less to download: only the home page loads at startup, and each calculator and the download page load when you open them. The initial download drops from 97.4 kB to 90.6 kB transferred.
+
+### Fixed
+
+- Entering a grade outside 0–5 in the grade calculator now clears the field after the warning. The field used to keep showing the rejected value while the calculation ignored it.
+- A saved custom calculator that is damaged or in an unexpected format no longer makes the page fail to open. Entries that are not valid are skipped and the rest loads.
+
 ## [4.8.2] - 2026-11-03
 
 ### Fixed

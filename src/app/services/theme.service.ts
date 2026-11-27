@@ -1,21 +1,32 @@
-import { Service } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Service, signal } from '@angular/core';
+
+export type Tema = 'light' | 'dark';
+
+const esTema = (valor: unknown): valor is Tema => valor === 'light' || valor === 'dark';
 
 @Service()
 export class ThemeService {
-  private currentTheme: 'light' | 'dark';
-  public readonly theme$: BehaviorSubject<'light' | 'dark'>;
+  private readonly tema = signal<Tema>(this.temaInicial());
+  readonly theme = this.tema.asReadonly();
 
   constructor() {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    this.currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    this.theme$ = new BehaviorSubject(this.currentTheme);
-    this.applyTheme(this.currentTheme);
+    this.applyTheme(this.tema());
   }
 
-  private applyTheme(theme: 'light' | 'dark') {
-    this.currentTheme = theme;
+  toggleTheme(): void {
+    this.applyTheme(this.tema() === 'dark' ? 'light' : 'dark');
+  }
+
+  private temaInicial(): Tema {
+    const guardado = localStorage.getItem('theme');
+    if (esTema(guardado)) {
+      return guardado;
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  private applyTheme(theme: Tema): void {
+    this.tema.set(theme);
     document.documentElement.classList.toggle('dark-mode', theme === 'dark');
     // La barra del navegador móvil toma el fondo del tema activo, no el del sistema.
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim();
@@ -23,10 +34,5 @@ export class ThemeService {
       document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bg);
     }
     localStorage.setItem('theme', theme);
-    this.theme$.next(this.currentTheme);
   }
-
-  toggleTheme() {
-    this.applyTheme(this.currentTheme === 'dark' ? 'light' : 'dark');
-  }
-} 
+}

@@ -12,6 +12,7 @@
     --color-secondary-rgb: 12, 206, 107;
     --color-danger: #ef4444;
     --color-danger-rgb: 239, 68, 68;
+    --color-warning: orange;
     --color-text-muted: #a3a3a3;
     --color-border-modal: #d4d4d4;
     --color-modal-overlay: rgba(0, 0, 0, 0.35);

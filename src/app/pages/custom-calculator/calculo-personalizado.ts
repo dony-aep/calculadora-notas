@@ -35,7 +35,7 @@ export function calcularResultado({ campos, minimaAprobatoria }: CalculadoraPers
     return { total: null, clave: 'CUSTOM_CALCULATOR.ERROR_EXCEEDS_MSG', params: { value: porcentajeTotal.toFixed(1) }, color: 'var(--color-danger)' };
   }
   if (porcentajeTotal > 0 && porcentajeTotal < 100) {
-    return { total: null, clave: 'CUSTOM_CALCULATOR.WARN_INCOMPLETE_MSG', params: { value: porcentajeTotal.toFixed(1) }, color: 'orange' };
+    return { total: null, clave: 'CUSTOM_CALCULATOR.WARN_INCOMPLETE_MSG', params: { value: porcentajeTotal.toFixed(1) }, color: 'var(--color-warning)' };
   }
   if (porcentajeTotal === 100) {
     const aprueba = notaTotal >= (minimaAprobatoria ?? NOTA_APROBATORIA_POR_DEFECTO);
